@@ -1,3 +1,4 @@
+import { DockDemo } from "@/components/magicui/doc-details";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -16,6 +17,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans bg-background text-foreground`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           {children}
+          <DockDemo />
         </ThemeProvider>
       </body>
     </html>

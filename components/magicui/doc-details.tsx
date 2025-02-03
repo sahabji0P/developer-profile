@@ -1,6 +1,6 @@
 "use client";
 
-import { CalendarIcon, FileTextIcon, HomeIcon, MailIcon, PencilIcon } from "lucide-react";
+import { FileTextIcon, HomeIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -55,7 +55,7 @@ export function DockDemo() {
                 </Tooltip>
               </DockIcon>
             ))}
-            
+
             <Separator orientation="vertical" className="h-full py-2" />
             <DockIcon>
               <Tooltip>

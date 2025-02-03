@@ -1,12 +1,11 @@
 "use client"
 
-import { useState } from "react"
-import Link from "next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { DockDemo } from "@/components/dock-demo"
+import Link from "next/link"
+import { useState } from "react"
 
 // This would typically come from a database or API
 const blogPosts = [
@@ -119,7 +118,6 @@ export default function BlogPage() {
           ))}
         </div>
       </div>
-      <DockDemo />
     </main>
   )
 }

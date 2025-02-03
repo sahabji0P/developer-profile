@@ -3,7 +3,6 @@
 import { AchievementsSection } from "@/components/achievements-section"
 import { CertificationsSection } from "@/components/certifications-section"
 import { ContactSection } from "@/components/contact-section"
-import { DockDemo } from "@/components/dock-demo"
 import { EducationSection } from "@/components/education-section"
 import { HeroSection } from "@/components/hero-section"
 import { ShowcaseLayout } from "@/components/showcase-layout"
@@ -81,7 +80,6 @@ export default function Home() {
           </motion.div>
         ))}
       </div>
-      <DockDemo />
     </main>
   )
 }
