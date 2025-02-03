@@ -1,32 +1,9 @@
 "use client"
 
-import { useRef, useEffect } from "react"
+import { achievementsData } from "@/data/achievements"
 import { motion, useAnimation, useInView } from "framer-motion"
 import Image from "next/image"
-import { achievementsData } from "@/data/achievements"
-
-const achievements = [
-  {
-    title: "Best Paper Award",
-    description: "International Conference on Machine Learning",
-    image: "/placeholder.svg",
-  },
-  {
-    title: "Hackathon Winner",
-    description: "Global AI Challenge 2023",
-    image: "/placeholder.svg",
-  },
-  {
-    title: "Open Source Contributor",
-    description: "TensorFlow Core Team",
-    image: "/placeholder.svg",
-  },
-  {
-    title: "Data Science Competition",
-    description: "Top 1% in Kaggle Competition",
-    image: "/placeholder.svg",
-  },
-]
+import { useEffect, useRef } from "react"
 
 export function AchievementsSection() {
   const controls = useAnimation()
@@ -67,7 +44,7 @@ export function AchievementsSection() {
           {[...achievementsData, ...achievementsData].map((achievement, index) => (
             <div key={index} className="flex-shrink-0 w-64 h-64 relative rounded-lg overflow-hidden group">
               <Image
-                src={achievement.image || "/placeholder.svg"}
+                src={achievement.image || "/SJ8.jpg"}
                 alt={achievement.title}
                 layout="fill"
                 objectFit="cover"

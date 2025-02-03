@@ -2,7 +2,7 @@ export const certificationsData = [
   {
     title: "AWS Certified Solutions Architect",
     issuer: "Amazon Web Services",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     issuedDate: "2023-01-15",
     expiryDate: "2026-01-15",
     skills: ["Cloud Architecture", "AWS Services", "Security"],
@@ -12,7 +12,7 @@ export const certificationsData = [
   {
     title: "TensorFlow Developer Certificate",
     issuer: "Google",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     issuedDate: "2022-06-30",
     expiryDate: null,
     skills: ["Machine Learning", "Deep Learning", "TensorFlow"],
@@ -22,7 +22,7 @@ export const certificationsData = [
   {
     title: "Certified Kubernetes Administrator",
     issuer: "Cloud Native Computing Foundation",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     issuedDate: "2022-03-01",
     expiryDate: "2025-03-01",
     skills: ["Kubernetes", "Container Orchestration", "DevOps"],

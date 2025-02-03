@@ -1,7 +1,7 @@
 export const workExperienceData = [
   {
     company: "Tech Innovators Inc.",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     role: "Senior Data Scientist",
     period: "2020 - Present",
     isPresent: true,
@@ -14,7 +14,7 @@ export const workExperienceData = [
   },
   {
     company: "Data Dynamics Ltd.",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     role: "Data Analyst",
     period: "2018 - 2020",
     isPresent: false,

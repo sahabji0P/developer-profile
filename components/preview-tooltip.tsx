@@ -1,8 +1,8 @@
 "use client"
 
+import { AnimatePresence, motion } from "framer-motion"
 import type React from "react"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 
 interface PreviewTooltipProps {
   children: React.ReactNode
@@ -26,7 +26,7 @@ export function PreviewTooltip({ children, preview }: PreviewTooltipProps) {
           >
             <div className="bg-popover text-popover-foreground p-2 rounded-md shadow-lg text-sm">
               <div className="w-full h-24 bg-muted rounded-md mb-2 overflow-hidden">
-                <img src={preview || "/placeholder.svg"} alt="Preview" className="w-full h-full object-cover" />
+                <img src={preview || "/SJ8.jpg"} alt="Preview" className="w-full h-full object-cover" />
               </div>
               <p className="text-xs text-center">{preview}</p>
             </div>

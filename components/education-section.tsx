@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { educationData } from "@/data/education"
+import { AnimatePresence, motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import Image from "next/image"
-import { educationData } from "@/data/education"
+import { useState } from "react"
 
 export function EducationSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -15,9 +15,8 @@ export function EducationSection() {
       {educationData.map((education, index) => (
         <motion.div
           key={education.institution}
-          className={`rounded-lg overflow-hidden ${
-            education.isPresent ? "border-2 border-primary" : "border border-border"
-          }`}
+          className={`rounded-lg overflow-hidden ${education.isPresent ? "border-2 border-primary" : "border border-border"
+            }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
@@ -27,7 +26,7 @@ export function EducationSection() {
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
             <div className="bg-white rounded-full p-2 mr-4 flex-shrink-0">
-              <Image src={education.logo || "/placeholder.svg"} alt={education.institution} width={40} height={40} />
+              <Image src={education.logo || "/SJ8.jpg"} alt={education.institution} width={40} height={40} />
             </div>
             <div className="flex-grow">
               <h3 className="text-lg font-semibold">{education.degree}</h3>

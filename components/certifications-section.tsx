@@ -1,12 +1,12 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ChevronDown } from "lucide-react"
 import { certificationsData } from "@/data/certifications"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronDown } from "lucide-react"
+import Image from "next/image"
+import { useState } from "react"
 
 export function CertificationsSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -31,7 +31,7 @@ export function CertificationsSection() {
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
             <div className="bg-white rounded-full p-2 mr-4">
-              <Image src={cert.logo || "/placeholder.svg"} alt={cert.issuer} width={40} height={40} />
+              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} width={40} height={40} />
             </div>
             <div className="flex-grow">
               <h3 className="text-xl font-semibold">{cert.title}</h3>

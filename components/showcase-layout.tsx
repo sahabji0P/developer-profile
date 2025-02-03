@@ -1,26 +1,25 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import Image from "next/image"
+import { PreviewTooltip } from "@/components/preview-tooltip"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, ChevronDown } from "lucide-react"
 import { projectsData } from "@/data/projects"
-import { PreviewTooltip } from "@/components/preview-tooltip"
+import { AnimatePresence, motion } from "framer-motion"
+import { ChevronDown, ExternalLink, Github } from "lucide-react"
+import Image from "next/image"
+import { useState } from "react"
 
 export function ShowcaseLayout() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
 
   return (
     <section className="space-y-6">
-      <h2 className="text-3xl font-bold mb-4">Innovation Showcase</h2>
+      <h2 className="text-3xl font-bold mb-4">Projects</h2>
       {projectsData.map((project, index) => (
         <motion.div
           key={project.title}
-          className={`rounded-xl overflow-hidden ${
-            project.featured ? "border-2 border-red-500" : "border border-border"
-          }`}
+          className={`rounded-xl overflow-hidden ${project.featured ? "border-2 border-red-500" : "border border-border"
+            }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
@@ -28,7 +27,7 @@ export function ShowcaseLayout() {
           <div className="p-4 cursor-pointer" onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}>
             <div className="flex items-center space-x-4">
               <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                <Image src={project.logo || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+                <Image src={project.logo || "/SJ8.jpg"} alt={project.title} fill className="object-cover" />
               </div>
               <div className="flex-grow">
                 <h3 className="text-xl font-bold">{project.title}</h3>
@@ -57,7 +56,7 @@ export function ShowcaseLayout() {
                     transition={{ duration: 0.3 }}
                   >
                     <Image
-                      src={project.image || "/placeholder.svg"}
+                      src={project.image || "/SJ8.jpg"}
                       alt={project.title}
                       fill
                       className="object-cover"

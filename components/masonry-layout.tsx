@@ -1,11 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
-import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
 import { projectsData } from "@/data/projects"
+import { motion } from "framer-motion"
+import { ExternalLink, Github } from "lucide-react"
+import Image from "next/image"
 
 export function MasonryLayout() {
   return (
@@ -15,9 +15,8 @@ export function MasonryLayout() {
         {projectsData.map((project, index) => (
           <motion.div
             key={project.title}
-            className={`break-inside-avoid rounded-xl overflow-hidden ${
-              project.featured ? "border-2 border-red-500" : "border border-border"
-            }`}
+            className={`break-inside-avoid rounded-xl overflow-hidden ${project.featured ? "border-2 border-red-500" : "border border-border"
+              }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -29,7 +28,7 @@ export function MasonryLayout() {
           >
             <div className="relative">
               <Image
-                src={project.image || "/placeholder.svg"}
+                src={project.image || "/SJ8.jpg"}
                 alt={project.title}
                 width={600}
                 height={400}

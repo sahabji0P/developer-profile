@@ -1,10 +1,10 @@
 "use client"
 
-import { motion } from "framer-motion"
-import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { projectsData } from "@/data/projects"
+import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function FeaturedProjectsSection() {
   return (
@@ -14,9 +14,8 @@ export function FeaturedProjectsSection() {
         {projectsData.map((project, index) => (
           <motion.div
             key={project.title}
-            className={`rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card ${
-              project.featured ? "border-2 border-red-500" : ""
-            }`}
+            className={`rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 bg-card ${project.featured ? "border-2 border-red-500" : ""
+              }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -24,7 +23,7 @@ export function FeaturedProjectsSection() {
             <div className="relative overflow-hidden">
               <motion.div whileHover={{ scale: 1.1 }} transition={{ type: "spring", stiffness: 300 }}>
                 <Image
-                  src={project.image || "/placeholder.svg"}
+                  src={project.image || "/SJ8.jpg"}
                   alt={project.title}
                   width={400}
                   height={200}

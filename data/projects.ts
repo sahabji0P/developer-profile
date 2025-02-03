@@ -5,8 +5,8 @@ export const projectsData = [
     description: "A real-time analytics dashboard using machine learning for predictive insights.",
     longDescription:
       "This AI-powered analytics dashboard provides real-time insights and predictive analytics using advanced machine learning algorithms. It processes large volumes of data to deliver actionable business intelligence, helping organizations make data-driven decisions quickly and efficiently.",
-    logo: "/placeholder.svg",
-    image: "/placeholder.svg",
+    logo: "/SJ8.jpg",
+    image: "/SJ8.jpg",
     featured: true,
     techStack: ["React", "Python", "TensorFlow", "AWS"],
     demoLink: "#",
@@ -26,8 +26,8 @@ export const projectsData = [
     description: "A decentralized supply chain management system using blockchain technology.",
     longDescription:
       "This blockchain-based supply chain management system ensures transparency, traceability, and security in complex supply chain networks. By leveraging smart contracts and distributed ledger technology, it provides an immutable record of all transactions and movements within the supply chain.",
-    logo: "/placeholder.svg",
-    image: "/placeholder.svg",
+    logo: "/SJ8.jpg",
+    image: "/SJ8.jpg",
     featured: false,
     techStack: ["Solidity", "Ethereum", "Node.js", "Web3.js"],
     demoLink: "#",
@@ -47,8 +47,8 @@ export const projectsData = [
     description: "An advanced chatbot using NLP techniques for human-like conversations.",
     longDescription:
       "This NLP-powered chatbot utilizes state-of-the-art natural language processing techniques to engage in human-like conversations. It can understand context, sentiment, and intent, providing intelligent responses across a wide range of topics and use cases.",
-    logo: "/placeholder.svg",
-    image: "/placeholder.svg",
+    logo: "/SJ8.jpg",
+    image: "/SJ8.jpg",
     featured: true,
     techStack: ["Python", "NLTK", "Flask", "Docker"],
     demoLink: "#",

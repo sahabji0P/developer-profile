@@ -1,11 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { heroData } from "@/data/hero"
+import { motion } from "framer-motion"
+import { MapPin } from "lucide-react"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import { Badge } from "./ui/badge"
 
 export function HeroSection() {
   const [greeting, setGreeting] = useState("Hello")
@@ -18,10 +19,10 @@ export function HeroSection() {
   }, [])
 
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 rounded-lg">
+    <div className="flex flex-col md:flex-row items-center gap-8 rounded-lg ">
       <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
         <Image
-          src={heroData.image || "/placeholder.svg"}
+          src={heroData.image || "/SJ8.jpg"}
           alt={heroData.name}
           width={200}
           height={200}
@@ -32,7 +33,14 @@ export function HeroSection() {
         <h1 className="text-3xl md:text-4xl font-bold mb-2">
           {greeting}, I&apos;m {heroData.name}
         </h1>
-        <p className="text-lg md:text-xl text-muted-foreground mb-4">{heroData.tagline}</p>
+        <p className="text-muted-foreground font-semibold pb-4">@sahabji0P</p>
+        <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
+          {heroData.tagline.split(" | ").map((tag, index) => (
+            <Badge key={index} className="text-sm md:text-xsm font-semibold bg-secondary-foreground text-secondary">
+              {tag}
+            </Badge>
+          ))}
+        </div>
         <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
           <MapPin className="text-primary" />
           <span>{heroData.location}</span>

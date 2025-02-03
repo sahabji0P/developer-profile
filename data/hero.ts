@@ -1,6 +1,6 @@
 export const heroData = {
   name: "Shashwat Jain",
-  tagline: "I play with data and frameworks",
+  tagline: "Engineer | Developer | Entrepreneur | Contributor",
   location: "Khekra, U.P, India",
   image:
     "/sj.jpeg"

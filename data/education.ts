@@ -1,7 +1,7 @@
 export const educationData = [
   {
     institution: "Tech University",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     degree: "Master of Science in Data Science",
     period: "2016 - 2018",
     isPresent: false,
@@ -14,7 +14,7 @@ export const educationData = [
   },
   {
     institution: "State College",
-    logo: "/placeholder.svg",
+    logo: "/SJ8.jpg",
     degree: "Bachelor of Science in Computer Science",
     period: "2012 - 2016",
     isPresent: false,

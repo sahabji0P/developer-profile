@@ -1,10 +1,10 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { workExperienceData } from "@/data/work-experience"
+import { AnimatePresence, motion } from "framer-motion"
 import { ChevronDown } from "lucide-react"
 import Image from "next/image"
-import { workExperienceData } from "@/data/work-experience"
+import { useState } from "react"
 
 export function WorkExperienceSection() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null)
@@ -15,9 +15,8 @@ export function WorkExperienceSection() {
       {workExperienceData.map((experience, index) => (
         <motion.div
           key={experience.company}
-          className={`rounded-lg overflow-hidden ${
-            experience.isPresent ? "border-2 border-primary" : "border border-border"
-          }`}
+          className={`rounded-lg overflow-hidden ${experience.isPresent ? "border-2 border-primary" : "border border-border"
+            }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
@@ -27,7 +26,7 @@ export function WorkExperienceSection() {
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
             <div className="bg-white rounded-full p-2 mr-4 flex-shrink-0">
-              <Image src={experience.logo || "/placeholder.svg"} alt={experience.company} width={40} height={40} />
+              <Image src={experience.logo || "/SJ8.jpg"} alt={experience.company} width={40} height={40} />
             </div>
             <div className="flex-grow">
               <h3 className="text-lg font-semibold">{experience.role}</h3>

@@ -1,11 +1,11 @@
 "use client"
 
-import { motion } from "framer-motion"
-import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink } from "lucide-react"
 import { projectsData } from "@/data/projects"
+import { motion } from "framer-motion"
+import { ExternalLink, Github } from "lucide-react"
+import Image from "next/image"
 
 export function GridLayout() {
   return (
@@ -15,16 +15,15 @@ export function GridLayout() {
         {projectsData.map((project, index) => (
           <motion.div
             key={project.title}
-            className={`rounded-xl overflow-hidden ${
-              project.featured ? "border-2 border-red-500" : "border border-border"
-            }`}
+            className={`rounded-xl overflow-hidden ${project.featured ? "border-2 border-red-500" : "border border-border"
+              }`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ y: -5, transition: { duration: 0.2 } }}
           >
             <div className="relative aspect-video">
-              <Image src={project.image || "/placeholder.svg"} alt={project.title} fill className="object-cover" />
+              <Image src={project.image || "/SJ8.jpg"} alt={project.title} fill className="object-cover" />
               {project.featured && <Badge className="absolute top-2 right-2 bg-red-500 text-white">Featured</Badge>}
             </div>
             <div className="p-6 bg-card">
