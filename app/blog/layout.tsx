@@ -1,3 +1,4 @@
+import { DockDemo } from "@/components/dock-demo"
 
 export default function BlogLayout({
   children,
@@ -7,6 +8,7 @@ export default function BlogLayout({
   return (
     <div className="min-h-screen bg-background">
       {children}
+      <DockDemo />
     </div>
   )
 }
