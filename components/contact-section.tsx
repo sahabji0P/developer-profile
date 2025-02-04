@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import { useState } from "react"
 
 export function ContactSection() {
   const [name, setName] = useState("")
@@ -55,11 +55,11 @@ export function ContactSection() {
       </form>
       <p className="text-center text-muted-foreground mt-6">
         For casual chat, DM me on{" "}
-        <a href="https://twitter.com/yourusername" className="font-bold hover:underline">
-          Twitter
+        <a href="https://twitter.com/itsshashwatj" className="font-bold hover:underline">
+          X
         </a>{" "}
         or{" "}
-        <a href="https://www.linkedin.com/in/yourusername" className="font-bold hover:underline">
+        <a href="https://www.linkedin.com/in/itsshashwatjain" className="font-bold hover:underline">
           LinkedIn
         </a>
         .
