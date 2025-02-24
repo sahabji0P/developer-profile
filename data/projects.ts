@@ -10,7 +10,7 @@ export const projectsData = [
     featured: true,
     techStack: ["React", "Python", "TensorFlow", "AWS"],
     demoLink: "#",
-    sourceLink: "#",
+    sourceLink: "https://github.com/sahabji0P/developer-profile/tree/changes",
     features: [
       "Real-time data processing and visualization",
       "Predictive analytics using machine learning models",

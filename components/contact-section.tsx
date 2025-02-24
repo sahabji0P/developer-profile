@@ -18,7 +18,7 @@ export function ContactSection() {
 
   return (
     <section id="contact-section" className="space-y-6 flex flex-col items-center">
-      <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+      <h2 className="text-3xl font-bold mb-4">Got Something! Let's Talk</h2>
       <form onSubmit={handleSubmit} className="space-y-4 w-full max-w-md">
         <div>
           <Input

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Mail, Twitter, Youtube } from "lucide-react"
+import { Github, Linkedin, Twitter, Youtube } from "lucide-react"
 
 
 
@@ -9,10 +9,10 @@ import { Github, Mail, Twitter, Youtube } from "lucide-react"
 export function SocialLinksSection() {
 
   const socialLinksData = [
-    { icon: Github, href: "#", label: "GitHub", color: "bg-black" },
+    { icon: Github, href: "github.com/sahabji0P", label: "GitHub", color: "bg-green-600" },
     { icon: Youtube, href: "#", label: "YouTube", color: "bg-red-500" },
-    { icon: Twitter, href: "#", label: "Twitter", color: "bg-cyan-500" },
-    { icon: Mail, href: "#", label: "Email", color: "bg-green-500" },
+    { icon: Twitter, href: "twitter.com/itsshashwatj", label: "Twitter", color: "bg-cyan-600" },
+    { icon: Linkedin, href: "#", label: "Email", color: "bg-blue-500" },
   ]
 
 

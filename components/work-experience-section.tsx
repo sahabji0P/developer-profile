@@ -26,7 +26,7 @@ export function WorkExperienceSection() {
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
             <div className="bg-white rounded-full p-2 mr-4 flex-shrink-0">
-              <Image src={experience.logo || "/SJ8.jpg"} alt={experience.company} width={40} height={40} />
+              <Image src={experience.logo || "/SJ8.jpg"} alt={experience.company} width={50} height={40} className="rounded-full" />
             </div>
             <div className="flex-grow">
               <h3 className="text-lg font-semibold">{experience.role}</h3>
