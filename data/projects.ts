@@ -6,8 +6,8 @@ export const projectsData = [
     description: "An intelligent surveillance security system using YOLO and real-time video processing.",
     longDescription:
       "Suraksha-AI is a smart surveillance system leveraging YOLO v11 and real-time video analytics to enhance security. It detects threats with high accuracy and reduces false positives through advanced filtering techniques.",
-    logo: "/suraksha.png",
-    image: "/suraksha.png",
+    logo: "/projects/suraksha.png",
+    image: "/projects/suraksha.png",
     featured: true,
     techStack: ["Flask", "Python", "YOLO v11", "Firebase", "Ultralytics"],
     demoLink: null,
@@ -28,8 +28,8 @@ export const projectsData = [
     description: "A marketplace connecting buyers and sellers of recyclable materials with real-time analytics.",
     longDescription:
       "Recycle Bin is a web platform facilitating the trade of recyclable materials. It features real-time sales analytics, interactive dashboards, and optimized buyer-seller interactions.",
-    logo: "/recyclebin.jpeg",
-    image: "/recyclebin.jpeg",
+    logo: "/projects/recyclebin.jpeg",
+    image: "/projects/recyclebin.jpeg",
     featured: false,
     techStack: ["Next.js", "MongoDB", "Postman", "Chart.js"],
     demoLink: "#",
@@ -49,8 +49,8 @@ export const projectsData = [
     description: "An Android application for managing sports events, scores, and schedules.",
     longDescription:
       "Khel Onn provides a platform for users to register for sports events, view live scores, and manage schedules efficiently. The app reduces information delays by 40% and enhances user experience with real-time updates by pushing out notifications.",
-    logo: "/khelon.png",
-    image: "/khelon.png",
+    logo: "/projects/khelon.png",
+    image: "/projects/khelon.png",
     featured: false,
     techStack: ["Java", "XML", "Firebase", "Android Studio"],
     demoLink: "#",

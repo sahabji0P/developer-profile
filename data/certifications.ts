@@ -2,7 +2,7 @@ export const certificationsData = [
   {
     title: "Microsoft Azure AI Fundamentals",
     issuer: "Microsoft",
-    logo: "/Microsoft.png",
+    logo: "/certifications/Microsoft.png",
     issuedDate: "2024",
     expiryDate: null,
     skills: ["Artificial Intelligence", "Azure Bot Services", "Machine Learning", "Cognitive Services"],
@@ -12,7 +12,7 @@ export const certificationsData = [
   {
     title: "Malware Analysis and Introduction to Assembly Language",
     issuer: "IBM",
-    logo: "/IBM.svg",
+    logo: "/certifications/IBM.svg",
     issuedDate: "2024",
     expiryDate: null,
     skills: ["Cybersecurity", "Malware Analysis", "Reverse Engineering"],
@@ -22,7 +22,7 @@ export const certificationsData = [
   {
     title: "Natural Language Processing with Classification and Vector Space",
     issuer: "DeepLearning.AI",
-    logo: "/DeepLearning.avif",
+    logo: "/certifications/DeepLearning.avif",
     issuedDate: "2024",
     expiryDate: null,
     skills: ["NLP", "Machine Learning", "Text Processing"],

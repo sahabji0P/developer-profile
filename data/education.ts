@@ -1,7 +1,7 @@
 export const educationData = [
   {
     institution: "Bennett University",
-    logo: "/BU.png",
+    logo: "/educations/BU.png",
     degree: "B.Tech in Computer Science",
     period: "2022-2026",
     isPresent: true,
@@ -14,7 +14,7 @@ export const educationData = [
   },
   {
     institution: "GD Goenka International School",
-    logo: "/GD.png",
+    logo: "/educations/GD.png",
     degree: "Senior Secondary",
     period: "2020-2022",
     isPresent: false,
@@ -27,7 +27,7 @@ export const educationData = [
   },
   {
     institution: "Vidya Global School (IGCSE)",
-    logo: "/VGS.png",
+    logo: "/educations/VGS.png",
     degree: "High School",
     period: "2011-2020",
     isPresent: false,
