@@ -7,6 +7,7 @@ import { projectsData } from "@/data/projects"
 import { AnimatePresence, motion } from "framer-motion"
 import { ChevronDown, ExternalLink, Github } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 
 export function ShowcaseLayout() {
@@ -80,12 +81,23 @@ export function ShowcaseLayout() {
                           </a>
                         </Button>
                       </PreviewTooltip>
-                      <PreviewTooltip preview={project.demoLink}>
-                        <Button variant="outline" className="flex gap-2" asChild>
-                          <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="h-4 w-4" />
-                            Live Demo
-                          </a>
+                      <PreviewTooltip preview={project.demoLink || project.logo || "/SJ8.jpg"}>
+                        <Button
+                          variant="outline"
+                          className="flex gap-2"
+                          disabled={!project.demoLink}
+                        >
+                          {project.demoLink ? (
+                            <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                              <ExternalLink className="h-4 w-4" />
+                              Live Demo
+                            </Link>
+                          ) : (
+                            <span className="flex items-center gap-2">
+                              <ExternalLink className="h-4 w-4" />
+                              Live Demo
+                            </span>
+                          )}
                         </Button>
                       </PreviewTooltip>
                     </div>

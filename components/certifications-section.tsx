@@ -31,12 +31,12 @@ export function CertificationsSection() {
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
             <div className="relative w-16 h-16 rounded-full overflow-hidden p-2 mr-4">
-              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} fill className="object-cover" />
+              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} fill className="object-cover rounded-full" />
             </div>
             <div className="flex-grow">
               <h3 className="text-xl font-semibold">{cert.title}</h3>
               <p className="text-muted-foreground">{cert.issuer}</p>
-              <p className="text-sm text-muted-foreground">Issued: {new Date(cert.issuedDate).toLocaleDateString()}</p>
+              <p className="text-sm text-muted-foreground">Issued: {(cert.issuedDate)}</p>
             </div>
             {cert.proctored && <Badge className="mr-4 bg-primary text-primary-foreground">Proctored</Badge>}
             <ChevronDown

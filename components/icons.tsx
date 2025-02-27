@@ -27,4 +27,16 @@ export const Icon = {
         <FileTextIcon {...props} />
     ),
 
+    suraksha: (props: IconProps) => (
+        <svg width="200" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 L70 20 L70 50 Q50 70 30 50 L30 20 Z" fill="#2D3E50" />
+            <path d="M50 10 L50 70 Q70 50 70 20 Z" fill="#4A5D73" />
+
+            {/* <text x="80" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#222">
+                SuR<tspan font-family='Arial' font-weight='normal'>&amp;</tspan>IT
+            </text> */}
+        </svg>
+    ),
+
+
 }
