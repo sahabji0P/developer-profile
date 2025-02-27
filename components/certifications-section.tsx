@@ -17,7 +17,7 @@ export function CertificationsSection() {
       {certificationsData.map((cert, index) => (
         <motion.div
           key={cert.title}
-          className={`glass-morphism rounded-lg overflow-hidden ${cert.proctored ? "border-2 border-red-500" : ""}`}
+          className={` rounded-2xl overflow-hidden ${cert.proctored ? "border-2 border-violet-500/50" : ""}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
@@ -30,8 +30,8 @@ export function CertificationsSection() {
             className="p-6 cursor-pointer flex items-center"
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
-            <div className="bg-white rounded-full p-2 mr-4">
-              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} width={40} height={40} />
+            <div className="relative w-16 h-16 rounded-full overflow-hidden p-2 mr-4">
+              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} fill className="object-cover" />
             </div>
             <div className="flex-grow">
               <h3 className="text-xl font-semibold">{cert.title}</h3>
@@ -54,7 +54,7 @@ export function CertificationsSection() {
               >
                 <div className="flex flex-wrap gap-2 mb-4">
                   {cert.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary">
+                    <Badge key={skill} variant="outline">
                       {skill}
                     </Badge>
                   ))}

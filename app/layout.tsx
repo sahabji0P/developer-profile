@@ -1,9 +1,11 @@
 import { DockDemo } from "@/components/magicui/doc-details";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Inter } from "next/font/google";
+import { Inter, Kanit, Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 
+const poppins = Poppins({ subsets: ["latin"], weight: "400", display: "swap" })
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const playfair = Kanit({ subsets: ["latin"], weight: "400", display: "swap" })
+const roboto = Roboto({ subsets: ["latin"], weight: "400", display: "swap" })
 
 export const metadata = {
   title: "Shashwat Jain | Engineer | Developer | Entrepreneur | Contributor",
@@ -19,14 +21,12 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className="scroll-smooth">
-      <body className={`${inter.variable} font-sans bg-lol text-foreground`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-          <DockDemo />
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning >
+      <body className={`${playfair.className} text-foreground`}>
+        {children}
+        <DockDemo />
       </body>
-    </html>
+    </html >
   )
 }
 

@@ -15,7 +15,7 @@ export function EducationSection() {
       {educationData.map((education, index) => (
         <motion.div
           key={education.institution}
-          className={`rounded-lg overflow-hidden ${education.isPresent ? "border-2 border-primary" : "border border-border"
+          className={`rounded-2xl overflow-hidden ${education.isPresent ? "border-2 border-emerald-500/50" : "border border-border"
             }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

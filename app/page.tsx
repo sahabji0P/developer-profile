@@ -23,7 +23,9 @@ function ProgressBar() {
 
 export default function Home() {
   return (
-    <main className="min-h-screen p-4 sm:p-8 pb-32 bg-background text-foreground relative">
+
+
+    <main className="min-h-screen p-4 sm:p-8 pb-32 text-foreground relative">
       <ProgressBar />
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-16 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
@@ -32,7 +34,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-card p-6 rounded-lg shadow-md"
+              className=" p-6 rounded-lg shadow-md"
             >
               <HeroSection />
             </motion.div>
@@ -54,10 +56,10 @@ export default function Home() {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
-          <div className="bg-card p-6 rounded-lg shadow-md">
+          <div className=" p-6 rounded-lg shadow-md">
             <WorkExperienceSection />
           </div>
-          <div className="bg-card p-6 rounded-lg shadow-md">
+          <div className=" p-6 rounded-lg shadow-md">
             <EducationSection />
           </div>
         </motion.div>
@@ -74,7 +76,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true, amount: 0.2 }}
-            className={`bg-card p-6 rounded-lg shadow-md ${className}`}
+            className={`p-6 rounded-lg shadow-md ${className}`}
           >
             <Component />
           </motion.div>

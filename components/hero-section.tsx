@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { heroData } from "@/data/hero"
 import { motion } from "framer-motion"
-import { MapPin } from "lucide-react"
+import { MapPin, Send } from "lucide-react"
 import Image from "next/image"
 import { useEffect, useState } from "react"
 import { Badge } from "./ui/badge"
@@ -41,22 +41,25 @@ export function HeroSection() {
             </Badge>
           ))}
         </div>
-        <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-          <MapPin className="text-primary" />
-          <span>{heroData.location}</span>
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <MapPin className="size-5 text-primary" />
+            <span className="text- text-white">Khekra, Uttar Pradesh, India</span>
+          </div>
+          <Button
+            variant="outline"
+            className="animate-fade-up hover:bg-violet-500/50 hover:text-white transition-colors"
+            onClick={() => {
+              const contactSection = document.getElementById("contact-section")
+              if (contactSection) {
+                contactSection.scrollIntoView({ behavior: "smooth" })
+              }
+            }}
+          >
+            Connect with me <Send className="ml-2 w-4 h-4" />
+          </Button>
         </div>
-        <Button
-          size="lg"
-          className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
-          onClick={() => {
-            const contactSection = document.getElementById("contact-section")
-            if (contactSection) {
-              contactSection.scrollIntoView({ behavior: "smooth" })
-            }
-          }}
-        >
-          Connect with me
-        </Button>
+
       </div>
     </div>
   )

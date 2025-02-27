@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: ["class"],
+  // darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
   theme: {
     container: {
@@ -47,6 +47,10 @@ const config: Config = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backdropFilter: {
+        'none': 'none',
+        'blur': 'blur(20px)',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -69,6 +73,8 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)"],
         space: ["var(--font-space)"],
+        grotesk: ["Space Grotesk", "sans-serif"],
+
       },
     },
   },

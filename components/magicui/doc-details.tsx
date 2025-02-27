@@ -4,7 +4,6 @@ import { FileTextIcon, HomeIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-import { ModeToggle } from "@/components/mode-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Separator } from "@/components/ui/separator";
@@ -22,18 +21,18 @@ export type IconProps = React.HTMLAttributes<SVGElement>;
 const DATA = {
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: PencilIcon, label: "Blog" },
-    { href: "#", icon: FileTextIcon, label: "Resume" },
+    { href: "/blog", icon: PencilIcon, label: "Journal" },
+
   ],
 
 };
 
 export function DockDemo() {
   return (
-    <div className="sticky bottom-5 left-0 right-0 z-50 flex h-24 items-center justify-center bg-background/80 backdrop-blur-sm">
+    <div className="sticky bottom-5 left-0 right-0 z-50 flex h-24 items-center justify-center">
       <div className="container max-w-md">
         <TooltipProvider>
-          <Dock direction="middle">
+          <Dock direction="middle" className="bg-black/50 rounded-full border-1">
             {DATA.navbar.map((item) => (
               <DockIcon key={item.label}>
                 <Tooltip>
@@ -43,27 +42,37 @@ export function DockDemo() {
                       aria-label={item.label}
                       className={cn(
                         buttonVariants({ variant: "ghost", size: "icon" }),
-                        "size-12 rounded-full",
+                        "size-12 rounded-2xl", "hover:bg-destructive/20",
                       )}
                     >
                       <item.icon className="size-4" />
                     </Link>
                   </TooltipTrigger>
-                  <TooltipContent>
+                  <TooltipContent className="border-1">
                     <p>{item.label}</p>
                   </TooltipContent>
                 </Tooltip>
               </DockIcon>
             ))}
 
-            <Separator orientation="vertical" className="h-full py-2" />
+            <Separator orientation="vertical" className="h-full" />
             <DockIcon>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <ModeToggle />
+                  <Link
+                    href={"https://drive.google.com/file/d/1TljgvQZEzktH8nGEBPbdvEuQbkoKtu2Q/view?usp=sharing"}
+                    aria-label={"resume"}
+                    target={"_blank"}
+                    className={cn(
+                      buttonVariants({ variant: "ghost", size: "icon" }),
+                      "size-12 rounded-2xl", "hover:bg-emerald-500/20",
+                    )}
+                  >
+                    <FileTextIcon className="size-4" />
+                  </Link>
                 </TooltipTrigger>
-                <TooltipContent>
-                  <p>Theme</p>
+                <TooltipContent className="border-1">
+                  <p>{"Resume"}</p>
                 </TooltipContent>
               </Tooltip>
             </DockIcon>

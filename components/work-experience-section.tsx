@@ -15,7 +15,7 @@ export function WorkExperienceSection() {
       {workExperienceData.map((experience, index) => (
         <motion.div
           key={experience.company}
-          className={`rounded-lg overflow-hidden ${experience.isPresent ? "border-2 border-primary" : "border border-border"
+          className={`rounded-2xl overflow-hidden ${experience.isPresent ? "border-2 border-emerald-500/50" : "border border-border"
             }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

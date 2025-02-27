@@ -17,12 +17,12 @@ export function SocialLinksSection() {
 
 
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="p-4 grid grid-cols-2 gap-3 md:gap-8">
       {socialLinksData.map((link, index) => (
         <motion.a
           key={link.label}
           href={link.href}
-          className={`flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 rounded-lg ${link.color} hover:opacity-90 transition-all duration-300`}
+          className={`flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10 rounded-2xl ${link.color} hover:opacity-90 transition-all duration-300`}
           whileHover={{ scale: 1.05 }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
