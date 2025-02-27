@@ -18,7 +18,7 @@ export function ShowcaseLayout() {
       {projectsData.map((project, index) => (
         <motion.div
           key={project.title}
-          className={`rounded-2xl overflow-hidden ${project.featured ? "border-2 border-violet-500/50" : "border border-border"
+          className={`rounded-2xl overflow-hidden ${project.featured ? "border-2 border-violet-500/50" : "border-2 border-white/30"
             }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

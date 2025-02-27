@@ -1,6 +1,6 @@
 "use client";
 
-import { FileTextIcon, HomeIcon, PencilIcon } from "lucide-react";
+import { HomeIcon, PencilIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -14,6 +14,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { Icon } from "../icons";
 
 export type IconProps = React.HTMLAttributes<SVGElement>;
 
@@ -24,7 +25,14 @@ const DATA = {
     { href: "/blog", icon: PencilIcon, label: "Journal" },
 
   ],
+};
 
+const SVGData = {
+  navbar: [
+    { href: "https://twitter.com/itsshashwatj", icon: Icon.x, label: "X" },
+    { href: "https://www.linkedin.com/in/itsshashwatjain/", icon: Icon.linkedin, label: "LinkedIn" },
+    { href: "https://drive.google.com/file/d/1TljgvQZEzktH8nGEBPbdvEuQbkoKtu2Q/view?usp=sharing", icon: Icon.resume, label: "Resume" },
+  ],
 };
 
 export function DockDemo() {
@@ -56,26 +64,29 @@ export function DockDemo() {
             ))}
 
             <Separator orientation="vertical" className="h-full" />
-            <DockIcon>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Link
-                    href={"https://drive.google.com/file/d/1TljgvQZEzktH8nGEBPbdvEuQbkoKtu2Q/view?usp=sharing"}
-                    aria-label={"resume"}
-                    target={"_blank"}
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "icon" }),
-                      "size-12 rounded-2xl", "hover:bg-emerald-500/20",
-                    )}
-                  >
-                    <FileTextIcon className="size-4" />
-                  </Link>
-                </TooltipTrigger>
-                <TooltipContent className="border-1">
-                  <p>{"Resume"}</p>
-                </TooltipContent>
-              </Tooltip>
-            </DockIcon>
+            {SVGData.navbar.map((item) => (
+              <DockIcon key={item.label}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Link
+                      href={item.href}
+                      aria-label={item.label}
+                      className={cn(
+                        buttonVariants({ variant: "ghost", size: "icon" }),
+                        "size-12 rounded-2xl", "hover:bg-muted/20",
+                      )}
+                    >
+                      <item.icon className="size-4" />
+                    </Link>
+                  </TooltipTrigger>
+                  <TooltipContent className="border-1">
+                    <p>{item.label}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </DockIcon>
+            ))}
+
+
           </Dock>
         </TooltipProvider>
       </div>

@@ -35,7 +35,7 @@ export function HeroSection() {
         </h1>
         <motion.p
           whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}
-          className="text-primary text-3xl md:text-6xl font-bold mb-2">
+          className="text-primary text-5xl md:text-6xl font-bold mb-2">
           {heroData.name}
         </motion.p>
 

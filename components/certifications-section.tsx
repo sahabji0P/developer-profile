@@ -17,7 +17,7 @@ export function CertificationsSection() {
       {certificationsData.map((cert, index) => (
         <motion.div
           key={cert.title}
-          className={` rounded-2xl overflow-hidden ${cert.proctored ? "border-2 border-violet-500/50" : ""}`}
+          className={` rounded-2xl overflow-hidden ${cert.proctored ? "border-2 border-violet-500/50" : "border-2 border-white/30"}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}

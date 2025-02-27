@@ -29,7 +29,7 @@ export const projectsData = [
       "This NLP-powered chatbot utilizes state-of-the-art natural language processing techniques to engage in human-like conversations. It can understand context, sentiment, and intent, providing intelligent responses across a wide range of topics and use cases.",
     logo: "/SJ8.jpg",
     image: "/SJ8.jpg",
-    featured: true,
+    featured: false,
     techStack: ["Python", "NLTK", "Flask", "Docker"],
     demoLink: "#",
     sourceLink: "#",

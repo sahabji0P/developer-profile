@@ -27,6 +27,14 @@ export default function Home() {
 
     <main className="min-h-screen p-4 sm:p-8 pb-32 text-foreground relative">
       <ProgressBar />
+
+      {/* Snowfall effect */}
+      <div aria-hidden="true">
+        {[...Array(10)].map((_, index) => (
+          <div key={index} className="snowflake" />
+        ))}
+      </div>
+
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-16 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
           <div className="grid grid-cols-1 lg:grid-cols-[2fr,1fr] gap-8 h-full">

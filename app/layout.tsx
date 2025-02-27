@@ -23,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning >
       <body className={`${playfair.className} text-foreground`}>
+
         {children}
         <DockDemo />
       </body>
