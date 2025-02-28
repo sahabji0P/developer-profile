@@ -10,7 +10,7 @@ export const projectsData = [
     image: "/projects/suraksha.png",
     featured: true,
     techStack: ["Flask", "Python", "YOLO v11", "Firebase", "Ultralytics"],
-    demoLink: null,
+    demoLink: "#",
     sourceLink: "https://github.com/sahabji0P/Enhancing-Home-Security",
     features: [
       "Real-time object detection and threat analysis",

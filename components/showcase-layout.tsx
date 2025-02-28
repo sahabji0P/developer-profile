@@ -85,9 +85,9 @@ export function ShowcaseLayout() {
                         <Button
                           variant="outline"
                           className="flex gap-2"
-                          disabled={!project.demoLink}
+                          disabled={project.demoLink === "#"}
                         >
-                          {project.demoLink ? (
+                          {project.demoLink === "#" ? (
                             <Link href={project.demoLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
                               <ExternalLink className="h-4 w-4" />
                               Live Demo
