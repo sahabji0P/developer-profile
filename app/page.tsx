@@ -29,11 +29,11 @@ export default function Home() {
       <ProgressBar />
 
       {/* Snowfall effect */}
-      <div aria-hidden="true">
+      {/* <div aria-hidden="true">
         {[...Array(10)].map((_, index) => (
           <div key={index} className="snowflake" />
         ))}
-      </div>
+      </div> */}
 
       <div className="max-w-6xl mx-auto space-y-8 sm:space-y-16 relative z-10">
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5 }}>
