@@ -1,4 +1,5 @@
 import { DockDemo } from "@/components/magicui/doc-details";
+import { Analytics } from "@vercel/analytics/react";
 import { Inter, Kanit, Poppins, Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -26,6 +27,8 @@ export default function RootLayout({
 
         {children}
         <DockDemo />
+        <Analytics />
+
       </body>
     </html >
   )
