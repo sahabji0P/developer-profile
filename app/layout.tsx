@@ -26,8 +26,9 @@ export default function RootLayout({
       <body className={`${playfair.className} text-foreground`}>
 
         {children}
-        <DockDemo />
         <Analytics />
+
+        <DockDemo />
 
       </body>
     </html >
