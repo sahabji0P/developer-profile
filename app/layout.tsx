@@ -14,7 +14,10 @@ export const metadata = {
   description: "Full-stack developer, AI/ML enthusiast, and entrepreneur crafting innovative solutions. From technical innovations, explore my diverse journey through technology, and community contributions.",
   keywords: ["Shashwat Jain", "developer", "portfolio", "blog", "resume", "AI", "ML", "Entrepreneur", "Contributor", "Full-stack developer", "AI/ML enthusiast"],
   authors: [{ name: "Shashwat Jain", url: "https://shashwatjain.vercel.app" }],
-
+  metadataBase: new URL('https://shashwatjain.vercel.app'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "Shashwat Jain | Engineer | Developer | Entrepreneur | Contributor",
     description: "Full-stack developer, AI/ML enthusiast, and entrepreneur crafting innovative solutions. From technical innovations, explore my diverse journey through technology, and community contributions.",
@@ -25,11 +28,10 @@ export const metadata = {
     localeAlternates: ["en_US"],
     images: [
       {
-        url: "https://drive.google.com/file/d/1GbHsHikZXcSJt2U2FyiBUiRd0pHJ0vI_/view?usp=sharing",
+        url: "https://vi47jg6nxfflyodd.public.blob.vercel-storage.com/metadata-image-Yt3IF4U09SdZ8F5Ww6z766jXRQiypE",
         width: 1200,
         height: 630,
         alt: "Shashwat Jain | Engineer | Developer | Entrepreneur | Contributor",
-
       },
     ],
   },
@@ -37,15 +39,20 @@ export const metadata = {
     card: "summary_large_image",
     title: "Shashwat Jain | Engineer | Developer | Entrepreneur | Contributor",
     description: "Full-stack developer, AI/ML enthusiast, and entrepreneur crafting innovative solutions. From technical innovations, explore my diverse journey through technology, and community contributions.",
-    images: ["https://drive.google.com/file/d/1GbHsHikZXcSJt2U2FyiBUiRd0pHJ0vI_/view?usp=sharing"],
+    images: ["https://vi47jg6nxfflyodd.public.blob.vercel-storage.com/metadata-image-Yt3IF4U09SdZ8F5Ww6z766jXRQiypE"],
   },
   robots: {
     index: true,
     follow: true,
-    noimageindex: true,
-    noarchive: true,
-    nosnippet: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    }
   },
+
 }
 
 
