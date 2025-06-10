@@ -20,7 +20,7 @@ const blogPosts = [
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://shashwatjain.vercel.app'
+    const baseUrl = 'https://shashwatjain.me'
 
     // Static routes
     const routes = [
