@@ -1,73 +1,92 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
 import { heroData } from "@/data/hero"
 import { motion } from "framer-motion"
-import { MapPin, Send } from "lucide-react"
 import Image from "next/image"
-import { useEffect, useState } from "react"
-import { Badge } from "./ui/badge"
 
 export function HeroSection() {
-  const [greeting, setGreeting] = useState("Hello")
-
-  useEffect(() => {
-    const hour = new Date().getHours()
-    if (hour < 12) setGreeting("Good morning")
-    else if (hour < 18) setGreeting("Good afternoon")
-    else setGreeting("Good evening")
-  }, [])
-
   return (
-    <div className="flex flex-col md:flex-row items-center gap-8 rounded-lg ">
-      <motion.div whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}>
-        <Image
-          src={heroData.image || "/SJ8.jpg"}
-          alt={heroData.name}
-          width={200}
-          height={200}
-          className="rounded-full hover:shadow-lg hover:shadow-foreground/20"
-        />
-      </motion.div>
-      <div className="text-center md:text-left">
-        <h1 className="text-3xl md:text-4xl font-bold mb-1">
-          {greeting}, I&apos;m
-        </h1>
-        <motion.p
-          whileHover={{ scale: 1.05 }} transition={{ type: "spring", stiffness: 300 }}
-          className="text-primary text-5xl md:text-6xl font-bold mb-2">
-          {heroData.name}
-        </motion.p>
-
-        <p className="text-muted-foreground font-semibold pb-4">@sahabji0P</p>
-
-        <div className="flex flex-wrap gap-2 justify-center md:justify-start mb-4">
-          {heroData.tagline.split(" | ").map((tag, index) => (
-            <Badge key={index} className="text-sm md:text-xsm font-normal" variant="outline">
-              {tag}
-            </Badge>
-          ))}
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <MapPin className="size-5 text-primary" />
-            <span className="text- text-white">{heroData.location}</span>
-          </div>
-          <Button
-            variant="outline"
-            className="animate-fade-up hover:bg-violet-500/50 hover:text-white transition-colors"
-            onClick={() => {
-              const contactSection = document.getElementById("contact-section")
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: "smooth" })
-              }
-            }}
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-16">
+      {/* Content Section */}
+      <motion.div 
+        className="flex-1 text-center lg:text-left space-y-6"
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* Main Heading */}
+        <div className="space-y-4">
+          <motion.h1 
+            className="text-5xl lg:text-7xl font-bold text-white leading-tight"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Connect with me <Send className="ml-2 w-4 h-4" />
-          </Button>
+            Hi, I'm{" "}
+            <span className="text-primary">{heroData.name}</span>
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl lg:text-2xl text-muted-foreground font-medium max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            A developer building cool solutions with open source technologies.
+          </motion.p>
         </div>
 
-      </div>
+        {/* About Section */}
+        <motion.div 
+          className="space-y-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <h2 className="text-2xl font-bold text-white">About</h2>
+          <div className="text-muted-foreground leading-relaxed max-w-2xl space-y-4">
+            <p>
+              I am {heroData.name}, a passionate developer from India, currently pursuing my studies in Computer Science. 
+              Although I am primarily a{" "}
+              <span className="font-semibold text-primary">Full Stack Developer</span>, 
+              specializing in building scalable and robust applications, I also enjoy working on diverse projects.
+            </p>
+            <p>
+              Additionally, I have a passion for{" "}
+              <span className="font-semibold text-primary">Open Source</span>{" "}
+              development and contributing to the developer community, particularly in the fields of{" "}
+              <span className="font-semibold text-primary">Web Development</span>{" "}
+              and{" "}
+              <span className="font-semibold text-primary">Modern JavaScript Frameworks</span>.
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Profile Image Section */}
+      <motion.div 
+        className="flex-shrink-0"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+      >
+        <motion.div
+          className="relative"
+          whileHover={{ scale: 1.05 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        >
+          <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+            <Image
+              src={heroData.image || "/sj.jpeg"}
+              alt={heroData.name}
+              width={400}
+              height={400}
+              className="w-full h-full object-cover"
+              priority
+            />
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
