@@ -52,7 +52,7 @@ export function AchievementsSection() {
                   src={achievement.image || "/SJ8.jpg"}
                   alt={achievement.title}
                   fill
-                  objectFit="cover"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="text-center text-white p-4">
@@ -68,4 +68,3 @@ export function AchievementsSection() {
     </section>
   )
 }
-
