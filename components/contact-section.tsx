@@ -48,7 +48,7 @@ export function ContactSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
+        staggerChildren: 0.05
       }
     }
   }
@@ -59,9 +59,8 @@ export function ContactSection() {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20
+        duration: 0.4,
+        ease: "easeOut"
       }
     }
   }

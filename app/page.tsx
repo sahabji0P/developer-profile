@@ -45,10 +45,10 @@ export default function Home() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8"
         >
           <div className=" p-6 rounded-lg shadow-md">
@@ -67,11 +67,12 @@ export default function Home() {
         ].map(({ Component, className }, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.1 }}
             className={`p-6 rounded-lg shadow-md ${className}`}
+            style={{ willChange: 'transform, opacity' }}
           >
             <Component />
           </motion.div>

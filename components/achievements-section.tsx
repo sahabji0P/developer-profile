@@ -26,7 +26,12 @@ export function AchievementsSection() {
 
   return (
     <section ref={ref} className="space-y-6 overflow-hidden">
-      <h2 className="text-3xl font-bold mb-4">Gallery & Achievements</h2>
+      <div className="text-center space-y-3 mb-8">
+        <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Gallery & Achievements</h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          Visual highlights of my journey, achievements, and memorable moments in tech
+        </p>
+      </div>
       <div className="relative">
         <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-background to-transparent z-10" />
