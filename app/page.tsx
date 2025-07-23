@@ -5,6 +5,7 @@ import { CertificationsSection } from "@/components/certifications-section"
 import { ContactSection } from "@/components/contact-section"
 import { EducationSection } from "@/components/education-section"
 import { HeroSection } from "@/components/hero-section"
+import { ResearchPublicationsSection } from "@/components/research-publications-section"
 import { ShowcaseLayout } from "@/components/showcase-layout"
 import { WorkExperienceSection } from "@/components/work-experience-section"
 import { motion, useScroll, useSpring } from "framer-motion"
@@ -62,6 +63,7 @@ export default function Home() {
         {[
           { Component: ShowcaseLayout, className: "col-span-full" },
           { Component: CertificationsSection, className: "col-span-full" },
+          { Component: ResearchPublicationsSection, className: "col-span-full" },
           { Component: AchievementsSection, className: "col-span-full" },
           { Component: ContactSection, className: "col-span-full" },
         ].map(({ Component, className }, index) => (
