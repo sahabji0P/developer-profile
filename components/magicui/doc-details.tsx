@@ -31,7 +31,7 @@ const SVGData = {
   navbar: [
     { href: "https://twitter.com/itsshashwatj", icon: Icon.x, label: "X" },
     { href: "https://www.linkedin.com/in/itsshashwatjain/", icon: Icon.linkedin, label: "LinkedIn" },
-    { href: "https://drive.google.com/file/d/1mk5OpRAuY5nRZOMBnfqKLus8c1OaAIXD/view?usp=sharing", icon: Icon.resume, label: "Resume" },
+    { href: "https://drive.google.com/file/d/1WIQZpeJQQBhYAgGytthsdKfAmQ8-lO4N/view?usp=sharing", icon: Icon.resume, label: "Resume" },
   ],
 };
 
@@ -75,6 +75,7 @@ export function DockDemo() {
                         buttonVariants({ variant: "ghost", size: "icon" }),
                         "size-12 rounded-2xl", "hover:bg-muted/20",
                       )}
+                      target="_blank"
                     >
                       <item.icon className="size-4" />
                     </Link>

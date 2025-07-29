@@ -46,16 +46,18 @@ export function HeroSection() {
           <h2 className="text-2xl font-bold text-white">About</h2>
           <div className="text-muted-foreground leading-relaxed max-w-2xl space-y-4">
             <p className="text-md">
-              I am {heroData.name}, a passionate developer from India, currently pursuing my studies in Computer Science with a specialization in Artificial Intelligence and Machine Learning.
-              Although I am primarily a{" "}
-              <span className="font-semibold text-primary">Full Stack Developer and AI Engineer</span>,
-              specializing in building scalable and robust applications, I also enjoy working on diverse projects.
+              I am {heroData.name}, a{" "}
+              <span className="font-semibold text-primary">Full-Stack Developer and AI Engineer </span>
+              delivering scalable, production grade applications that drive measurable results.
+              Experienced in{" "}
+              <span className="font-semibold text-primary">React .js</span>,{" "}
+              <span className="font-semibold text-primary">Next .js</span>,{" "}
+              <span className="font-semibold text-primary">Python</span> and{" "}
+              <span className="font-semibold text-primary">ServiceNow</span> based systems.
             </p>
             <p className="text-md">
-              Additionally, I have a passion for{" "}
-              <span className="font-semibold text-primary">Open Source</span>{" "}
-              development and contributing to the developer community, and I have a keen interest in participating in and conducting{" "}
-              <span className="font-semibold text-primary"> Research</span> in various areas, particularly in the fields of{" "} <span className="font-semibold text-primary"> Artificial Intelligence and Computer Vision</span>.
+              <span className="font-semibold text-primary">Accepted & Presented IEEE Research</span>,{" "}
+              with proven ability to deploy production grade solutions, achieving 95%+ client satisfaction and measurable performance improvements. Experienced in leading cross-functional teams and contributing to open-source projects with measurable impact.
             </p>
           </div>
         </motion.div>

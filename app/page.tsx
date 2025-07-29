@@ -2,7 +2,6 @@
 
 import { AchievementsSection } from "@/components/achievements-section"
 import { CertificationsSection } from "@/components/certifications-section"
-import { ContactSection } from "@/components/contact-section"
 import { EducationSection } from "@/components/education-section"
 import { HeroSection } from "@/components/hero-section"
 import { ResearchPublicationsSection } from "@/components/research-publications-section"
@@ -36,9 +35,9 @@ export default function Home() {
       </div> */}
 
       <div className="max-w-7xl mx-auto space-y-8 sm:space-y-16 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0 }} 
-          animate={{ opacity: 1 }} 
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="p-6 rounded-lg shadow-md"
         >
@@ -61,11 +60,10 @@ export default function Home() {
         </motion.div>
 
         {[
+          { Component: ResearchPublicationsSection, className: "col-span-full" },
           { Component: ShowcaseLayout, className: "col-span-full" },
           { Component: CertificationsSection, className: "col-span-full" },
-          { Component: ResearchPublicationsSection, className: "col-span-full" },
           { Component: AchievementsSection, className: "col-span-full" },
-          { Component: ContactSection, className: "col-span-full" },
         ].map(({ Component, className }, index) => (
           <motion.div
             key={index}

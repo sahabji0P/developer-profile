@@ -1,10 +1,10 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail, Twitter, MessageCircle } from "lucide-react"
+import { Github, Linkedin, Mail, MessageCircle, Twitter } from "lucide-react"
 import Link from "next/link"
 
-export function ContactSection() {
+function ContactHelper() {
   const socialLinks = [
     {
       icon: Github,
@@ -68,8 +68,8 @@ export function ContactSection() {
   return (
     <section id="contact-section" className="space-y-8">
       <div className="text-center space-y-3">
-        <motion.h2 
-          className="text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+        <motion.h2
+          className="text-4xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -77,7 +77,7 @@ export function ContactSection() {
         >
           Let's Connect
         </motion.h2>
-        <motion.p 
+        <motion.p
           className="text-lg text-muted-foreground max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +88,7 @@ export function ContactSection() {
         </motion.p>
       </div>
 
-      <motion.div 
+      <motion.div
         className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6"
         variants={containerVariants}
         initial="hidden"
@@ -97,14 +97,14 @@ export function ContactSection() {
       >
         {socialLinks.map((link, index) => (
           <motion.div key={link.label} variants={itemVariants}>
-            <Link 
-              href={link.href} 
+            <Link
+              href={link.href}
               target={link.href.startsWith('#') ? '_self' : '_blank'}
               rel={link.href.startsWith('#') ? '' : 'noopener noreferrer'}
             >
               <motion.div
                 className={`group relative p-6 rounded-2xl ${link.color} text-white transition-all duration-300 transform hover:scale-105 hover:shadow-xl bento-card border border-white/10`}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
                   transition: { type: "spring", stiffness: 300, damping: 20 }
                 }}
@@ -121,7 +121,7 @@ export function ContactSection() {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Hover effect overlay */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
@@ -130,7 +130,7 @@ export function ContactSection() {
         ))}
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="text-center pt-4"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -145,6 +145,24 @@ export function ContactSection() {
         </p>
       </motion.div>
     </section>
+  )
+}
+
+export default function ContactSection() {
+  return (
+
+    <main className="mx-10 sm:p-8 text-foreground relative">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 4 * 0.05, ease: "easeOut" }}
+        viewport={{ once: true, amount: 0.1 }}
+        className={'p-6 rounded-lg shadow-md col-span-full'}
+        style={{ willChange: 'transform, opacity' }}
+      >
+        <ContactHelper />
+      </motion.div>
+    </main>
   )
 }
 

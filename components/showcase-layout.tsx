@@ -15,7 +15,7 @@ export function ShowcaseLayout() {
   return (
     <section className="space-y-6">
       <div className="text-center space-y-3 mb-8">
-        <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Projects</h2>
+        <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pb-2">Projects</h2>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           A showcase of my technical skills through real-world applications and innovative solutions
         </p>
@@ -32,7 +32,7 @@ export function ShowcaseLayout() {
           <div className="p-4 cursor-pointer hover:bg-card/50 transition-colors duration-200" onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}>
             <div className="flex items-center space-x-4">
               <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                <Image src={project.logo || "/SJ8.jpg"} alt={project.title} fill className="object-cover" />
+                <Image src={project.logo || "/SJ8.jpg"} alt={project.title} fill className="object-contain" />
               </div>
               <div className="flex-grow">
                 <h3 className="text-xl font-bold">{project.title}</h3>
@@ -62,7 +62,7 @@ export function ShowcaseLayout() {
                         src={project.image || "/SJ8.jpg"}
                         alt={project.title}
                         fill
-                        className="object-cover"
+                        className="object-contain"
                       />
                     </div>
                     <div className="w-full md:w-1/2 space-y-4">
