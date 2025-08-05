@@ -30,7 +30,7 @@ export const projectsData = [
     logo: "/projects/MoneyMateIcon.png",
     image: "/projects/moneyMateImage.png",
     featured: true,
-    techStack: ["Next.js", "Tailwind CSS", "Gemini 2.5 Flash API", "html2canvas", "PWA"],
+    techStack: ["Next.js", "Tailwind CSS", "Gemini 2.b5 Flash API", "html2canvas", "PWA"],
     demoLink: "https://matemoney.vercel.app/",
     sourceLink: "https://github.com/sahabji0P/recycle-bin",
     features: [

@@ -14,6 +14,11 @@ export const metadata = {
   title: "Shashwat Jain | Engineer | Developer | Entrepreneur | Contributor",
   description: "Full-stack developer, AI/ML enthusiast, and entrepreneur crafting innovative solutions. From technical innovations, explore my diverse journey through technology, and community contributions.",
   keywords: ["Shashwat Jain", "developer", "portfolio", "blog", "resume", "AI", "ML", "Entrepreneur", "Contributor", "Full-stack developer", "AI/ML enthusiast"],
+
+  icons: {
+    icon: "/favicon.png",
+  },
+
   authors: [{ name: "Shashwat Jain", url: "https://shashwatjain.me" }],
   metadataBase: new URL('https://shashwatjain.me'),
   alternates: {
