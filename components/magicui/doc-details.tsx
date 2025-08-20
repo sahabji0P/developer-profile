@@ -31,7 +31,7 @@ const SVGData = {
   navbar: [
     { href: "https://twitter.com/itsshashwatj", icon: Icon.x, label: "X" },
     { href: "https://www.linkedin.com/in/itsshashwatjain/", icon: Icon.linkedin, label: "LinkedIn" },
-    { href: "https://drive.google.com/file/d/1bF-x160tLd2SnnVbFYorHKQTr8R7Y8hr/view?usp=sharing", icon: Icon.resume, label: "Resume" },
+    { href: "https://drive.google.com/file/d/13tx0V2x1mNvv6-aYam3mdQGuMH78ro3x/view", icon: Icon.resume, label: "Resume" },
   ],
 };
 

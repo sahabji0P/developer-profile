@@ -85,13 +85,13 @@ export function ResearchPublicationsSection() {
                     variant="default"
                     className="w-full group/btn hover:bg-primary/90 transition-all duration-200"
                   >
-                    <span>Read More Details</span>
+                    <span>View Research Details</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-200" />
                   </Button>
                 </Link>
 
-                <a
-                  href={research.link}
+                <Link
+                  href={research.certificate}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full"
@@ -100,10 +100,10 @@ export function ResearchPublicationsSection() {
                     variant="outline"
                     className="w-full group/btn hover:border-primary hover:text-primary transition-all duration-200"
                   >
-                    <span>View Publication</span>
+                    <span>Verify Certificate</span>
                     <ExternalLink className="w-4 h-4 ml-2" />
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

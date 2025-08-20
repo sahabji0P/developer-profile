@@ -1,5 +1,15 @@
 export const certificationsData = [
   {
+    title: "Service Now Certified Application Developer",
+    issuer: "Service Now",
+    logo: "/certifications/ServiceNow.jpg",
+    issuedDate: "2025",
+    expiryDate: null,
+    skills: ["Service Now", "Now Learning", "Application Development", "Certified Application Developer"],
+    verificationLink: "https://drive.google.com/file/d/1ccYdOdPOnfx_UjxK44gtVB5mOxjyWdJB/view?usp=sharing",
+    proctored: true,
+  },
+  {
     title: "Microsoft Azure AI Fundamentals",
     issuer: "Microsoft",
     logo: "/certifications/Microsoft.png",
@@ -19,14 +29,5 @@ export const certificationsData = [
     verificationLink: "https://www.coursera.org/account/accomplishments/verify/EIQUXX0GIPXH",
     proctored: false,
   },
-  {
-    title: "Natural Language Processing with Classification and Vector Space",
-    issuer: "DeepLearning.AI",
-    logo: "/certifications/DeepLearning.avif",
-    issuedDate: "2024",
-    expiryDate: null,
-    skills: ["NLP", "Machine Learning", "Text Processing"],
-    verificationLink: "https://www.coursera.org/account/accomplishments/verify/BZL05HUN89U3",
-    proctored: false,
-  },
+
 ];

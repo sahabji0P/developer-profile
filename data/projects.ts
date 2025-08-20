@@ -1,26 +1,5 @@
 export const projectsData = [
-  {
-    title: "NeuroVision",
-    shortDescription: "AI-Powered Brain Tumor Classification",
-    description: "End-to-end full-stack application using Vision Transformer for real-time MRI tumor detection.",
-    longDescription:
-      "NeuroVision is a Flask-based web application that leverages the DeiT-small-patch16-224 Vision Transformer for automated brain tumor classification. It delivers 99.3% accuracy on 34,000+ augmented MRI scans, provides RESTful API endpoints for image upload and inference, and features a responsive HTML/CSS/JavaScript frontend. Research was peer-reviewed and presented at IEEE ICCCNT 2025.",
-    logo: "/projects/neurovision.png",
-    image: "/projects/neurovision.png",
-    featured: true,
-    techStack: ["Flask", "PyTorch", "DeiT-small-patch16-224", "HTML/CSS", "JavaScript", "REST API"],
-    demoLink: "#",
-    sourceLink: "https://github.com/sahabji0P/NeuroVision",
-    features: [
-      "99.3% classification accuracy on 34,000+ MRI scans",
-      "Flask backend with RESTful endpoints for inference",
-      "Responsive HTML/CSS/JS frontend for real-time predictions",
-      "Custom data-augmentation pipeline and k-fold cross-validation",
-      "IEEE ICCCNT 2025 peer-reviewed publication"
-    ],
-    challenges:
-      "Integrating Vision Transformer fine-tuning with a production-ready web interface and ensuring low-latency inference across large medical datasets."
-  },
+
   {
     title: "Money Mate",
     shortDescription: "AI-Powered Bill Splitting App",
@@ -42,6 +21,28 @@ export const projectsData = [
     ],
     challenges:
       "Balancing real-time AI parsing performance with a seamless mobile UX and offline data persistence."
+  },
+  {
+    title: "NeuroVision",
+    shortDescription: "AI-Powered Brain Tumor Classification",
+    description: "End-to-end full-stack application using Vision Transformer for real-time MRI tumor detection.",
+    longDescription:
+      "NeuroVision is a Flask-based web application that leverages the DeiT-small-patch16-224 Vision Transformer for automated brain tumor classification. It delivers 99.3% accuracy on 34,000+ augmented MRI scans, provides RESTful API endpoints for image upload and inference, and features a responsive HTML/CSS/JavaScript frontend. Research was peer-reviewed and presented at IEEE ICCCNT 2025.",
+    logo: "/projects/neurovision.png",
+    image: "/projects/neurovision.png",
+    featured: true,
+    techStack: ["Flask", "PyTorch", "DeiT-small-patch16-224", "HTML/CSS", "JavaScript", "REST API"],
+    demoLink: "#",
+    sourceLink: "https://github.com/sahabji0P/NeuroVision",
+    features: [
+      "99.3% classification accuracy on 34,000+ MRI scans",
+      "Flask backend with RESTful endpoints for inference",
+      "Responsive HTML/CSS/JS frontend for real-time predictions",
+      "Custom data-augmentation pipeline and k-fold cross-validation",
+      "IEEE ICCCNT 2025 peer-reviewed publication"
+    ],
+    challenges:
+      "Integrating Vision Transformer fine-tuning with a production-ready web interface and ensuring low-latency inference across large medical datasets."
   },
   {
     title: "Suraksha-AI",

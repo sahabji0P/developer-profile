@@ -31,8 +31,8 @@ export function ShowcaseLayout() {
         >
           <div className="p-4 cursor-pointer hover:bg-card/50 transition-colors duration-200" onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}>
             <div className="flex items-center space-x-4">
-              <div className="relative w-16 h-16 rounded-full overflow-hidden">
-                <Image src={project.logo || "/SJ8.jpg"} alt={project.title} fill className="object-contain" />
+              <div className="relative w-16 h-16 overflow-hidden">
+                <Image src={project.logo || "/SJ8.jpg"} alt={project.title} width={50} height={50} className="object-contain w-full h-full" />
               </div>
               <div className="flex-grow">
                 <h3 className="text-xl font-bold">{project.title}</h3>
