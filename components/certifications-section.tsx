@@ -31,8 +31,8 @@ export function CertificationsSection() {
             className="p-6 cursor-pointer flex items-center hover:bg-card/50 transition-colors duration-200"
             onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
           >
-            <div className="relative w-16 h-16 rounded-full overflow-hidden p-2 mr-4">
-              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} fill className="object-cover rounded-full" />
+            <div className="relative w-16 h-16 overflow-hidden p-2 mr-4">
+              <Image src={cert.logo || "/SJ8.jpg"} alt={cert.issuer} width={50} height={50} className="object-contain w-full h-full" />
             </div>
             <div className="flex-grow">
               <h3 className="text-xl font-semibold">{cert.title}</h3>

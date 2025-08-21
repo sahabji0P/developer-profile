@@ -3,10 +3,11 @@
 import { heroData } from "@/data/hero"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
-    <div className="flex flex-col lg:flex-row items-center justify-between gap-12 py-16">
+    <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-5 py-16">
       {/* Content Section */}
       <motion.div
         className="flex-1 text-center lg:text-left space-y-6"
@@ -46,17 +47,17 @@ export function HeroSection() {
           <h2 className="text-2xl font-bold text-white">About</h2>
           <div className="text-muted-foreground leading-relaxed max-w-2xl space-y-4">
             <p className="text-md">
-              I am {heroData.name}, a passionate developer from India, currently pursuing my studies in Computer Science with a specialization in Artificial Intelligence and Machine Learning.
-              Although I am primarily a{" "}
-              <span className="font-semibold text-primary">Full Stack Developer and AI Engineer</span>,
-              specializing in building scalable and robust applications, I also enjoy working on diverse projects.
+              I am {heroData.name}, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a {" "}
+              <span className="font-semibold text-primary">Full-Stack Developer and AI Engineer </span>
+              specializing in delivering scalable and robust systems.{" "} Additionally I had{" "}
+
+              <Link href="/research/brain-tumor-classification-deit" className="text-primary hover:underline hover:underline-offset-8">
+                <span className="font-semibold">Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)</span>
+              </Link>
+
+
             </p>
-            <p className="text-md">
-              Additionally, I have a passion for{" "}
-              <span className="font-semibold text-primary">Open Source</span>{" "}
-              development and contributing to the developer community, and I have a keen interest in participating in and conducting{" "}
-              <span className="font-semibold text-primary"> Research</span> in various areas, particularly in the fields of{" "} <span className="font-semibold text-primary"> Artificial Intelligence and Computer Vision</span>.
-            </p>
+
           </div>
         </motion.div>
       </motion.div >
@@ -74,12 +75,12 @@ export function HeroSection() {
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         >
-          <div className="w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+          <div className="w-56 h-56 lg:w-56 lg:h-56 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
             <Image
               src={heroData.image || "/sj.jpeg"}
               alt={heroData.name}
-              width={400}
-              height={400}
+              width={200}
+              height={200}
               className="w-full h-full object-cover"
               priority
             />
