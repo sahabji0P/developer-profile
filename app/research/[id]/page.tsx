@@ -1,12 +1,12 @@
 "use client"
 
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { researchWorkData } from "@/data/research-work"
 import { motion } from "framer-motion"
-import { ArrowLeft, ExternalLink, Users, Calendar, FileText, Link as LinkIcon, Github } from "lucide-react"
+import { ArrowLeft, Calendar, ExternalLink, FileText, Github, Link as LinkIcon, Users } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { notFound } from "next/navigation"
 
 interface ResearchPageProps {
@@ -65,12 +65,12 @@ export default function ResearchPage({ params }: ResearchPageProps) {
               {research.status}
             </Badge>
             <div className="flex gap-2">
-              <a href={research.link} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" size="sm">
+              <Link href={research.link} target="_blank" rel="noopener noreferrer">
+                <Button variant="outline" size="sm" disabled={!research.link} >
                   <ExternalLink className="w-4 h-4 mr-2" />
                   Full Paper
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -174,16 +174,17 @@ export default function ResearchPage({ params }: ResearchPageProps) {
             <p className="text-muted-foreground leading-relaxed mb-6">
               {research.results.text}
             </p>
-            
+
             {research.results.images && research.results.images.length > 0 && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {research.results.images.map((image, index) => (
-                  <div key={index} className="relative aspect-video rounded-lg overflow-hidden bg-muted">
+                  <div key={index} className="relative aspect-video rounded-lg overflow-hidden">
                     <Image
-                      src={image}
+                      src={image || "/SJ8.jpg"}
                       alt={`Research result ${index + 1}`}
-                      fill
-                      className="object-cover"
+                      width={800}
+                      height={450}
+                      className="object-contain w-full h-full"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = "/SJ8.jpg";
@@ -212,32 +213,34 @@ export default function ResearchPage({ params }: ResearchPageProps) {
         </motion.div>
 
         {/* Associated Projects Section */}
-        {research.associatedProjects && research.associatedProjects.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-            className="mb-8"
-          >
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h2 className="text-xl font-semibold mb-4">Associated Projects</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {research.associatedProjects.map((project, index) => (
-                  <div key={index} className="border border-border rounded-lg p-4 hover:border-primary/50 transition-colors duration-200">
-                    <div className="flex items-start justify-between mb-3">
-                      <h3 className="font-semibold text-primary">{project.title}</h3>
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors duration-200" />
-                      </a>
+        {
+          research.associatedProjects && research.associatedProjects.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="mb-8"
+            >
+              <div className="bg-card border border-border rounded-lg p-6">
+                <h2 className="text-xl font-semibold mb-4">Associated Projects</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {research.associatedProjects.map((project, index) => (
+                    <div key={index} className="border border-border rounded-lg p-4 hover:border-primary/50 transition-colors duration-200">
+                      <div className="flex items-start justify-between mb-3">
+                        <h3 className="font-semibold text-primary">{project.title}</h3>
+                        <a href={project.link} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 text-muted-foreground hover:text-primary transition-colors duration-200" />
+                        </a>
+                      </div>
+                      <p className="text-sm text-muted-foreground">{project.description}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">{project.description}</p>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </div>
-    </main>
+            </motion.div>
+          )
+        }
+      </div >
+    </main >
   )
 }

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" width="400" height="200">
+  <!-- Emblem section -->
+  <g transform="translate(50, 50)">
+    <!-- Outer circle background -->
+    <circle cx="50" cy="50" r="45" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+    
+    <!-- Inner gradient background -->
+    <defs>
+      <radialGradient id="bgGradient" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#334155;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+      </radialGradient>
+      
+      <!-- Brain gradient -->
+      <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.8" />
+        <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+      </linearGradient>
+      
+      <!-- Tumor glow effect -->
+      <radialGradient id="tumorGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#fef2f2;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#ef4444;stop-opacity:0.9" />
+        <stop offset="100%" style="stop-color:#dc2626;stop-opacity:0.7" />
+      </radialGradient>
+      
+      <!-- Text gradient -->
+      <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+      </linearGradient>
+    </defs>
+    
+    <circle cx="50" cy="50" r="40" fill="url(#bgGradient)"/>
+    
+    <!-- Brain outline - centered and simplified -->
+    <g transform="translate(50, 50)">
+      <!-- Main brain shape -->
+      <path d="M-18 -12 C-12 -18, -2 -19, 8 -15 C18 -12, 22 -5, 21 5 C20 12, 15 18, 8 19 C0 20, -10 18, -18 12 C-22 5, -24 -2, -18 -12 Z" 
+            fill="url(#brainGradient)" 
+            stroke="#60a5fa" 
+            stroke-width="1.5"/>
+      
+      <!-- Brain hemisphere division -->
+      <path d="M0 -14 C1 -7, 1 0, 1 7 C0 12, -1 18, 0 19" 
+            fill="none" 
+            stroke="#93c5fd" 
+            stroke-width="1" 
+            opacity="0.8"/>
+      
+      <!-- Brain surface details -->
+      <path d="M-12 -5 C-7 -6, -2 -4, 2 -2" 
+            fill="none" 
+            stroke="#93c5fd" 
+            stroke-width="0.8" 
+            opacity="0.6"/>
+      <path d="M5 4 C10 6, 14 9, 16 12" 
+            fill="none" 
+            stroke="#93c5fd" 
+            stroke-width="0.8" 
+            opacity="0.6"/>
+      
+      <!-- Tumor detection point -->
+      <circle cx="9" cy="2" r="4" 
+              fill="url(#tumorGlow)" 
+              opacity="0.9"/>
+      
+      <!-- Detection crosshairs -->
+      <g stroke="#fef2f2" stroke-width="1" opacity="0.9">
+        <line x1="4" y1="2" x2="6" y2="2"/>
+        <line x1="12" y1="2" x2="14" y2="2"/>
+        <line x1="9" y1="-2" x2="9" y2="0"/>
+        <line x1="9" y1="4" x2="9" y2="6"/>
+      </g>
+      
+      <!-- Scanning arc effect -->
+      <path d="M-25 0 A25 25 0 0 1 25 0" 
+            fill="none" 
+            stroke="#3b82f6" 
+            stroke-width="1.5" 
+            opacity="0.4" 
+            stroke-dasharray="2,2">
+        <animateTransform attributeName="transform" 
+                          type="rotate" 
+                          values="0;360" 
+                          dur="4s" 
+                          repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Corner detection indicators -->
+    <g stroke="#3b82f6" stroke-width="1.5" fill="none" opacity="0.7">
+      <!-- Top left -->
+      <path d="M12 12 L12 18 L18 18"/>
+      <!-- Top right -->
+      <path d="M88 12 L88 18 L82 18"/>
+      <!-- Bottom left -->
+      <path d="M12 88 L12 82 L18 82"/>
+      <!-- Bottom right -->
+      <path d="M88 88 L88 82 L82 82"/>
+    </g>
+  </g>
+  
+  <!-- Text Section -->
+  <g transform="translate(160, 60)">
+    <!-- Main title "NeuroVision" -->
+    <text x="0" y="50" 
+          fill="url(#textGradient)" 
+          font-family="Arial, sans-serif" 
+          font-size="36" 
+          font-weight="bold">NeuroVision</text>
+    
+
+  </g>
+  
+  <!-- Subtle background elements -->
+  <g opacity="0.1">
+    <circle cx="350" cy="50" r="30" fill="#3b82f6"/>
+    <circle cx="380" cy="150" r="20" fill="#ef4444"/>
+  </g>
+  
+  <!-- Connection lines between emblem and text -->
+  <g stroke="#3b82f6" stroke-width="1" opacity="0.2">
+    <line x1="145" y1="85" x2="160" y2="85"/>
+    <line x1="145" y1="95" x2="160" y2="95"/>
+    <line x1="145" y1="105" x2="160" y2="105"/>
+  </g>
+</svg>

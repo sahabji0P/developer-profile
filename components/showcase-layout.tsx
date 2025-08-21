@@ -19,7 +19,7 @@ export function ShowcaseLayout() {
     const updateHeight = () => {
       setViewportHeight(window.innerHeight)
     }
-    
+
     updateHeight()
     window.addEventListener('resize', updateHeight)
     return () => window.removeEventListener('resize', updateHeight)
@@ -36,7 +36,7 @@ export function ShowcaseLayout() {
 
   const handleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index)
-    
+
     // On mobile, scroll to the expanded card after a short delay
     if (isMobile && expandedIndex !== index) {
       setTimeout(() => {
@@ -56,31 +56,30 @@ export function ShowcaseLayout() {
           A showcase of my technical skills through real-world applications and innovative solutions
         </p>
       </div>
-      
+
       {projectsData.map((project, index) => (
         <motion.div
           key={project.title}
           id={`project-${index}`}
-          className={`rounded-2xl overflow-hidden ${
-            project.featured ? "border-2 border-violet-500/50" : "border-2 border-white/30"
-          } ${isMobile ? 'mx-2' : ''}`}
+          className={`rounded-2xl overflow-hidden ${project.featured ? "border-2 border-violet-500/50" : "border-2 border-white/30"
+            } ${isMobile ? 'mx-2' : ''}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.05, duration: 0.4 }}
         >
           {/* Header - Always Visible */}
-          <div 
-            className="p-4 cursor-pointer hover:bg-card/50 transition-colors duration-200" 
+          <div
+            className="p-4 cursor-pointer hover:bg-card/50 transition-colors duration-200"
             onClick={() => handleExpand(index)}
           >
             <div className="flex items-center space-x-3 sm:space-x-4">
               <div className="relative w-12 h-12 sm:w-16 sm:h-16 overflow-hidden flex-shrink-0">
-                <Image 
-                  src={project.logo || "/SJ8.jpg"} 
-                  alt={project.title} 
-                  width={64} 
-                  height={64} 
-                  className="object-contain w-full h-full" 
+                <Image
+                  src={project.logo || "/SJ8.jpg"}
+                  alt={project.title}
+                  width={64}
+                  height={64}
+                  className="object-contain w-full h-full"
                 />
               </div>
               <div className="flex-grow min-w-0">
@@ -96,9 +95,8 @@ export function ShowcaseLayout() {
                   </Badge>
                 )}
                 <ChevronDown
-                  className={`w-5 h-5 transform transition-transform duration-200 ease-out ${
-                    expandedIndex === index ? "rotate-180" : ""
-                  }`}
+                  className={`w-5 h-5 transform transition-transform duration-200 ease-out ${expandedIndex === index ? "rotate-180" : ""
+                    }`}
                   style={{ willChange: 'transform' }}
                 />
               </div>
@@ -144,7 +142,7 @@ export function ShowcaseLayout() {
                           src={project.image || "/SJ8.jpg"}
                           alt={project.title}
                           fill
-                          className="object-contain bg-muted"
+                          className="object-contain"
                           priority={index < 2}
                         />
                       </div>

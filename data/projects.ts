@@ -6,7 +6,7 @@ export const projectsData = [
     description: "Next.js PWA using Gemini 2.5 Flash API to parse receipts and split expenses among participants.",
     longDescription:
       "Money Mate is a Progressive Web App built with Next.js and Tailwind CSS that automates bill splitting. It uses Gemini 2.5 Flash API to extract item names, prices, and taxes with 98% accuracy, provides editable item and participant modules, and generates shareable summaries in PNG or text. Designed for mobile responsiveness and offline support via IndexedDB.",
-    logo: "/projects/MoneyMateIcon.png",
+    logo: "/projects/MoneyMate.svg",
     image: "/projects/moneyMateImage.png",
     featured: true,
     techStack: ["Next.js", "Tailwind CSS", "Gemini 2.b5 Flash API", "html2canvas", "PWA"],
@@ -28,8 +28,8 @@ export const projectsData = [
     description: "End-to-end full-stack application using Vision Transformer for real-time MRI tumor detection.",
     longDescription:
       "NeuroVision is a Flask-based web application that leverages the DeiT-small-patch16-224 Vision Transformer for automated brain tumor classification. It delivers 99.3% accuracy on 34,000+ augmented MRI scans, provides RESTful API endpoints for image upload and inference, and features a responsive HTML/CSS/JavaScript frontend. Research was peer-reviewed and presented at IEEE ICCCNT 2025.",
-    logo: "/projects/neurovision.png",
-    image: "/projects/neurovision.png",
+    logo: "/projects/NeuroVision.svg",
+    image: "/projects/NeuroVisionLogo.svg",
     featured: true,
     techStack: ["Flask", "PyTorch", "DeiT-small-patch16-224", "HTML/CSS", "JavaScript", "REST API"],
     demoLink: "#",
@@ -50,8 +50,8 @@ export const projectsData = [
     description: "Flask-based system using YOLOv11 + CBAM for high-accuracy object detection on live video.",
     longDescription:
       "Suraksha-AI integrates a custom YOLOv11 model enhanced with CBAM for spatial-channel attention to perform real-time threat detection. The Flask backend processes video streams, and a responsive Chart.js dashboard displays live alerts. The system achieves 90% mAP and reduces false positives by 10% on a 40,000+ image dataset.",
-    logo: "/projects/suraksha.png",
-    image: "/projects/suraksha.png",
+    logo: "/projects/suraksha.svg",
+    image: "/projects/surakshaLogo.svg",
     featured: true,
     techStack: ["Flask", "YOLOv11", "CBAM", "Python", "Chart.js", "Firebase"],
     demoLink: "#",
