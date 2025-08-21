@@ -3,6 +3,7 @@
 import { heroData } from "@/data/hero"
 import { motion } from "framer-motion"
 import Image from "next/image"
+import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -49,7 +50,11 @@ export function HeroSection() {
               I am {heroData.name}, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a {" "}
               <span className="font-semibold text-primary">Full-Stack Developer and AI Engineer </span>
               specializing in delivering scalable and robust systems.{" "} Additionally I had{" "}
-              <span className="font-semibold text-primary">Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)</span> {" "}
+
+              <Link href="/research/brain-tumor-classification-deit" className="text-primary hover:underline hover:underline-offset-8">
+                <span className="font-semibold">Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)</span>
+              </Link>
+
 
             </p>
 
