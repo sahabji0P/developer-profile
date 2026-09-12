@@ -2,7 +2,7 @@ import Link from "next/link"
 import { BioToggle } from "@/components/bio-toggle"
 import { BlogRow } from "@/components/blog-row"
 import { ProjectList } from "@/components/project-list"
-import { site } from "@/content/site"
+import { composeLongBio, site } from "@/content/site"
 import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx"
 import styles from "./page.module.css"
 
@@ -29,7 +29,7 @@ export default function Home() {
           </h1>
           <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
         </div>
-        <BioToggle shortBio={site.shortBio} longBio={site.longBio} />
+        <BioToggle shortBio={site.shortBio} longBio={composeLongBio()} />
         <div className="writing-index">
           <section>
             <h2 className="content-heading">

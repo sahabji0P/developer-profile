@@ -27,7 +27,10 @@ export default function AboutPage() {
         {site.experience.map((job) => (
           <div key={`${job.org}-${job.start}`}>
             <p className="content-paragraph">
-              {job.org}, {job.role}, {job.start}–{job.end}
+              {job.org}, {job.role},{" "}
+              <span className="date-range">
+                {job.start}–{job.end}
+              </span>
             </p>
             {job.description ? (
               <p className="content-paragraph">{job.description}</p>

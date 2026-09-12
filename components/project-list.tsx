@@ -1,19 +1,6 @@
 import type { ReactNode } from "react"
-import Link from "next/link"
 import type { Project } from "@/content/site"
 import styles from "./project-list.module.css"
-
-function projectHref(project: Project): string {
-  return project.live ?? project.github ?? "/work"
-}
-
-function ProjectTitle({ project }: { project: Project }) {
-  const href = projectHref(project)
-  if (href.startsWith("/")) {
-    return <Link href={href}>{project.title}</Link>
-  }
-  return <a href={href}>{project.title}</a>
-}
 
 function ProjectLinks({ project }: { project: Project }) {
   const parts: ReactNode[] = []
@@ -62,15 +49,9 @@ export function ProjectList({
             key={project.title}
           >
             <div>
-              <div className={styles.title}>
-                {variant === "teaser" ? (
-                  <ProjectTitle project={project} />
-                ) : (
-                  project.title
-                )}
-              </div>
+              <div className={styles.title}>{project.title}</div>
               <p className={styles.description}>{project.description}</p>
-              {variant === "full" ? <ProjectLinks project={project} /> : null}
+              <ProjectLinks project={project} />
             </div>
             {showYear ? (
               <time className={styles.year} dateTime={String(project.year)}>

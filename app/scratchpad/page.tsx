@@ -12,7 +12,7 @@ export default function ScratchpadIndexPage() {
 
   return (
     <article className="content-frame">
-      <h1>Scratchpad</h1>
+      <h1 className="content-title">Scratchpad</h1>
       <div className="blogs-list">
         {notes.map((note) => (
           <BlogRow

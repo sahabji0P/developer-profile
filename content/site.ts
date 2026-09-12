@@ -79,6 +79,7 @@ export const site: SiteContent = {
   location: "India",
   shortBio:
     "I am Shashwat Jain, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a Full-Stack Developer and AI Engineer specializing in delivering scalable and robust systems. Additionally I had Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)",
+  // Same live sentence as shortBio. Home Long uses composeLongBio().
   longBio:
     "I am Shashwat Jain, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a Full-Stack Developer and AI Engineer specializing in delivering scalable and robust systems. Additionally I had Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)",
   email: "shashwatjain2k3@gmail.com",
@@ -189,4 +190,21 @@ export const site: SiteContent = {
       detail: "Got selected for Project Showcase 2024 among 100+ teams",
     },
   ],
+}
+
+/**
+ * Home Bio “Long” only. Default stays `site.shortBio` verbatim.
+ * Extra paragraphs are composed from existing fields — no invented copy.
+ */
+export function composeLongBio(): string {
+  const school = site.education[0]
+  const job = site.experience[0]
+  const pub = site.publication
+
+  return [
+    site.shortBio,
+    `${school.program} at ${school.school}, ${school.start}–${school.end}.`,
+    `${job.role} at ${job.org}, ${job.start}–${job.end}.`,
+    `${pub.title}; ${pub.venue}, ${pub.date}.`,
+  ].join("\n\n")
 }

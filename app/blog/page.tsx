@@ -12,7 +12,7 @@ export default function BlogIndexPage() {
 
   return (
     <article className="content-frame">
-      <h1>Blog</h1>
+      <h1 className="content-title">Blog</h1>
       <div className="blogs-list">
         {posts.map((post) => (
           <BlogRow

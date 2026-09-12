@@ -19,10 +19,14 @@ export function ArticleMeta({ date }: ArticleMetaProps) {
       {hasAvatar ? (
         <Image
           src="/sj.jpeg"
-          alt=""
+          alt={site.name}
           width={20}
           height={20}
-          style={{ filter: "grayscale(1)", borderRadius: 9999 }}
+          style={{
+            filter: "grayscale(1)",
+            borderRadius: 9999,
+            border: "1px solid var(--line-subtle)",
+          }}
         />
       ) : null}
       {date ? <time dateTime={date}>{formatMonthYear(date)}</time> : null}
