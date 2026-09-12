@@ -200,11 +200,12 @@ export function composeLongBio(): string {
   const school = site.education[0]
   const job = site.experience[0]
   const pub = site.publication
+  const nb = (value: string) => value.replace(/ /g, "\u00A0")
 
   return [
     site.shortBio,
-    `${school.program} at ${school.school}, ${school.start}–${school.end}.`,
-    `${job.role} at ${job.org}, ${job.start}–${job.end}.`,
-    `${pub.title}; ${pub.venue}, ${pub.date}.`,
+    `${school.program} at ${school.school}, ${nb(school.start)}–${nb(school.end)}.`,
+    `${job.role} at ${job.org}, ${nb(job.start)}–${nb(job.end)}.`,
+    `${pub.title}; ${pub.venue}, ${nb(pub.date)}.`,
   ].join("\n\n")
 }
