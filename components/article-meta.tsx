@@ -1,5 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import Image from "next/image";
+import Link from "next/link";
 import { site } from "@/content/site";
 import { formatMonthYear } from "@/lib/mdx";
 
@@ -13,9 +15,9 @@ type ArticleMetaProps = {
 
 export function ArticleMeta({ date }: ArticleMetaProps) {
   return (
-    <a className="article-meta" href="/">
+    <Link className="article-meta" href="/">
       {hasAvatar ? (
-        <img
+        <Image
           src="/sj.jpeg"
           alt=""
           width={20}
@@ -26,6 +28,6 @@ export function ArticleMeta({ date }: ArticleMetaProps) {
       {date ? <time dateTime={date}>{formatMonthYear(date)}</time> : null}
       {date ? <span>·</span> : null}
       <span>{site.name}</span>
-    </a>
+    </Link>
   );
 }
