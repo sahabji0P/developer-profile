@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { site } from "@/content/site"
 
 export const metadata: Metadata = {
@@ -15,9 +16,9 @@ export default function AboutPage() {
   return (
     <article className="content-frame">
       <h1 className="content-title">About</h1>
-      <a className="article-meta" href="/">
+      <Link className="article-meta" href="/">
         {site.name}
-      </a>
+      </Link>
 
       <p className="content-paragraph">{site.longBio}</p>
 
@@ -25,14 +26,9 @@ export default function AboutPage() {
         <h2 className="content-heading">Experience</h2>
         {site.experience.map((job) => (
           <div key={`${job.org}-${job.start}`}>
-            <div className="blog-row">
-              <span>
-                {job.org}, {job.role}
-              </span>
-              <time>
-                {job.start}–{job.end}
-              </time>
-            </div>
+            <p className="content-paragraph">
+              {job.org}, {job.role}, {job.start}–{job.end}
+            </p>
             {job.description ? (
               <p className="content-paragraph">{job.description}</p>
             ) : null}
@@ -42,43 +38,33 @@ export default function AboutPage() {
 
       <section>
         <h2 className="content-heading">Education</h2>
-        <div className="blogs-list">
+        <ul className="content-list">
           {site.education.map((edu) => (
-            <div className="blog-row" key={edu.school}>
-              <span>
-                {edu.school} — {edu.program}
-              </span>
-              <time>
-                {edu.start}–{edu.end}
-              </time>
-            </div>
+            <li key={edu.school}>
+              {edu.school} — {edu.program}, {edu.start}–{edu.end}
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section>
         <h2 className="content-heading">Publication</h2>
-        <div className="blog-row">
-          <span>
-            {site.publication.title}; {site.publication.venue}
-          </span>
-          <time>{site.publication.date}</time>
-        </div>
+        <p className="content-paragraph">
+          {site.publication.title}; {site.publication.venue},{" "}
+          {site.publication.date}
+        </p>
       </section>
 
       <section>
         <h2 className="content-heading">Certifications</h2>
-        <div className="blogs-list">
+        <ul className="content-list">
           {site.certifications.map((cert) => (
-            <div className="blog-row" key={cert.name}>
-              <span>
-                {cert.name}
-                {cert.issuer ? ` — ${cert.issuer}` : ""}
-              </span>
-              <time>{cert.year}</time>
-            </div>
+            <li key={cert.name}>
+              {cert.name}
+              {cert.issuer ? ` — ${cert.issuer}` : ""}, {cert.year}
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section>
@@ -86,13 +72,7 @@ export default function AboutPage() {
         <ul className="content-list">
           {site.achievements.map((item) => (
             <li key={item.title}>
-              {item.detail ? (
-                <>
-                  {item.title} — {item.detail}
-                </>
-              ) : (
-                item.title
-              )}
+              {item.detail ? `${item.title} — ${item.detail}` : item.title}
             </li>
           ))}
         </ul>
