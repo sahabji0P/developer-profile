@@ -1,23 +1,624 @@
 @import "tailwindcss";
 
-/*
-  Design tokens — layout-agent fills from docs/leerob-spec.md.
-  Empty slots (do not pick values here):
-    --background
-    --foreground
-    --muted
-    --accent
-    --measure
-    --font-sans
-*/
+/* Measured from live leerob.com (2026-09-12). Accent is the one allowed override. */
+
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Iowan Old Style"), local("IowanOldStyle-Roman"),
+    local("Iowan Old Style BT");
+}
+
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Iowan Old Style Italic"), local("IowanOldStyle-Italic"),
+    local("Iowan Old Style BT Italic");
+}
+
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Iowan Old Style Semibold"), local("IowanOldStyle-SemiBold"),
+    local("Iowan Old Style Bold"), local("IowanOldStyle-Bold"),
+    local("Iowan Old Style BT Bold");
+}
+
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Iowan Old Style Bold"), local("IowanOldStyle-Bold"),
+    local("Iowan Old Style BT Bold");
+}
+
+@font-face {
+  font-family: "Iowan Old Style Local";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Iowan Old Style Bold Italic"), local("IowanOldStyle-BoldItalic"),
+    local("Iowan Old Style BT Bold Italic");
+}
+
+/* TeX Gyre Pagella: OFL/GUST Palatino-metrics fallback after Iowan (Linux). */
+@font-face {
+  font-family: "TeX Gyre Pagella";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/texgyrepagella-regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TeX Gyre Pagella";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/texgyrepagella-italic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TeX Gyre Pagella";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/texgyrepagella-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TeX Gyre Pagella";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/texgyrepagella-bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "TeX Gyre Pagella";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/texgyrepagella-bolditalic.woff") format("woff");
+}
 
 :root {
-  /* Temporary unstyled scaffold so next dev is readable. NOT the design system. */
-  --background: #000;
-  --foreground: #fff;
+  --bg: #ffffff;
+  --text-copy: #282828;
+  --text-heading: #282828;
+  --text-secondary: #504945; /* keep for non-accent muted brown if needed */
+  --text-nav: #676767;
+  --accent: #0F766E; /* OUR override */
+  --surface-subtle: #f3f3f2;
+  --line-subtle: color-mix(in srgb, var(--text-copy) 10%, transparent);
+  --divider: #e2e2df;
+  --code-inline: #ad2111;
+  --code-background: #f3f3f2;
+  --measure: 600px;
+  --font-reading: "Iowan Old Style Local", "Iowan Old Style", "Palatino Linotype",
+    Palatino, "TeX Gyre Pagella", Georgia, serif;
+  --font-ui: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --page-pad: clamp(1.25rem, 3.4vw, 3.25rem);
+  --font-mono: "SF Mono", Monaco, Inconsolata, "Fira Code", monospace;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #1b1a19;
+  --text-copy: #e8e5df;
+  --text-heading: #f4f1eb;
+  --text-secondary: #cbc6be;
+  --text-nav: #aaa59e;
+  --accent: #0F766E; /* OUR override */
+  --surface-subtle: #242321;
+  --line-subtle: color-mix(in srgb, var(--text-copy) 18%, transparent);
+  --divider: #3b3936;
+  --code-inline: #e06c5f;
+  --code-background: #242321;
+  color-scheme: dark;
+}
+
+html {
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: gray transparent;
+  scroll-behavior: auto;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  overflow-x: clip;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-copy);
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--text-copy) 12%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.site-shell {
+  --page-pad: clamp(1.25rem, 3.4vw, 3.25rem);
+  min-height: 100vh;
+  padding: var(--page-pad);
+  container-type: inline-size;
+}
+
+.content-frame {
+  --content-width: var(--measure);
+  width: min(100%, var(--content-width));
+  margin-inline: auto;
+  padding: 0;
+  position: relative;
+}
+
+@media (max-width: 639px) {
+  .site-shell {
+    padding: 2.5rem 1.25rem 1.25rem; /* 40px 20px 20px */
+  }
+}
+
+/* Type ramp — docs/leerob-spec.md §3 */
+
+h1.site-title {
+  font-family: var(--font-reading);
+  font-size: clamp(2.2rem, 3.5vw, 2.65rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+  margin: 0 0 0.95em;
+}
+
+@media (max-width: 639px) {
+  h1.site-title {
+    margin-bottom: 0.9em;
+  }
+}
+
+.site-title-at {
+  font-size: 1.1em;
+  position: relative;
+  top: 0.015em;
+  margin-right: 0.015em;
+}
+
+h1.content-title {
+  font-family: var(--font-reading);
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+  margin: 0 0 12px;
+}
+
+@media (max-width: 639px) {
+  h1.content-title {
+    font-size: 2rem; /* 32px */
+    letter-spacing: -0.02em;
+  }
+}
+
+h2.content-heading,
+.writing-index h2 {
+  font-family: var(--font-reading);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+}
+
+h2.content-heading {
+  margin: 3.1rem 0 1.2rem;
+}
+
+.writing-index h2 {
+  margin: 0 0 1.2rem;
+}
+
+.content-subheading {
+  font-family: var(--font-reading);
+  font-size: 1.35rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+}
+
+.content-small-heading {
+  font-family: var(--font-reading);
+  font-size: 0.97rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--text-heading);
+}
+
+.content-paragraph {
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
+  color: var(--text-copy);
+  margin: 0 0 1.45rem;
+}
+
+.content-emphasis {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.content-strong {
+  font-weight: 700;
+}
+
+.content-list {
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-copy);
+  list-style: square;
+  margin: 1rem 0 1.2rem 1.5rem;
+}
+
+.content-ordered-list {
+  font-family: var(--font-reading);
+  font-size: 17px;
+  line-height: 1.6;
+  list-style: decimal;
+  margin: 1rem 0 1.2rem 2rem;
+}
+
+.content-blockquote {
+  margin: 0 0 1.45rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid color-mix(in srgb, var(--text-nav) 50%, var(--bg));
+  color: var(--text-secondary);
+}
+
+.bio-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--text-nav);
+  padding-bottom: 0.55rem;
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.bio-toggle-options {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.bio-toggle button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding-block: 0.2rem;
+  position: relative;
+}
+
+.bio-toggle button[aria-pressed="true"] {
+  color: var(--text-copy);
+}
+
+.bio-toggle button[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  background: var(--text-copy);
+  bottom: -0.62rem;
+  left: 0;
+  right: 0;
+}
+
+.bio-section {
+  margin-bottom: 3.25rem;
+}
+
+.writing-index {
+  margin-top: 3.5rem;
+}
+
+.writing-index > section + section {
+  margin-top: 3.5rem;
+}
+
+.notes-list {
+  column-count: 2;
+  column-gap: 2.5rem;
+  padding-left: 1.1em;
+  margin: 0.8em 0 0;
+  list-style: square;
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.notes-list li {
+  margin-bottom: 0.2rem;
+  padding-left: 0.15em;
+  break-inside: avoid;
+}
+
+@media (max-width: 639px) {
+  .notes-list {
+    column-count: 1;
+  }
+}
+
+.blogs-list {
+  border-top: 1px solid var(--line-subtle);
+  margin-top: 0.85em;
+}
+
+.content-frame a.blog-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: baseline;
+  padding: 0.72em 0;
+  border-bottom: 1px solid var(--line-subtle);
+  color: var(--text-copy);
+  text-decoration: none;
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: normal;
+}
+
+.content-frame a.blog-row time {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-nav);
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .content-frame a.blog-row {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .content-frame a.blog-row time {
+    font-size: 13px;
+    white-space: normal;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .content-frame a.blog-row {
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .blogs-list:hover .blog-row {
+    opacity: 0.8;
+  }
+
+  .blogs-list:hover .blog-row:hover {
+    opacity: 1;
+  }
+}
+
+.content-frame a.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--text-nav);
+  text-decoration: none;
+  margin: 0 0 2.4rem;
+  width: fit-content;
+}
+
+@media (min-width: 1100px) {
+  .content-frame:has(> .content-title + .article-meta) {
+    margin-top: 48px;
+  }
+}
+
+/* In-content links: gray + 30% underline; hover uses OUR accent. */
+.content-frame a {
+  color: var(--text-nav);
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--text-nav) 30%, transparent);
+  text-decoration-skip-ink: auto;
+  text-underline-offset: auto;
+  text-decoration-thickness: auto;
+  transition: color 0.3s ease-in-out, text-decoration-color 0.3s ease-in-out;
+}
+
+.content-frame a:hover {
+  color: var(--accent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.content-frame a.site-title-link,
+a.site-title-link {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.content-frame a.site-title-link:hover,
+a.site-title-link:hover {
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.72;
+}
+
+.content-frame a.blog-row:hover {
+  color: var(--text-copy);
+  text-decoration: none;
+}
+
+.content-frame a.article-meta:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Code — measured live values */
+code {
+  font-family: var(--font-mono);
+  font-size: 0.94em;
+  color: var(--code-inline);
+  background: var(--code-background);
+}
+
+pre {
+  background: var(--code-background);
+  border-radius: 0.45rem;
+  padding: 1rem 2rem 1rem 1rem;
+  overflow-x: auto;
+}
+
+pre code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.4;
+  color: inherit;
+  background: transparent;
+}
+
+/* Home two-column — for pages that opt in; hidden visual below 1100px */
+@media (min-width: 1100px) {
+  .home-layout {
+    width: min(100cqi, 1500px);
+    margin-inline: calc((var(--content-width) - min(100cqi, 1500px)) / 2);
+    grid-template-columns: minmax(0, 1.75fr) minmax(380px, 1fr);
+    gap: clamp(2rem, 3.6vw, 3.75rem);
+    display: grid;
+    align-items: start;
+  }
+
+  .home-copy {
+    width: min(100%, var(--content-width));
+  }
+
+  .home-visual {
+    display: block;
+    position: sticky;
+    top: var(--page-pad);
+    height: calc(100svh - (2 * var(--page-pad)));
+    min-height: min(72svh, 760px);
+  }
+}
+
+@media (max-width: 1099px) {
+  .home-layout {
+    display: block;
+  }
+
+  .home-visual {
+    display: none;
+  }
+}
+
+/* Product nav — documented deviation from live (no nav on leerob.com). */
+.site-nav {
+  position: fixed;
+  top: var(--page-pad);
+  right: var(--page-pad);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+
+.site-nav a {
+  color: var(--text-nav);
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+/* 390px: keep all five text links visible; compact into top-right padding. */
+@media (max-width: 639px) {
+  .site-nav {
+    top: 0.45rem;
+    right: 0.7rem;
+    gap: 0.08rem;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+}
+
+/* Product footer — documented deviation from live (no site footer on leerob.com). */
+.site-footer {
+  margin-top: 3.5rem;
+}
+
+.site-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.15rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  :before,
+  :after {
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
