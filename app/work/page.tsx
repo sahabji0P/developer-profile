@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 import { ProjectList } from "@/components/project-list"
 import { site } from "@/content/site"
 
@@ -10,9 +11,9 @@ export default function WorkPage() {
   return (
     <article className="content-frame">
       <h1 className="content-title">Work</h1>
-      <a className="article-meta" href="/">
+      <Link className="article-meta" href="/">
         {site.name}
-      </a>
+      </Link>
       <ProjectList projects={site.projects} variant="full" />
     </article>
   )
