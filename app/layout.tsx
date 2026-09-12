@@ -29,8 +29,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased">
         <ThemeProvider>
-          <Nav />
           <div className="site-shell">
+            <Nav />
             {children}
             <Footer />
           </div>

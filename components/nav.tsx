@@ -6,7 +6,13 @@ import { usePathname } from "next/navigation";
 /**
  * Deviation from live leerob.com (measured 2026-09-12): that site has no
  * `<nav>` and no fixed chrome at 1440 or 390. This product still needs a
- * top-right vertical text nav. No hamburger / slide-out at 390px.
+ * text nav. No hamburger / slide-out at 390px.
+ *
+ * ≥640px: fixed top-right vertical stack, outside the 600px column
+ * (`right: var(--page-pad)`).
+ * ≤639px: in normal document flow above the title (wrapping row of the
+ * five words). Never `position: fixed` on small viewports — a fixed stack
+ * sat inside the 340px column and clipped long titles.
  */
 const ITEMS = [
   { href: "/", label: "Home" },
