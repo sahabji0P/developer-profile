@@ -1,166 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 240 10% 3.9%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 47.9 95.8% 53.1%;
-    --primary-foreground: 26 83.3% 14.1%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 243 75% 59%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 35.5 91.7% 32.9%;
-    --radius: 1rem;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+/*
+  Design tokens — layout-agent fills from docs/leerob-spec.md.
+  Empty slots (do not pick values here):
+    --background
+    --foreground
+    --muted
+    --accent
+    --measure
+    --font-sans
+*/
 
-  /* Snowfall effect */
-  @keyframes snowfall {
-    0% {
-      transform: translateY(-10vh) translateX(0);
-    }
-
-    100% {
-      transform: translateY(100vh) translateX(20px);
-    }
-  }
-
-  .snowflake {
-    position: fixed;
-    width: 4px;
-    height: 4px;
-    background: white;
-    border-radius: 50%;
-    opacity: 50;
-    animation: snowfall linear infinite;
-  }
-
-  /* Create multiple snowflakes with different speeds and delays */
-  .snowflake:nth-child(1) {
-    left: 10%;
-    animation-duration: 10s;
-    animation-delay: 1s;
-  }
-
-  .snowflake:nth-child(2) {
-    left: 20%;
-    animation-duration: 12s;
-    animation-delay: 2s;
-  }
-
-  .snowflake:nth-child(3) {
-    left: 30%;
-    animation-duration: 8s;
-    animation-delay: 1.5s;
-  }
-
-  .snowflake:nth-child(4) {
-    left: 40%;
-    animation-duration: 15s;
-    animation-delay: 2.5s;
-  }
-
-  .snowflake:nth-child(5) {
-    left: 50%;
-    animation-duration: 11s;
-    animation-delay: 1.75s;
-  }
-
-  .snowflake:nth-child(6) {
-    left: 60%;
-    animation-duration: 9s;
-    animation-delay: 3s;
-  }
-
-  .snowflake:nth-child(7) {
-    left: 70%;
-    animation-duration: 13s;
-    animation-delay: 4s;
-  }
-
-  .snowflake:nth-child(8) {
-    left: 80%;
-    animation-duration: 14s;
-    animation-delay: 5s;
-  }
-
-  .snowflake:nth-child(9) {
-    left: 90%;
-    animation-duration: 10s;
-    animation-delay: 2s;
-  }
-
-  .snowflake:nth-child(10) {
-    left: 95%;
-    animation-duration: 12s;
-    animation-delay: 1.25s;
-  }
-
-  body {
-    background-color: hsl(var(--background));
-    background-image:
-      radial-gradient(at 100% 0%, rgba(var(--accent) / 0.15) 0px, transparent 50%),
-      radial-gradient(at 0% 100%, rgba(var(--accent) / 0.1) 0px, transparent 50%);
-    background-attachment: fixed;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    color: hsl(var(--foreground));
-    position: relative;
-    min-height: 100vh;
-  }
-
-  .dark {
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+:root {
+  /* Temporary unstyled scaffold so next dev is readable. NOT the design system. */
+  --background: #000;
+  --foreground: #fff;
 }
 
-
-/* Bento card styling and animation */
-@layer utilities {
-  .bento-card {
-    @apply bg-card/30 border border-white/30 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:bg-card/40;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
+body {
+  background: var(--background);
+  color: var(--foreground);
 }
