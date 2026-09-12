@@ -1,0 +1,7 @@
+.identity :global(h1.site-title) {
+  margin-bottom: 0.3em;
+}
+
+.role {
+  color: var(--text-nav);
+}

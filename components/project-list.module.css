@@ -1,0 +1,55 @@
+.list {
+  border-top: 1px solid var(--line-subtle);
+  margin-top: 0.85em;
+}
+
+.item {
+  padding: 0.72em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.itemWithYear {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: baseline;
+}
+
+.title {
+  font-family: var(--font-reading);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-copy);
+}
+
+.description {
+  margin: 0.2rem 0 0;
+}
+
+.links {
+  margin: 0.35rem 0 0;
+}
+
+.year {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-nav);
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .itemWithYear {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .year {
+    font-size: 13px;
+    white-space: normal;
+  }
+}
