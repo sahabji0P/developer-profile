@@ -24,8 +24,8 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "#ffffff",
-          color: "#282828",
+          background: "#1b1a19",
+          color: "#f4f1eb",
           padding: "80px 96px",
           fontFamily: "TeX Gyre Pagella",
         }}
@@ -38,11 +38,20 @@ export default async function Image() {
             marginTop: 28,
             fontSize: 28,
             lineHeight: 1.4,
-            color: "#676767",
+            color: "#aaa59e",
             maxWidth: 960,
           }}
         >
           {site.role}
+        </div>
+        <div
+          style={{
+            marginTop: 36,
+            fontSize: 20,
+            color: "#2DD4BF",
+          }}
+        >
+          shashwatjain.tech
         </div>
       </div>
     ),

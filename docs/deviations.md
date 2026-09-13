@@ -3,6 +3,10 @@
 Measured against https://leerob.com on 2026-09-12 (`docs/leerob-spec.md`).
 Anything **not** on this list should match the spec numbers (600px column, shell pad, 17px/1.6 type, h1 clamp, 3.5rem section gap, 0.72em blog-row padding, 0.3s ease-in-out links).
 
+## Dark only
+
+Live leerob.com is light-first with a system dark via `next-themes`. This site is **dark only**, using the measured live dark tokens (`#1b1a19` / `#e8e5df` / `#f4f1eb` / `#aaa59e`). No light theme toggle.
+
 ## Nav
 
 Live leerob.com has **no** `<nav>` and no `position: fixed` chrome at 1440 or 390. Home from a post is the byline link.
@@ -16,15 +20,15 @@ This product still needs five text routes. Documented behavior:
 
 Live has **no site footer**. We render Email / GitHub / X / LinkedIn on every HTML page (`footer.site-footer.content-frame`). Required by the product, not by leerob.
 
-## Accent `#0F766E`
+## Accent `#2DD4BF`
 
-Live focus/hover accent is violet `#6657c8`; in-content hover is brown `#504945`. Ours:
+Live focus/hover accent is violet `#6657c8`; in-content hover is brown `#504945` (light) or heading cream (dark). Ours:
 
-- `--accent: #0F766E`
+- `--accent: #2DD4BF` (cool teal that reads on the dark ground; earlier `#0F766E` was too muddy on `#1b1a19`)
 - in-content link hover and current-nav color use teal
-- `:focus-visible` outline is `2px solid #0F766E` (offset 3px)
+- `:focus-visible` outline is `2px solid #2DD4BF` (offset 3px)
 
-Link rest color stays `#676767` with a 30% underline, 0.3s ease-in-out.
+Link rest color stays `#aaa59e` with a 30% underline, 0.3s ease-in-out.
 
 ## Routes
 
@@ -32,26 +36,30 @@ Live puts Notes and Blogs **on `/` only**; `/blog`, `/about`, `/work` redirect h
 
 We keep separate indexes and slugs:
 
-- `/` — identity, bio, selected work, writing, scratchpad
+- `/` — name, role, three-line bio, Selected work, Writing, Scratchpad
 - `/work`, `/about`, `/blog`, `/scratchpad`
 - `/blog/[slug]`, `/scratchpad/[slug]`
 - `/rss.xml`, `/llms.txt`
+
+Home section headings link through to `/work`, `/blog`, and `/scratchpad`.
 
 ## No collage
 
 Live home ≥1100px is a two-column `.home-layout` with a sticky SF/Iowa illustration. We have no equivalent image, so we **do not** opt into `.home-layout`. Home stays a **centered 600px column** at 1440 (the same as live below 1100px / our posts).
 
-## Role line
+## Role line + three-line bio
 
-Live identity is `@leerob` only. We show `site.name` plus a muted role paragraph (`site.role`) under the h1.
+Live identity is `@leerob` plus a Default/Long bio toggle. We show:
+
+- `site.name`
+- a muted role paragraph (`site.role`)
+- a plain three-line bio (the live About sentence split on periods — no Default/Long chrome)
+
+Longer about copy lives on `/about`.
 
 ## Pagella fallback
 
-Live reading face is `local("Iowan Old Style")` then Palatino / Georgia. Linux CI does not have Iowan. We insert **TeX Gyre Pagella** (OFL, Palatino metrics) in the stack after Palatino:
-
-`"Iowan Old Style Local", "Iowan Old Style", "Palatino Linotype", Palatino, "TeX Gyre Pagella", Georgia, serif`
-
-Loaded face on this agent is Pagella. Not Geist/Inter.
+Live reading face is `local("Iowan Old Style")` then Palatino / Georgia. Linux CI does not have Iowan. We insert **TeX Gyre Pagella** (OFL, Palatino metrics) in the stack after Palatino.
 
 ## RSS
 
@@ -61,15 +69,11 @@ Live has **no** feed (`/rss` 404). We ship `/rss.xml` with both seed entries. Ch
 
 `/about` ends with a Contact list (Email, GitHub, X, LinkedIn) **and** the site footer repeats those four links. Required: contact is the last block on `/about` **and** in the footer.
 
-## Bio Long copy
-
-Live Long bio is a long essay plus image galleries. Our Default is the live v1 `shortBio` **verbatim** (awkward grammar kept). Long = that sentence plus extra paragraphs composed only from existing `content/site.ts` fields (Bennett B.Tech 2022–2026, Web Landers May–Dec 2024, publication title / venue / date). Instant swap, `aria-pressed`, no height animation.
-
 ## Out of scope / leftover live copy
 
 These are **not** polish bugs:
 
 - Sibling dim on a 1-item blog list (CSS is correct; only one seed post)
-- Live-site grammar in `shortBio` (do not copyedit)
+- Live-site grammar in the home bio (do not copyedit)
 - “COREO” in Achievements (verbatim from v1)
 - `/rss.xml` Chromium XML-tree horizontal scroll

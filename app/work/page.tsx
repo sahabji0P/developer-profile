@@ -4,7 +4,7 @@ import { ProjectList } from "@/components/project-list"
 import { site } from "@/content/site"
 
 export const metadata: Metadata = {
-  title: "Work — Shashwat Jain",
+  title: "Work",
 }
 
 export default function WorkPage() {

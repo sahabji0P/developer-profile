@@ -1,8 +1,7 @@
 import Link from "next/link"
-import { BioToggle } from "@/components/bio-toggle"
 import { BlogRow } from "@/components/blog-row"
 import { ProjectList } from "@/components/project-list"
-import { composeLongBio, site } from "@/content/site"
+import { homeBioLines, site } from "@/content/site"
 import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx"
 import styles from "./page.module.css"
 
@@ -10,26 +9,32 @@ export default function Home() {
   const featured = site.projects.filter((project) => project.featured).slice(0, 3)
   const posts = getBlogPosts().slice(0, 3)
   const notes = getScratchpadNotes().slice(0, 3)
+  const bioLines = homeBioLines()
 
   return (
     <article className="content-frame">
       {/*
         Home visual collage (.home-visual) is omitted: we have no SF/Iowa
-        illustration. Do not fake one. Skip .home-layout too — that class
-        becomes a two-column sticky grid at ≥1100px and would pull this
-        column off-center. Home is a single 600px column at all widths
-        (like live below 1100px).
+        illustration. Home is a single 600px column at all widths.
       */}
       <div className="home-copy">
-        <div className={styles.identity}>
+        <header className={styles.identity}>
           <h1 className="site-title">
             <Link href="/" className="site-title-link">
               {site.name}
             </Link>
           </h1>
           <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
-        </div>
-        <BioToggle shortBio={site.shortBio} longBio={composeLongBio()} />
+        </header>
+
+        <section className="bio-section" aria-label="Bio">
+          {bioLines.map((line) => (
+            <p className="content-paragraph" key={line}>
+              {line}
+            </p>
+          ))}
+        </section>
+
         <div className="writing-index">
           <section>
             <h2 className="content-heading">
@@ -37,8 +42,11 @@ export default function Home() {
             </h2>
             <ProjectList projects={featured} variant="teaser" />
           </section>
+
           <section>
-            <h2 className="content-heading">Writing</h2>
+            <h2 className="content-heading">
+              <Link href="/blog">Writing</Link>
+            </h2>
             <div className="blogs-list">
               {posts.map((post) => (
                 <BlogRow
@@ -50,8 +58,11 @@ export default function Home() {
               ))}
             </div>
           </section>
+
           <section>
-            <h2 className="content-heading">Scratchpad</h2>
+            <h2 className="content-heading">
+              <Link href="/scratchpad">Scratchpad</Link>
+            </h2>
             <div className="blogs-list">
               {notes.map((note) => (
                 <BlogRow

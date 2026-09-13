@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Footer } from "@/components/footer";
 import { Nav } from "@/components/nav";
-import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_URL, site } from "@/content/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Shashwat Jain",
+  title: {
+    default: "Shashwat Jain",
+    template: "%s — Shashwat Jain",
+  },
   description: site.role,
   metadataBase: new URL(SITE_URL),
   openGraph: {
@@ -26,15 +28,13 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" style={{ colorScheme: "dark" }}>
       <body className="antialiased">
-        <ThemeProvider>
-          <div className="site-shell">
-            <Nav />
-            {children}
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <div className="site-shell">
+          <Nav />
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

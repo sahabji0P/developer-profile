@@ -79,7 +79,6 @@ export const site: SiteContent = {
   location: "India",
   shortBio:
     "I am Shashwat Jain, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a Full-Stack Developer and AI Engineer specializing in delivering scalable and robust systems. Additionally I had Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)",
-  // Same live sentence as shortBio. Home Long uses composeLongBio().
   longBio:
     "I am Shashwat Jain, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a Full-Stack Developer and AI Engineer specializing in delivering scalable and robust systems. Additionally I had Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)",
   email: "shashwatjain2k3@gmail.com",
@@ -193,9 +192,17 @@ export const site: SiteContent = {
 }
 
 /**
- * Home Bio “Long” only. Default stays `site.shortBio` verbatim.
- * Extra paragraphs are composed from existing fields — no invented copy.
+ * Home wants a three-line bio. Split the live About sentence on periods
+ * without rewriting the wording.
  */
+export function homeBioLines(): string[] {
+  return site.shortBio
+    .split(/(?<=\.)\s+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+}
+
+/** About page long bio: live paragraph plus education / experience / publication. */
 export function composeLongBio(): string {
   const school = site.education[0]
   const job = site.experience[0]
@@ -208,4 +215,12 @@ export function composeLongBio(): string {
     `${job.role} at ${job.org}, ${nb(job.start)}–${nb(job.end)}.`,
     `${pub.title}; ${pub.venue}, ${nb(pub.date)}.`,
   ].join("\n\n")
+}
+
+/** Experience description as sentence bullets for the About list. */
+export function experienceBullets(description: string): string[] {
+  return description
+    .split(/(?<=\.)\s+/)
+    .map((line) => line.trim())
+    .filter(Boolean)
 }
