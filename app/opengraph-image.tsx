@@ -1,5 +1,3 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { ImageResponse } from "next/og";
 import { site } from "@/content/site";
 
@@ -10,11 +8,7 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default async function Image() {
-  const fontData = await readFile(
-    join(process.cwd(), "public/fonts/texgyrepagella-regular.woff"),
-  );
-
+export default function Image() {
   return new ImageResponse(
     (
       <div
@@ -24,13 +18,21 @@ export default async function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "#1b1a19",
-          color: "#f4f1eb",
+          background: "#f7f7f4",
+          color: "#26251e",
           padding: "80px 96px",
-          fontFamily: "TeX Gyre Pagella",
+          fontFamily:
+            'ui-sans-serif, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif',
         }}
       >
-        <div style={{ fontSize: 72, fontWeight: 600, lineHeight: 1.15 }}>
+        <div
+          style={{
+            fontSize: 72,
+            fontWeight: 500,
+            lineHeight: 1.1,
+            letterSpacing: "-0.03em",
+          }}
+        >
           {site.name}
         </div>
         <div
@@ -38,7 +40,7 @@ export default async function Image() {
             marginTop: 28,
             fontSize: 28,
             lineHeight: 1.4,
-            color: "#aaa59e",
+            color: "rgba(38, 37, 30, 0.6)",
             maxWidth: 960,
           }}
         >
@@ -48,23 +50,14 @@ export default async function Image() {
           style={{
             marginTop: 36,
             fontSize: 20,
-            color: "#2DD4BF",
+            color: "#f54e00",
+            letterSpacing: "-0.02em",
           }}
         >
           shashwatjain.tech
         </div>
       </div>
     ),
-    {
-      ...size,
-      fonts: [
-        {
-          name: "TeX Gyre Pagella",
-          data: fontData,
-          style: "normal",
-          weight: 400,
-        },
-      ],
-    },
+    { ...size },
   );
 }

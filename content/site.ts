@@ -192,11 +192,14 @@ export const site: SiteContent = {
 }
 
 /**
- * Home wants a three-line bio. Split the live About sentence on periods
- * without rewriting the wording.
+ * Home wants a three-line bio. Split the live About sentence on sentence
+ * boundaries without rewriting the wording. A missing terminal period on the
+ * live sentence is restored so the last line is not dropped.
  */
 export function homeBioLines(): string[] {
-  return site.shortBio
+  const raw = site.shortBio.trim()
+  const normalized = /[.!?]$/.test(raw) ? raw : `${raw}.`
+  return normalized
     .split(/(?<=\.)\s+/)
     .map((line) => line.trim())
     .filter(Boolean)
