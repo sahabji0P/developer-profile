@@ -5,3 +5,20 @@
 .role {
   color: var(--text-nav);
 }
+
+.moreRow {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.moreRow a {
+  color: var(--text-nav);
+  text-decoration: none;
+}
+
+.moreRow a:hover {
+  color: var(--accent);
+}
