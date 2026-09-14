@@ -24,7 +24,11 @@ function resolveIcon(name?: string): LucideIcon {
     return fromMap as LucideIcon;
   }
   const fromNamed = (Lucide as Record<string, unknown>)[name];
-  if (typeof fromNamed === "function") {
+  // Lucide icons may be function components or forwardRef objects.
+  if (
+    typeof fromNamed === "function" ||
+    (typeof fromNamed === "object" && fromNamed !== null)
+  ) {
     return fromNamed as LucideIcon;
   }
   return Square;
