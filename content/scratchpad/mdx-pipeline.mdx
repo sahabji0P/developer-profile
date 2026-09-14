@@ -1,0 +1,10 @@
+---
+title: MDX pipeline notes
+date: "2026-09-02"
+description: How posts move from content/*.mdx to routes via gray-matter and next-mdx-remote.
+icon: FileText
+---
+
+Each post is an `.mdx` file under `content/blog` or `content/scratchpad`. `lib/mdx.ts` reads the directory, parses frontmatter with `gray-matter`, and sorts by `date` descending. Slug equals the filename.
+
+Detail routes call `getPost`, then render the body through `next-mdx-remote` with a small component map (`components/mdx.tsx`) so headings and links match the reading styles. No compile step beyond what Next already does for the page.

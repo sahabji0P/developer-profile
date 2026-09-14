@@ -1,0 +1,10 @@
+---
+title: DeiT TIL from the ICCCNT paper
+date: "2026-09-08"
+description: One-liner takeaway from the DeiT brain-tumor classification work.
+icon: Brain
+---
+
+Training a DeiT-small on an already-augmented MRI set, the surprising bit was not the headline accuracy — it was how little custom architecture we needed once the ImageNet-pretrained transformer had a clean four-class head.
+
+The paper path (ICCCNT / NeuroVision) is written up longer under Writing; this note is the reminder I keep: start from the pretrained patch model, then spend the budget on folds and class balance, not on inventing a new backbone.

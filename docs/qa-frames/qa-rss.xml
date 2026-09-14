@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Shashwat Jain</title>
+    <link>https://shashwatjain.tech</link>
+    <description>Full-stack developer and AI engineer. Final-year Computer Science student at Bennett University.</description>
+    <item>
+      <title>How this site is built</title>
+      <link>https://shashwatjain.tech/scratchpad/how-this-site-is-built</link>
+      <guid>https://shashwatjain.tech/scratchpad/how-this-site-is-built</guid>
+      <pubDate>Sat, 12 Sep 2026 00:00:00 GMT</pubDate>
+      <description>A short colophon for shashwatjain.tech — App Router, MDX, and the reading stack.</description>
+    </item>
+    <item>
+      <title>Brain Tumor Classification Using DeiT Vision Transformer</title>
+      <link>https://shashwatjain.tech/blog/brain-tumor-classification-deit</link>
+      <guid>https://shashwatjain.tech/blog/brain-tumor-classification-deit</guid>
+      <pubDate>Tue, 01 Jul 2025 00:00:00 GMT</pubDate>
+      <description>Accepted and presented at the 16th ICCCNT IEEE Conference, IIT Indore, July 2025.</description>
+    </item>
+  </channel>
+</rss>

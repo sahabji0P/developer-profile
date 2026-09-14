@@ -1,0 +1,103 @@
+.list {
+  border-top: 1px solid var(--line-subtle);
+  margin-top: 0.85em;
+}
+
+.item {
+  padding: 0.85em 0;
+  border-bottom: 1px solid var(--line-subtle);
+}
+
+.itemWithYear {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.row {
+  display: flex;
+  gap: 0.95rem;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.media {
+  flex: 0 0 auto;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line-subtle);
+  background: color-mix(in srgb, var(--text-copy) 4%, var(--bg));
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.4rem;
+  filter: grayscale(1);
+  opacity: 0.88;
+  transition:
+    filter 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.item:hover .image,
+.item:focus-within .image {
+  filter: grayscale(0);
+  opacity: 1;
+}
+
+.copy {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.title {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+}
+
+.description {
+  margin: 0.2rem 0 0;
+}
+
+.links {
+  margin: 0.35rem 0 0;
+}
+
+.year {
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-nav);
+  white-space: nowrap;
+  padding-top: 0.15rem;
+}
+
+@media (max-width: 639px) {
+  .itemWithYear {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .media {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+
+  .year {
+    font-size: 13px;
+    white-space: normal;
+  }
+}

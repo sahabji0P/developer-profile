@@ -1,84 +1,70 @@
-"use client"
-
-import { AchievementsSection } from "@/components/achievements-section"
-import { CertificationsSection } from "@/components/certifications-section"
-import { EducationSection } from "@/components/education-section"
-import { HeroSection } from "@/components/hero-section"
-import { ResearchPublicationsSection } from "@/components/research-publications-section"
-import { ShowcaseLayout } from "@/components/showcase-layout"
-import { WorkExperienceSection } from "@/components/work-experience-section"
-import { motion, useScroll, useSpring } from "framer-motion"
-
-function ProgressBar() {
-  const { scrollYProgress } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
-  return <motion.div className="fixed top-0 left-0 right-0 h-1 bg-primary z-50" style={{ scaleX }} />
-}
+import Link from "next/link"
+import { BioToggle } from "@/components/bio-toggle"
+import { BlogRow } from "@/components/blog-row"
+import { ProjectList } from "@/components/project-list"
+import { ScratchpadGrid } from "@/components/scratchpad-grid"
+import { site } from "@/content/site"
+import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx"
+import styles from "./page.module.css"
 
 export default function Home() {
+  const featured = site.projects.filter((project) => project.featured).slice(0, 3)
+  const posts = getBlogPosts().slice(0, 3)
+  const notes = getScratchpadNotes()
+
   return (
+    <article className="content-frame">
+      {/*
+        Desktop: left reading column + right abstract panel (SiteShell).
+        Mobile: single column; right panel hidden.
+      */}
+      <div className="home-copy">
+        <header className={styles.identity}>
+          <h1 className="site-title">
+            <Link href="/" className="site-title-link">
+              {site.name}
+            </Link>
+          </h1>
+          <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
+        </header>
 
+        <BioToggle />
 
-    <main className="min-h-screen p-4 sm:p-8 pb-32 text-foreground relative">
-      <ProgressBar />
+        <div className="writing-index">
+          <section>
+            <h2 className="content-heading">
+              <Link href="/work">Selected work</Link>
+            </h2>
+            <ProjectList projects={featured} variant="teaser" />
+          </section>
 
-      {/* Snowfall effect */}
-      {/* <div aria-hidden="true">
-        {[...Array(10)].map((_, index) => (
-          <div key={index} className="snowflake" />
-        ))}
-      </div> */}
+          <section>
+            <h2 className="content-heading">
+              <Link href="/journal#blog">Writing</Link>
+            </h2>
+            <div className="blogs-list">
+              {posts.map((post) => (
+                <BlogRow
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  title={post.title}
+                  date={post.date}
+                />
+              ))}
+            </div>
+            <p className={styles.moreRow}>
+              <Link href="/journal#blog">More</Link>
+            </p>
+          </section>
 
-      <div className="max-w-7xl mx-auto space-y-8 sm:space-y-16 relative z-10">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="p-6 rounded-lg shadow-md"
-        >
-          <HeroSection />
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-        >
-          <div className=" p-6 rounded-lg shadow-md">
-            <WorkExperienceSection />
-          </div>
-          <div className=" p-6 rounded-lg shadow-md">
-            <EducationSection />
-          </div>
-        </motion.div>
-
-        {[
-          { Component: ResearchPublicationsSection, className: "col-span-full" },
-          { Component: ShowcaseLayout, className: "col-span-full" },
-          { Component: CertificationsSection, className: "col-span-full" },
-          { Component: AchievementsSection, className: "col-span-full" },
-        ].map(({ Component, className }, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.1 }}
-            className={`p-6 rounded-lg shadow-md ${className}`}
-            style={{ willChange: 'transform, opacity' }}
-          >
-            <Component />
-          </motion.div>
-        ))}
+          <section>
+            <h2 className="content-heading">
+              <Link href="/journal#scratchpad">Scratchpad</Link>
+            </h2>
+            <ScratchpadGrid notes={notes} />
+          </section>
+        </div>
       </div>
-    </main>
+    </article>
   )
 }
-
