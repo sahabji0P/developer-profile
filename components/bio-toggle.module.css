@@ -1,0 +1,65 @@
+.toggle {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.55rem;
+  margin-bottom: 1.35rem;
+  border-bottom: 1px solid var(--line-subtle);
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: var(--text-nav);
+}
+
+.label {
+  flex: 0 0 auto;
+}
+
+.options {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.option {
+  position: relative;
+  padding: 0.2rem 0;
+  margin: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+.option[aria-pressed="true"] {
+  color: var(--text-copy);
+}
+
+.option[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.62rem;
+  height: 1px;
+  background: var(--text-copy);
+}
+
+.resumePanel {
+  margin: 0;
+}
+
+.resumeList {
+  margin-top: 0;
+}
+
+.download {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.5;
+}

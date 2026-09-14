@@ -1,7 +1,8 @@
 import Link from "next/link"
+import { BioToggle } from "@/components/bio-toggle"
 import { BlogRow } from "@/components/blog-row"
 import { ProjectList } from "@/components/project-list"
-import { homeBioLines, site } from "@/content/site"
+import { site } from "@/content/site"
 import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx"
 import styles from "./page.module.css"
 
@@ -9,7 +10,6 @@ export default function Home() {
   const featured = site.projects.filter((project) => project.featured).slice(0, 3)
   const posts = getBlogPosts().slice(0, 3)
   const notes = getScratchpadNotes().slice(0, 3)
-  const bioLines = homeBioLines()
 
   return (
     <article className="content-frame">
@@ -27,13 +27,7 @@ export default function Home() {
           <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
         </header>
 
-        <section className="bio-section" aria-label="Bio">
-          {bioLines.map((line) => (
-            <p className="content-paragraph" key={line}>
-              {line}
-            </p>
-          ))}
-        </section>
+        <BioToggle />
 
         <div className="writing-index">
           <section>

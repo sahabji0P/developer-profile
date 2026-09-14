@@ -21,6 +21,8 @@ export type Project = {
   live?: string
   year?: number
   featured?: boolean
+  /** Path under `public/`, e.g. `/projects/MoneyMate.svg`. */
+  image?: string
 }
 
 export type Experience = {
@@ -63,6 +65,8 @@ export type SiteContent = {
   shortBio: string
   longBio: string
   email: string
+  /** Static resume PDF served from `public/`. */
+  resumeUrl: string
   socials: SocialLink[]
   projects: Project[]
   experience: Experience[]
@@ -82,6 +86,7 @@ export const site: SiteContent = {
   longBio:
     "I am Shashwat Jain, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a Full-Stack Developer and AI Engineer specializing in delivering scalable and robust systems. Additionally I had Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)",
   email: "shashwatjain2k3@gmail.com",
+  resumeUrl: "/resume.pdf",
   socials: [
     { label: "GitHub", href: "https://github.com/sahabji0P" },
     { label: "X", href: "https://twitter.com/itsshashwatj" },
@@ -95,6 +100,7 @@ export const site: SiteContent = {
         "Next.js PWA using Gemini 2.5 Flash API to parse receipts and split expenses among participants.",
       live: "https://matemoney.vercel.app/",
       featured: true,
+      image: "/projects/MoneyMate.svg",
     },
     {
       title: "NeuroVision",
@@ -102,6 +108,7 @@ export const site: SiteContent = {
         "End-to-end full-stack application using Vision Transformer for real-time MRI tumor detection.",
       github: "https://github.com/sahabji0P/NeuroVision",
       featured: true,
+      image: "/projects/NeuroVision.svg",
     },
     {
       title: "Suraksha-AI",
@@ -109,18 +116,21 @@ export const site: SiteContent = {
         "Flask-based system using YOLOv11 + CBAM for high-accuracy object detection on live video.",
       github: "https://github.com/sahabji0P/spot-ai",
       featured: true,
+      image: "/projects/suraksha.svg",
     },
     {
       title: "Khel Onn",
       description:
         "Java/XML Android application with Firebase for event registration, live scoring, and notifications.",
       github: "https://github.com/sahabji0P/KhelOn",
+      image: "/projects/khelon.png",
     },
     {
       title: "Recycle Bin",
       description:
         "Next.js/MongoDB platform with real-time analytics and interactive dashboards for recycling commerce.",
       github: "https://github.com/sahabji0P/recycle-bin",
+      image: "/projects/recyclebin.jpeg",
     },
   ],
   experience: [
@@ -218,6 +228,48 @@ export function composeLongBio(): string {
     `${job.role} at ${job.org}, ${nb(job.start)}–${nb(job.end)}.`,
     `${pub.title}; ${pub.venue}, ${nb(pub.date)}.`,
   ].join("\n\n")
+}
+
+/**
+ * Richer “Detailed” bio for the home toggle — same facts as `composeLongBio`,
+ * plus remaining education entries. No invented claims.
+ */
+export function composeDetailedBio(): string {
+  const job = site.experience[0]
+  const pub = site.publication
+  const nb = (value: string) => value.replace(/ /g, "\u00A0")
+
+  const educationLines = site.education.map(
+    (edu) =>
+      `${edu.program} at ${edu.school}, ${nb(edu.start)}–${nb(edu.end)}.`,
+  )
+
+  return [
+    site.shortBio,
+    ...educationLines,
+    `${job.role} at ${job.org}, ${nb(job.start)}–${nb(job.end)}.`,
+    `${pub.title}; ${pub.venue}, ${nb(pub.date)}.`,
+  ].join("\n\n")
+}
+
+/**
+ * Concise resume-style bullets for the home “Resume” panel.
+ * Drawn only from experience, education, publication, and project titles in site.ts.
+ */
+export function composeResumeBullets(): string[] {
+  const job = site.experience[0]
+  const school = site.education[0]
+  const pub = site.publication
+  const projectTitles = site.projects.map((project) => project.title).join(", ")
+
+  return [
+    `${site.role}`,
+    `${job.role} · ${job.org} · ${job.start}–${job.end}`,
+    `${school.program} · ${school.school} · ${school.start}–${school.end}`,
+    `${pub.title} · ${pub.venue} · ${pub.date}`,
+    `Projects: ${projectTitles}`,
+    `${site.location} · ${site.email}`,
+  ]
 }
 
 /** Experience description as sentence bullets for the About list. */

@@ -1,10 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
-import {
-  composeLongBio,
-  experienceBullets,
-  site,
-} from "@/content/site"
+import { BioToggle } from "@/components/bio-toggle"
+import { experienceBullets, site } from "@/content/site"
 
 export const metadata: Metadata = {
   title: "About",
@@ -17,11 +14,6 @@ export default function AboutPage() {
     site.socials.find((link) => link.label === label),
   ).filter((link): link is (typeof site.socials)[number] => Boolean(link))
 
-  const aboutParagraphs = composeLongBio()
-    .split(/\n\n+/)
-    .map((part) => part.trim())
-    .filter(Boolean)
-
   return (
     <article className="content-frame">
       <h1 className="content-title">About</h1>
@@ -29,11 +21,7 @@ export default function AboutPage() {
         {site.name}
       </Link>
 
-      {aboutParagraphs.map((paragraph) => (
-        <p className="content-paragraph" key={paragraph}>
-          {paragraph}
-        </p>
-      ))}
+      <BioToggle />
 
       <section>
         <h2 className="content-heading">Experience</h2>
