@@ -13,18 +13,30 @@ import { usePathname } from "next/navigation";
  * ≤639px: in normal document flow above the title (wrapping row of the
  * five words). Never `position: fixed` on small viewports — a fixed stack
  * sat inside the 340px column and clipped long titles.
+ *
+ * Blog + Scratchpad collapse into Journal; `/blog` and `/scratchpad`
+ * routes stay live and keep Journal highlighted.
  */
 const ITEMS = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/blog", label: "Blog" },
-  { href: "/scratchpad", label: "Scratchpad" },
+  { href: "/journal", label: "Journal" },
 ] as const;
 
 function isActive(href: string, pathname: string) {
   if (href === "/") {
     return pathname === "/";
+  }
+  if (href === "/journal") {
+    return (
+      pathname === "/journal" ||
+      pathname.startsWith("/journal/") ||
+      pathname === "/blog" ||
+      pathname.startsWith("/blog/") ||
+      pathname === "/scratchpad" ||
+      pathname.startsWith("/scratchpad/")
+    );
   }
   return pathname === href || pathname.startsWith(`${href}/`);
 }
