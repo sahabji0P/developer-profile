@@ -1,15 +1,16 @@
 import Link from "next/link"
-import { BioToggle } from "@/components/bio-toggle"
 import { BlogRow } from "@/components/blog-row"
 import { ProjectList } from "@/components/project-list"
-import { site } from "@/content/site"
+import { ScratchpadGrid } from "@/components/scratchpad-grid"
+import { homeBioLines, site } from "@/content/site"
 import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx"
 import styles from "./page.module.css"
 
 export default function Home() {
   const featured = site.projects.filter((project) => project.featured).slice(0, 3)
   const posts = getBlogPosts().slice(0, 3)
-  const notes = getScratchpadNotes().slice(0, 3)
+  const notes = getScratchpadNotes()
+  const bioLines = homeBioLines()
 
   return (
     <article className="content-frame">
@@ -27,7 +28,13 @@ export default function Home() {
           <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
         </header>
 
-        <BioToggle />
+        <section className="bio-section" aria-label="Bio">
+          {bioLines.map((line) => (
+            <p className="content-paragraph" key={line}>
+              {line}
+            </p>
+          ))}
+        </section>
 
         <div className="writing-index">
           <section>
@@ -39,7 +46,7 @@ export default function Home() {
 
           <section>
             <h2 className="content-heading">
-              <Link href="/blog">Writing</Link>
+              <Link href="/journal#blog">Writing</Link>
             </h2>
             <div className="blogs-list">
               {posts.map((post) => (
@@ -51,22 +58,16 @@ export default function Home() {
                 />
               ))}
             </div>
+            <p className={styles.moreRow}>
+              <Link href="/journal#blog">More</Link>
+            </p>
           </section>
 
           <section>
             <h2 className="content-heading">
-              <Link href="/scratchpad">Scratchpad</Link>
+              <Link href="/journal#scratchpad">Scratchpad</Link>
             </h2>
-            <div className="blogs-list">
-              {notes.map((note) => (
-                <BlogRow
-                  key={note.slug}
-                  href={`/scratchpad/${note.slug}`}
-                  title={note.title}
-                  date={note.date}
-                />
-              ))}
-            </div>
+            <ScratchpadGrid notes={notes} />
           </section>
         </div>
       </div>
