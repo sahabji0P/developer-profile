@@ -9,6 +9,8 @@ export type Post = {
   title: string;
   date: string;
   description?: string;
+  /** Optional lucide-react icon name (PascalCase), e.g. "FileText". */
+  icon?: string;
   content: string;
 };
 
@@ -34,7 +36,12 @@ function parsePost(collection: Collection, filename: string): Post {
       ? data.description
       : undefined;
 
-  return { slug, title, date, description, content };
+  const icon =
+    typeof data.icon === "string" && data.icon.length > 0
+      ? data.icon
+      : undefined;
+
+  return { slug, title, date, description, icon, content };
 }
 
 function readCollection(collection: Collection): Post[] {
