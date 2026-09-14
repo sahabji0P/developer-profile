@@ -18,8 +18,8 @@ export default function Image() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          background: "#f7f7f4",
-          color: "#26251e",
+          background: "#0c0c0b",
+          color: "#e8e6e1",
           padding: "80px 96px",
           fontFamily:
             'ui-sans-serif, system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif',
@@ -40,7 +40,7 @@ export default function Image() {
             marginTop: 28,
             fontSize: 28,
             lineHeight: 1.4,
-            color: "rgba(38, 37, 30, 0.6)",
+            color: "rgba(232, 230, 225, 0.55)",
             maxWidth: 960,
           }}
         >
@@ -50,7 +50,7 @@ export default function Image() {
           style={{
             marginTop: 36,
             fontSize: 20,
-            color: "#f54e00",
+            color: "#5ecfc0",
             letterSpacing: "-0.02em",
           }}
         >

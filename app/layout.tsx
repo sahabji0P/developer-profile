@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 import { EB_Garamond } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Footer } from "@/components/footer";
-import { Nav } from "@/components/nav";
+import { SiteShell } from "@/components/site-shell";
 import { SITE_URL, site } from "@/content/site";
 import "./globals.css";
 
@@ -42,14 +41,10 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} ${ebGaramond.variable}`}
-      style={{ colorScheme: "light" }}
+      style={{ colorScheme: "dark" }}
     >
       <body className="antialiased">
-        <div className="site-shell">
-          <Nav />
-          {children}
-          <Footer />
-        </div>
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );

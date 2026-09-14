@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 /*
-  Visual system inspired by live cursor.com (measured 2026-09-13):
-  cream ground, charcoal type, orange accent, geometric sans + Garamond body.
-  Public stand-ins: Geist Sans / Geist Mono (CursorGothic / Berkeley Mono),
-  EB Garamond (same face Cursor uses for body).
-  Layout measure (600px column + vertical nav) stays from the portfolio brief.
+  Dark layout shell — salty near-black ground, soft off-white type,
+  single cool teal accent. Left content column + desktop right abstract panel.
+  Fonts: Geist Sans (UI) + EB Garamond (body) + Geist Mono.
 */
 :root {
-  --bg: #f7f7f4;
-  --text-copy: #26251e;
-  --text-heading: #26251e;
-  --text-secondary: color-mix(in oklab, #26251e 60%, transparent);
-  --text-nav: color-mix(in oklab, #26251e 55%, transparent);
-  --accent: #f54e00;
-  --surface-subtle: #ecebe6;
-  --line-subtle: color-mix(in oklab, #26251e 12%, transparent);
-  --divider: color-mix(in oklab, #26251e 14%, transparent);
-  --code-inline: #c2410c;
-  --code-background: #ecebe6;
-  --measure: 600px;
+  --bg: #0c0c0b;
+  --bg-elevated: #111110;
+  --text-copy: #e8e6e1;
+  --text-heading: #e8e6e1;
+  --text-secondary: color-mix(in oklab, #e8e6e1 58%, transparent);
+  --text-nav: color-mix(in oklab, #e8e6e1 52%, transparent);
+  --accent: #5ecfc0;
+  --surface-subtle: #1a1a18;
+  --line-subtle: color-mix(in oklab, #e8e6e1 12%, transparent);
+  --divider: color-mix(in oklab, #e8e6e1 14%, transparent);
+  --code-inline: #8fd9ce;
+  --code-background: #1a1a18;
+  --measure: 640px;
   --font-reading: var(--font-garamond), "Iowan Old Style", "Palatino Linotype",
     Palatino, Georgia, serif;
   --font-ui: var(--font-geist-sans), ui-sans-serif, system-ui, "Helvetica Neue",
@@ -27,20 +26,31 @@
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
     Monaco, Consolas, monospace;
   --page-pad: clamp(1.25rem, 3.4vw, 3.25rem);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
   scrollbar-gutter: stable;
   scrollbar-width: thin;
-  scrollbar-color: color-mix(in oklab, #26251e 35%, transparent) transparent;
+  scrollbar-color: color-mix(in oklab, #e8e6e1 28%, transparent) transparent;
   scroll-behavior: auto;
 }
 
 body {
   overflow-x: clip;
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(
+      ellipse 70% 55% at 12% -10%,
+      color-mix(in srgb, var(--accent) 9%, transparent),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 55% 45% at 92% 108%,
+      color-mix(in srgb, var(--accent) 6%, transparent),
+      transparent 50%
+    ),
+    var(--bg);
   color: var(--text-copy);
   font-family: var(--font-reading);
   font-size: 17px;
@@ -51,8 +61,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Fine film grain — salt, not flat black */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
 ::selection {
-  background: color-mix(in srgb, var(--text-copy) 12%, transparent);
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: var(--text-heading);
 }
 
 :focus-visible {
@@ -63,15 +88,23 @@ body {
 
 .site-shell {
   --page-pad: clamp(1.25rem, 3.4vw, 3.25rem);
+  position: relative;
   min-height: 100vh;
   padding: var(--page-pad);
   container-type: inline-size;
 }
 
+.site-column {
+  position: relative;
+  z-index: 2;
+  width: min(100%, var(--measure));
+  margin-inline: 0 auto 0 0;
+}
+
 .content-frame {
   --content-width: var(--measure);
   width: min(100%, var(--content-width));
-  margin-inline: auto;
+  margin-inline: 0;
   padding: 0;
   position: relative;
 }
@@ -82,7 +115,7 @@ body {
   }
 }
 
-/* Type ramp — Cursor-like: Geist for titles/UI, Garamond for body */
+/* Type ramp — Geist for titles/UI, Garamond for body */
 
 h1.site-title {
   font-family: var(--font-ui);
@@ -320,7 +353,7 @@ h2.content-heading {
   }
 }
 
-/* In-content links: gray + 30% underline; hover uses OUR accent. */
+/* In-content links: muted + 30% underline; hover uses accent. */
 .content-frame a {
   color: var(--text-nav);
   text-decoration-line: underline;
@@ -360,7 +393,7 @@ a.site-title-link:hover {
   text-decoration: none;
 }
 
-/* Section headings that wrap a link (home “Selected work”) stay heading color. */
+/* Section headings that wrap a link stay heading color. */
 .content-frame h2.content-heading a,
 .writing-index h2 a {
   color: inherit;
@@ -379,7 +412,7 @@ a.site-title-link:hover {
   white-space: nowrap;
 }
 
-/* Code — measured live values */
+/* Code */
 code {
   font-family: var(--font-mono);
   font-size: 0.94em;
@@ -402,11 +435,11 @@ pre code {
   background: transparent;
 }
 
-/* Home two-column — for pages that opt in; hidden visual below 1100px */
+/* Legacy home two-column hooks (pages may opt in) */
 @media (min-width: 1100px) {
   .home-layout {
     width: min(100cqi, 1500px);
-    margin-inline: calc((var(--content-width) - min(100cqi, 1500px)) / 2);
+    margin-inline: 0;
     grid-template-columns: minmax(0, 1.75fr) minmax(380px, 1fr);
     gap: clamp(2rem, 3.6vw, 3.75rem);
     display: grid;
@@ -436,7 +469,181 @@ pre code {
   }
 }
 
-/* Product nav — documented deviation from live (no nav on leerob.com). */
+/* ——— Right abstract panel (desktop ≥1100px) ——— */
+
+.right-panel {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .right-panel {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 50vw;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    isolation: isolate;
+    background: transparent;
+  }
+
+  .right-panel-atmosphere {
+    position: absolute;
+    inset: -10%;
+    background:
+      radial-gradient(
+        ellipse 55% 45% at 58% 32%,
+        color-mix(in srgb, var(--accent) 14%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 40% 35% at 78% 72%,
+        color-mix(in srgb, #7eb8d4 10%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--bg-elevated) 70%, transparent) 0%,
+        transparent 55%
+      );
+  }
+
+  .right-panel-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(48px);
+    will-change: transform;
+    opacity: 0.55;
+  }
+
+  .right-panel-orb-a {
+    width: min(46vw, 420px);
+    height: min(46vw, 420px);
+    top: 8%;
+    right: 6%;
+    background: radial-gradient(
+      circle at 40% 40%,
+      color-mix(in srgb, var(--accent) 55%, transparent),
+      color-mix(in srgb, var(--accent) 8%, transparent) 70%,
+      transparent 100%
+    );
+    animation: rp-drift-a 28s ease-in-out infinite alternate;
+  }
+
+  .right-panel-orb-b {
+    width: min(38vw, 340px);
+    height: min(38vw, 340px);
+    bottom: 12%;
+    right: 22%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, #7eb8d4 40%, transparent),
+      color-mix(in srgb, #7eb8d4 6%, transparent) 68%,
+      transparent 100%
+    );
+    animation: rp-drift-b 34s ease-in-out infinite alternate;
+  }
+
+  .right-panel-orb-c {
+    width: min(28vw, 260px);
+    height: min(28vw, 260px);
+    top: 42%;
+    right: 38%;
+    background: radial-gradient(
+      circle at 50% 50%,
+      color-mix(in srgb, var(--accent) 28%, transparent),
+      transparent 72%
+    );
+    opacity: 0.4;
+    animation: rp-drift-c 22s ease-in-out infinite alternate;
+  }
+
+  .right-panel-mesh {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+  }
+
+  .right-panel-lines {
+    animation: rp-mesh-drift 40s linear infinite;
+    transform-origin: 50% 50%;
+  }
+
+  .right-panel-nodes {
+    animation: rp-nodes-pulse 8s ease-in-out infinite alternate;
+  }
+
+  .right-panel-grain {
+    position: absolute;
+    inset: 0;
+    opacity: 0.07;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+
+  @keyframes rp-drift-a {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(-6%, 8%, 0) scale(1.08);
+    }
+  }
+
+  @keyframes rp-drift-b {
+    0% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    100% {
+      transform: translate3d(8%, -5%, 0) scale(0.94);
+    }
+  }
+
+  @keyframes rp-drift-c {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-10%, -6%, 0);
+    }
+  }
+
+  @keyframes rp-mesh-drift {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(-1.5%, 1%, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes rp-nodes-pulse {
+    0% {
+      opacity: 0.55;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: 1099px) {
+  .right-panel {
+    display: none;
+  }
+}
+
+/* Product nav */
 .site-nav {
   display: flex;
   flex-wrap: wrap;
@@ -469,13 +676,13 @@ pre code {
   color: var(--accent);
 }
 
-/* ≥640px / 1440: fixed top-right vertical stack, outside the 600px column. */
+/* ≥640px: fixed top-right vertical stack over the right panel when present. */
 @media (min-width: 640px) {
   .site-nav {
     position: fixed;
     top: var(--page-pad);
     right: var(--page-pad);
-    z-index: 20;
+    z-index: 30;
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: flex-end;
@@ -484,7 +691,7 @@ pre code {
   }
 }
 
-/* Product footer — documented deviation from live (no site footer on leerob.com). */
+/* Product footer */
 .site-footer {
   margin-top: 3.5rem;
 }
@@ -506,6 +713,15 @@ pre code {
   :before,
   :after {
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
+  }
+
+  .right-panel-orb,
+  .right-panel-lines,
+  .right-panel-nodes {
+    animation: none !important;
+    transform: none !important;
   }
 }
