@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <article className="content-frame">
       {/*
-        Home visual collage (.home-visual) is omitted: we have no SF/Iowa
-        illustration. Home is a single 600px column at all widths.
+        Desktop: left reading column + right abstract panel (SiteShell).
+        Mobile: single column; right panel hidden.
       */}
       <div className="home-copy">
         <header className={styles.identity}>

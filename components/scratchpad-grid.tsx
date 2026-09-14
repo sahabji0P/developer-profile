@@ -41,6 +41,8 @@ type ScratchpadGridProps = {
   showDates?: boolean;
   /** Link out to the Journal scratchpad section. */
   journalHref?: string;
+  /** When false, hide the More / All notes row (full lists). */
+  showMoreLink?: boolean;
 };
 
 export function ScratchpadGrid({
@@ -48,6 +50,7 @@ export function ScratchpadGrid({
   initialLimit = HOME_LIMIT,
   showDates = false,
   journalHref = "/journal#scratchpad",
+  showMoreLink = true,
 }: ScratchpadGridProps) {
   const [expanded, setExpanded] = useState(false);
   const limited = initialLimit > 0;
@@ -81,21 +84,29 @@ export function ScratchpadGrid({
         })}
       </ul>
 
-      <div className={styles.actions}>
-        {hasMore ? (
-          <button
-            type="button"
-            className={styles.moreBtn}
-            onClick={() => setExpanded((value) => !value)}
-            aria-expanded={expanded}
-          >
-            {expanded ? "Less" : "More"}
-          </button>
-        ) : null}
-        <Link href={journalHref} className={styles.journalLink}>
-          Journal
-        </Link>
-      </div>
+      {showMoreLink ? (
+        <div className={styles.actions}>
+          {hasMore ? (
+            <button
+              type="button"
+              className={styles.moreBtn}
+              onClick={() => setExpanded((value) => !value)}
+              aria-expanded={expanded}
+            >
+              {expanded ? "Less" : "More"}
+            </button>
+          ) : (
+            <Link href={journalHref} className={styles.journalLink}>
+              More
+            </Link>
+          )}
+          {hasMore ? (
+            <Link href={journalHref} className={styles.journalLink}>
+              All notes
+            </Link>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 }

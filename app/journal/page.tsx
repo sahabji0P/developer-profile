@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { BlogRow } from "@/components/blog-row";
+import { ScratchpadGrid } from "@/components/scratchpad-grid";
 import { getBlogPosts, getScratchpadNotes } from "@/lib/mdx";
 
 export const metadata: Metadata = {
@@ -41,16 +42,12 @@ export default function JournalPage() {
           <h2 className="content-heading">
             <Link href="/scratchpad">Scratchpad</Link>
           </h2>
-          <div className="blogs-list">
-            {notes.map((note) => (
-              <BlogRow
-                key={note.slug}
-                href={`/scratchpad/${note.slug}`}
-                title={note.title}
-                date={note.date}
-              />
-            ))}
-          </div>
+          <ScratchpadGrid
+            notes={notes}
+            initialLimit={0}
+            showDates
+            showMoreLink={false}
+          />
         </section>
       </div>
     </article>
