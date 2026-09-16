@@ -57,8 +57,8 @@ export function ProjectList({
                   <Image
                     src={project.image}
                     alt=""
-                    width={variant === "teaser" ? 72 : 96}
-                    height={variant === "teaser" ? 72 : 96}
+                    width={112}
+                    height={112}
                     className={styles.image}
                   />
                 </div>

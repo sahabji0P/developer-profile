@@ -93,16 +93,16 @@ export function ScratchpadGrid({
               onClick={() => setExpanded((value) => !value)}
               aria-expanded={expanded}
             >
-              {expanded ? "Less" : "More"}
+              {expanded ? "Less ←" : "More →"}
             </button>
           ) : (
             <Link href={journalHref} className={styles.journalLink}>
-              More
+              More →
             </Link>
           )}
           {hasMore ? (
             <Link href={journalHref} className={styles.journalLink}>
-              All notes
+              All notes →
             </Link>
           ) : null}
         </div>

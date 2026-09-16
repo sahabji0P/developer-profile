@@ -1,52 +1,59 @@
 .toggle {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding-bottom: 0.55rem;
   margin-bottom: 1.35rem;
-  border-bottom: 1px solid var(--line-subtle);
   font-family: var(--font-ui);
-  font-size: 14px;
-  font-weight: 400;
+  font-size: var(--text-ui);
+  font-weight: 450;
   line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: var(--text-nav);
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
 }
 
 .label {
   flex: 0 0 auto;
+  font-size: var(--text-section);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .options {
-  display: flex;
-  gap: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
   margin-left: auto;
+  padding: 3px;
+  border-radius: 999px;
+  background: color-mix(in oklab, #fafafa 5%, transparent);
+  border: 1px solid var(--line);
 }
 
 .option {
   position: relative;
-  padding: 0.2rem 0;
+  z-index: 1;
+  padding: 0.35rem 0.85rem;
   margin: 0;
   border: 0;
-  background: none;
+  border-radius: 999px;
+  background: transparent;
   cursor: pointer;
   font: inherit;
-  color: inherit;
+  font-weight: 450;
+  color: var(--text-muted);
+  transition: color 200ms ease, background-color 200ms ease;
 }
 
-.option[aria-pressed="true"] {
+.option:hover {
   color: var(--text-copy);
 }
 
-.option[aria-pressed="true"]::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.62rem;
-  height: 1px;
-  background: var(--text-copy);
+.option[aria-pressed="true"] {
+  color: var(--text-heading);
+  background: var(--accent-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--accent) 22%, transparent);
 }
 
 .resumePanel {
@@ -58,8 +65,19 @@
 }
 
 .download {
-  margin: 0.35rem 0 0;
+  margin: 0.85rem 0 0;
   font-family: var(--font-ui);
-  font-size: 14px;
-  line-height: 1.5;
+  font-size: var(--text-ui);
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.download a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.download a:hover {
+  color: var(--accent);
 }

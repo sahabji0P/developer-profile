@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { EB_Garamond } from "next/font/google";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { SiteShell } from "@/components/site-shell";
 import { SITE_URL, site } from "@/content/site";
 import "./globals.css";
-
-const ebGaramond = EB_Garamond({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-garamond",
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -40,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${ebGaramond.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable}`}
       style={{ colorScheme: "dark" }}
     >
       <body className="antialiased">

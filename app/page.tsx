@@ -25,21 +25,21 @@ export default function Home() {
               {site.name}
             </Link>
           </h1>
-          <p className={`content-paragraph ${styles.role}`}>{site.role}</p>
+          <p className={styles.role}>{site.role}</p>
         </header>
 
         <BioToggle />
 
         <div className="writing-index">
           <section>
-            <h2 className="content-heading">
+            <h2 className="section-label">
               <Link href="/work">Selected work</Link>
             </h2>
             <ProjectList projects={featured} variant="teaser" />
           </section>
 
           <section>
-            <h2 className="content-heading">
+            <h2 className="section-label">
               <Link href="/journal#blog">Writing</Link>
             </h2>
             <div className="blogs-list">
@@ -53,12 +53,12 @@ export default function Home() {
               ))}
             </div>
             <p className={styles.moreRow}>
-              <Link href="/journal#blog">More</Link>
+              <Link href="/journal#blog">More →</Link>
             </p>
           </section>
 
           <section>
-            <h2 className="content-heading">
+            <h2 className="section-label">
               <Link href="/journal#scratchpad">Scratchpad</Link>
             </h2>
             <ScratchpadGrid notes={notes} />

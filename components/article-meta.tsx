@@ -25,7 +25,7 @@ export function ArticleMeta({ date }: ArticleMetaProps) {
           style={{
             filter: "grayscale(1)",
             borderRadius: 9999,
-            border: "1px solid var(--line-subtle)",
+            border: "1px solid var(--line)",
           }}
         />
       ) : null}

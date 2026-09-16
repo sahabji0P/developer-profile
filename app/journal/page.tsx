@@ -23,7 +23,7 @@ export default function JournalPage() {
 
       <div className="writing-index">
         <section id="blog">
-          <h2 className="content-heading">
+          <h2 className="section-label">
             <Link href="/blog">Blog</Link>
           </h2>
           <div className="blogs-list">
@@ -39,7 +39,7 @@ export default function JournalPage() {
         </section>
 
         <section id="scratchpad">
-          <h2 className="content-heading">
+          <h2 className="section-label">
             <Link href="/scratchpad">Scratchpad</Link>
           </h2>
           <ScratchpadGrid

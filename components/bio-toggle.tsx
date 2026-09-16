@@ -60,7 +60,7 @@ export function BioToggle() {
             </ul>
             <p className={styles.download}>
               <a href={site.resumeUrl} download>
-                Download resume (PDF)
+                Download resume (PDF) →
               </a>
             </p>
           </div>
