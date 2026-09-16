@@ -1,0 +1,31 @@
+.identity :global(h1.site-title) {
+  margin-bottom: 0.25em;
+}
+
+.role {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-ui);
+  font-weight: 450;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+}
+
+.moreRow {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-ui);
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.moreRow a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.moreRow a:hover {
+  color: var(--accent);
+}

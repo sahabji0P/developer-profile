@@ -1,0 +1,10 @@
+---
+title: Tailwind v4 without a config file
+date: "2026-09-06"
+description: CSS-first tokens with @import "tailwindcss" and @theme / :root variables.
+icon: Wind
+---
+
+Tailwind v4 here is CSS-first: `@import "tailwindcss"` in `globals.css`, design tokens on `:root`, and almost no `tailwind.config`. Utilities still help for one-offs, but the reading column is mostly hand-written class names that map to those CSS variables.
+
+That split keeps the measure and type ramp stable when the rest of the UI moves. Changing cream / charcoal / accent is one place in `:root`, not a hunt through utility strings.

@@ -1,0 +1,10 @@
+---
+title: Dark theme tokens
+date: "2026-09-04"
+description: Charcoal ground, muted nav type, and a single accent for the reading column.
+icon: Moon
+---
+
+The site runs dark by default: near-black ground, light copy, muted nav type, and one accent for links and focus. `color-scheme` stays aligned with that ground so form controls and scrollbars do not flash light.
+
+Keeping a single theme means the Garamond body and UI sans only need one contrast pass. If a light mode comes back later, it should be a second token set — not a `prefers-color-scheme` flip on the same values.

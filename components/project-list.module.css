@@ -1,0 +1,137 @@
+.list {
+  margin-top: 0.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.item {
+  padding: 0.65rem 0.75rem;
+  margin-inline: -0.75rem;
+  border-radius: 14px;
+  transition: background-color 200ms ease;
+}
+
+.item:hover,
+.item:focus-within {
+  background: color-mix(in oklab, #fafafa 3%, transparent);
+}
+
+.itemWithYear {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.row {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.media {
+  flex: 0 0 auto;
+  width: 112px;
+  height: 112px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.65rem;
+  opacity: 0.82;
+  transition: opacity 200ms ease, filter 200ms ease;
+  filter: brightness(0.92);
+}
+
+.item:hover .image,
+.item:focus-within .image {
+  opacity: 1;
+  filter: brightness(1.06);
+}
+
+.copy {
+  min-width: 0;
+  flex: 1 1 auto;
+  padding-top: 0.15rem;
+}
+
+.title {
+  font-family: var(--font-ui);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--text-heading);
+}
+
+.description {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+}
+
+.links {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-ui);
+  font-size: var(--text-ui);
+  font-weight: 450;
+  line-height: 1.4;
+}
+
+.links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.links a:hover {
+  color: var(--accent);
+}
+
+.year {
+  font-family: var(--font-ui);
+  font-size: var(--text-ui);
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: 0;
+  font-variant-numeric: lining-nums tabular-nums;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding-top: 0.35rem;
+}
+
+@media (max-width: 639px) {
+  .itemWithYear {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .media {
+    width: 88px;
+    height: 88px;
+  }
+
+  .item {
+    padding: 0.55rem 0.5rem;
+    margin-inline: -0.5rem;
+  }
+
+  .year {
+    font-size: 0.8125rem;
+    white-space: normal;
+  }
+}
