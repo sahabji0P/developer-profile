@@ -108,7 +108,7 @@ export const site: SiteContent = {
         "End-to-end full-stack application using Vision Transformer for real-time MRI tumor detection.",
       github: "https://github.com/sahabji0P/NeuroVision",
       featured: true,
-      image: "/projects/NeuroVision.svg",
+      image: "/projects/NeuroVisionLogo.svg",
     },
     {
       title: "Suraksha-AI",
@@ -116,7 +116,7 @@ export const site: SiteContent = {
         "Flask-based system using YOLOv11 + CBAM for high-accuracy object detection on live video.",
       github: "https://github.com/sahabji0P/spot-ai",
       featured: true,
-      image: "/projects/suraksha.svg",
+      image: "/projects/surakshaLogo.svg",
     },
     {
       title: "Khel Onn",
@@ -231,24 +231,18 @@ export function composeLongBio(): string {
 }
 
 /**
- * Richer “Detailed” bio for the home toggle — same facts as `composeLongBio`,
- * plus remaining education entries. No invented claims.
+ * “Detailed” bio — readable prose. Lists belong in Resume mode.
  */
 export function composeDetailedBio(): string {
   const job = site.experience[0]
   const pub = site.publication
+  const school = site.education[0]
   const nb = (value: string) => value.replace(/ /g, "\u00A0")
-
-  const educationLines = site.education.map(
-    (edu) =>
-      `${edu.program} at ${edu.school}, ${nb(edu.start)}–${nb(edu.end)}.`,
-  )
 
   return [
     site.shortBio,
-    ...educationLines,
-    `${job.role} at ${job.org}, ${nb(job.start)}–${nb(job.end)}.`,
-    `${pub.title}; ${pub.venue}, ${nb(pub.date)}.`,
+    `I’m finishing ${school.program} at ${school.school} (${nb(school.start)}–${nb(school.end)}). Most recently I worked as ${job.role} at ${job.org}, shipping full-stack product work for client teams.`,
+    `On the research side, I presented ${pub.title} at ${pub.venue} (${nb(pub.date)}).`,
   ].join("\n\n")
 }
 

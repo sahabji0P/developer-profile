@@ -1,20 +1,27 @@
 .list {
-  margin-top: 0.35rem;
+  margin-top: 0.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0;
 }
 
 .item {
-  padding: 0.65rem 0.75rem;
-  margin-inline: -0.75rem;
-  border-radius: 14px;
-  transition: background-color 200ms ease;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: border-color var(--duration) var(--ease-soft);
 }
 
-.item:hover,
-.item:focus-within {
-  background: color-mix(in oklab, #fafafa 3%, transparent);
+.item:first-child {
+  padding-top: 0.35rem;
+}
+
+.item:last-child {
+  border-bottom: 0;
+  padding-bottom: 0.15rem;
+}
+
+.item:hover {
+  border-color: var(--line-strong);
 }
 
 .itemWithYear {
@@ -26,76 +33,120 @@
 
 .row {
   display: flex;
-  gap: 1.1rem;
+  gap: 1.15rem;
   align-items: flex-start;
   min-width: 0;
 }
 
 .media {
   flex: 0 0 auto;
-  width: 112px;
-  height: 112px;
   display: grid;
   place-items: center;
   border: 1px solid var(--line);
   border-radius: 12px;
-  background: var(--bg-elevated);
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      color-mix(in oklab, var(--accent) 8%, transparent),
+      transparent 60%
+    ),
+    var(--bg-soft);
   overflow: hidden;
+  position: relative;
+  transition: border-color var(--duration) var(--ease-soft),
+    box-shadow var(--duration) var(--ease-soft),
+    transform var(--duration) var(--ease-out);
+}
+
+.mediaCover {
+  width: 156px;
+  height: 96px;
+}
+
+.mediaLogo {
+  width: 96px;
+  height: 96px;
+}
+
+.item:hover .media {
+  border-color: color-mix(in oklab, var(--accent) 32%, var(--line));
+  box-shadow:
+    0 10px 32px color-mix(in oklab, #000 50%, transparent),
+    0 0 0 1px color-mix(in oklab, var(--accent) 12%, transparent);
+  transform: translateY(-2px);
 }
 
 .image {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 0.65rem;
-  opacity: 0.82;
-  transition: opacity 200ms ease, filter 200ms ease;
-  filter: brightness(0.92);
+  transition: transform 520ms var(--ease-out), opacity 280ms var(--ease-soft),
+    filter 280ms var(--ease-soft);
 }
 
-.item:hover .image,
-.item:focus-within .image {
+.mediaCover .image {
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+  filter: saturate(0.95) brightness(0.96);
+}
+
+.mediaLogo .image {
+  object-fit: contain;
+  padding: 0.55rem;
+  opacity: 0.95;
+  filter: brightness(1.06) contrast(1.05);
+}
+
+.item:hover .image {
   opacity: 1;
-  filter: brightness(1.06);
+  filter: saturate(1.05) brightness(1.08);
+  transform: scale(1.05);
 }
 
 .copy {
   min-width: 0;
   flex: 1 1 auto;
-  padding-top: 0.15rem;
+  padding-top: 0.1rem;
 }
 
 .title {
   font-family: var(--font-ui);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 500;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
+  line-height: 1.35;
+  letter-spacing: -0.024em;
+  color: var(--text-heading);
+  transition: color var(--duration) var(--ease-soft);
+}
+
+.item:hover .title {
   color: var(--text-heading);
 }
 
 .description {
-  margin: 0.3rem 0 0;
+  margin: 0.35rem 0 0;
   font-family: var(--font-ui);
   font-size: var(--text-body);
   font-weight: 400;
   line-height: 1.55;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.011em;
   color: var(--text-muted);
+  max-width: 34em;
 }
 
 .links {
-  margin: 0.45rem 0 0;
+  margin: 0.55rem 0 0;
   font-family: var(--font-ui);
-  font-size: var(--text-ui);
-  font-weight: 450;
+  font-size: var(--text-meta);
+  font-weight: 500;
   line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
 .links a {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 200ms ease;
+  transition: color var(--duration) var(--ease-soft);
 }
 
 .links a:hover {
@@ -104,10 +155,10 @@
 
 .year {
   font-family: var(--font-ui);
-  font-size: var(--text-ui);
+  font-size: var(--text-meta);
   font-weight: 400;
   line-height: 1.4;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
   font-variant-numeric: lining-nums tabular-nums;
   color: var(--text-muted);
   white-space: nowrap;
@@ -120,18 +171,29 @@
     gap: 0.15rem;
   }
 
-  .media {
-    width: 88px;
-    height: 88px;
+  .mediaCover {
+    width: 112px;
+    height: 70px;
   }
 
-  .item {
-    padding: 0.55rem 0.5rem;
-    margin-inline: -0.5rem;
+  .mediaLogo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .row {
+    gap: 0.9rem;
   }
 
   .year {
     font-size: 0.8125rem;
     white-space: normal;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item:hover .media,
+  .item:hover .image {
+    transform: none;
   }
 }

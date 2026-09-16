@@ -3,6 +3,10 @@ import type { ReactNode } from "react"
 import type { Project } from "@/content/site"
 import styles from "./project-list.module.css"
 
+function isCoverImage(src: string) {
+  return /\.(png|jpe?g|webp|gif)$/i.test(src)
+}
+
 function ProjectLinks({ project }: { project: Project }) {
   const parts: ReactNode[] = []
   if (project.github) {
@@ -44,6 +48,7 @@ export function ProjectList({
     <div className={styles.list}>
       {projects.map((project) => {
         const showYear = variant === "full" && project.year != null
+        const cover = project.image ? isCoverImage(project.image) : false
         return (
           <div
             className={
@@ -53,12 +58,18 @@ export function ProjectList({
           >
             <div className={styles.row}>
               {project.image ? (
-                <div className={styles.media}>
+                <div
+                  className={
+                    cover
+                      ? `${styles.media} ${styles.mediaCover}`
+                      : `${styles.media} ${styles.mediaLogo}`
+                  }
+                >
                   <Image
                     src={project.image}
                     alt=""
-                    width={112}
-                    height={112}
+                    width={cover ? 160 : 120}
+                    height={cover ? 100 : 120}
                     className={styles.image}
                   />
                 </div>

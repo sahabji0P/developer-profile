@@ -34,7 +34,7 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable}`}
       style={{ colorScheme: "dark" }}
     >
-      <body className="antialiased">
+      <body className={`${GeistSans.className} antialiased`}>
         <SiteShell>{children}</SiteShell>
       </body>
     </html>
