@@ -32,7 +32,7 @@
 .option {
   position: relative;
   z-index: 1;
-  padding: 0.35rem 0.7rem;
+  padding: 0.45rem 0.85rem;
   margin: 0;
   border: 0;
   background: transparent;
@@ -43,6 +43,7 @@
   letter-spacing: 0.02em;
   color: var(--text-muted);
   transition: color var(--duration) var(--ease-soft);
+  min-height: 36px;
 }
 
 .option + .option {

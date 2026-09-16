@@ -100,7 +100,7 @@ export const site: SiteContent = {
         "Next.js PWA using Gemini 2.5 Flash API to parse receipts and split expenses among participants.",
       live: "https://matemoney.vercel.app/",
       featured: true,
-      image: "/projects/moneyMateImage.png",
+      image: "/projects/MoneyMate.svg",
     },
     {
       title: "NeuroVision",
