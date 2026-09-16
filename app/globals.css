@@ -752,20 +752,20 @@ pre code {
 
   @keyframes rp-orb-pulse {
     0% {
-      opacity: 0.34;
+      opacity: 0.42;
     }
     100% {
-      opacity: 0.62;
+      opacity: 0.78;
     }
   }
 
   @keyframes rp-beam {
     0% {
-      opacity: 0.18;
+      opacity: 0.28;
       transform: rotate(18deg) translateX(0);
     }
     100% {
-      opacity: 0.42;
+      opacity: 0.58;
       transform: rotate(18deg) translateX(18px);
     }
   }

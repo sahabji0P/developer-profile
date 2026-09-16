@@ -92,9 +92,9 @@
 
 .mediaLogo .image {
   object-fit: contain;
-  padding: 0.85rem;
-  opacity: 0.92;
-  filter: brightness(1.02) contrast(1.04);
+  padding: 0.55rem;
+  opacity: 0.95;
+  filter: brightness(1.06) contrast(1.05);
 }
 
 .item:hover .image {
