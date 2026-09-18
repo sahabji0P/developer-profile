@@ -11,7 +11,7 @@ const OPTIONS: { value: DesignVariant; label: string }[] = [
 ];
 
 export function DesignVariantToggle() {
-  const { variant, setVariant, ready } = useDesignVariant();
+  const { variant, setVariant } = useDesignVariant();
 
   return (
     <div className="variant-toggle" role="group" aria-label="Design variant">
@@ -21,7 +21,6 @@ export function DesignVariantToggle() {
           type="button"
           className="variant-toggle-option"
           aria-pressed={variant === option.value}
-          disabled={!ready}
           onClick={() => setVariant(option.value)}
         >
           {option.label}
