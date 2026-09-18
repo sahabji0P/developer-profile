@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { usePathname } from "next/navigation"
 import { useEssayReveal, type EssayTopicId } from "@/components/essay-reveal-context"
 import { experienceBullets, site } from "@/content/site"
@@ -71,18 +72,40 @@ const STAGE: Record<EssayTopicId, StageCopy> = {
   },
 }
 
+function useDesktopStage() {
+  const [desktop, setDesktop] = useState<boolean | null>(null)
+
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1100px)")
+    const update = () => setDesktop(media.matches)
+    update()
+    media.addEventListener("change", update)
+    return () => media.removeEventListener("change", update)
+  }, [])
+
+  return desktop
+}
+
+export { useDesktopStage }
+
 export function EssayStageCard({ variant }: { variant: "desktop" | "mobile" }) {
   const { active, phase, select } = useEssayReveal()
   const pathname = usePathname() ?? "/"
+  const desktop = useDesktopStage()
   const staged = phase === "staged" || phase === "settled"
   const copy = staged && active ? STAGE[active] : null
   const showHint = !copy && pathname === "/" && variant === "desktop"
+  const inactive =
+    desktop !== null &&
+    ((variant === "desktop" && !desktop) || (variant === "mobile" && desktop))
 
   return (
     <div
       className={`${styles.frame} ${variant === "mobile" ? styles.mobile : styles.desktop}`}
       data-active={copy ? "true" : "false"}
       data-phase={phase}
+      hidden={inactive}
+      aria-hidden={inactive || !copy ? true : undefined}
     >
       <div className={styles.veil} />
       {copy ? (

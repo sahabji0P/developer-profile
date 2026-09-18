@@ -6,7 +6,7 @@ import {
   type EssayTopicId,
 } from "@/components/essay-reveal-context"
 import { originFromElement } from "@/components/essay-motion"
-import { EssayStageCard } from "@/components/essay-stage"
+import { EssayStageCard, useDesktopStage } from "@/components/essay-stage"
 import { site } from "@/content/site"
 import styles from "./essay-home.module.css"
 
@@ -41,10 +41,12 @@ function markState({
 function Mark({
   id,
   label,
+  follow,
   children,
 }: {
   id: EssayTopicId
   label: string
+  follow?: string
   children: ReactNode
 }) {
   const { active, launching, revealed, select } = useEssayReveal()
@@ -52,7 +54,7 @@ function Mark({
   const asideOpen = revealed.has(id)
 
   return (
-    <span>
+    <span className={styles.cluster} data-open={asideOpen ? "true" : "false"}>
       <button
         type="button"
         className={styles.trigger}
@@ -72,19 +74,28 @@ function Mark({
       >
         {children}
       </span>
+      {follow}
     </span>
   )
 }
 
 export function EssayHome() {
-  const { revealed, phase, active } = useEssayReveal()
-  const hasOpened = revealed.size > 0
+  const { revealed, phase, active, launching } = useEssayReveal()
+  const desktop = useDesktopStage()
+  const side = desktop === false ? "below" : "on the right"
+  const engaged = revealed.size > 0 || phase !== "idle" || Boolean(launching)
+
+  let kicker = "A short essay. Tap a word to open it."
+  if (phase === "launch") kicker = `Opening ${side}…`
+  else if (phase === "staged") kicker = `Open ${side} — the essay will catch up.`
+  else if (phase === "settled" && active) kicker = `Open ${side} — tap again to close.`
+  else if (revealed.size > 0) kicker = "The essay holds. Tap another word."
 
   return (
     <article
       className={`content-frame ${styles.essayHome}`}
       data-phase={phase}
-      data-has-open={hasOpened ? "true" : "false"}
+      data-has-open={engaged ? "true" : "false"}
     >
       <p className={styles.srIntro}>
         {site.name} is a full-stack developer and AI engineer from {site.location}.{" "}
@@ -92,48 +103,41 @@ export function EssayHome() {
         {pub.title}.
       </p>
 
-      <p className={styles.kicker}>
-        {hasOpened
-          ? active
-            ? "Open on the right — tap again to close."
-            : "The essay holds. Tap another word."
-          : "A short essay. Tap a word to open it."}
-      </p>
+      <p className={styles.kicker}>{kicker}</p>
 
       <div className={styles.body}>
         <p className={styles.essay}>
           I am{" "}
-          <Mark id="name" label={firstName}>
+          <Mark id="name" label={firstName} follow=",">
             {" "}
             Jain
-          </Mark>
-          , a full-stack developer and AI engineer from{" "}
-          <Mark id="india" label={site.location}>
+          </Mark>{" "}
+          a full-stack developer and AI engineer from{" "}
+          <Mark id="india" label={site.location} follow=".">
             , currently a final-year Computer Science student
-          </Mark>
-          . I study at{" "}
-          <Mark id="school" label={school.school}>
+          </Mark>{" "}
+          I study at{" "}
+          <Mark id="school" label={school.school} follow=".">
             {" "}
             ({school.program}, {school.start}–{school.end})
-          </Mark>
-          . I recently worked at{" "}
-          <Mark id="work" label={job.org}>
+          </Mark>{" "}
+          I recently worked at{" "}
+          <Mark id="work" label={job.org} follow=",">
             {" "}
             as {job.role}
-          </Mark>
-          , and presented{" "}
-          <Mark id="research" label="DeiT">
+          </Mark>{" "}
+          and presented{" "}
+          <Mark id="research" label="DeiT" follow=".">
             {" "}
             research at {pub.venue}
-          </Mark>
-          . Find me on{" "}
-          <Mark id="social" label="X">
+          </Mark>{" "}
+          Find me on{" "}
+          <Mark id="social" label="X" follow=".">
             {xHandle ? ` (@${xHandle}` : ""}
             {github ? " · GitHub" : ""}
             {linkedin ? " · LinkedIn" : ""}
             {xSocial ? ")" : ""}
           </Mark>
-          .
         </p>
       </div>
 

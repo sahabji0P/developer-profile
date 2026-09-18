@@ -36,6 +36,10 @@
   text-align: left;
 }
 
+.cluster[data-open="false"] {
+  white-space: nowrap;
+}
+
 .essay {
   margin: 0;
   font-family: var(--font-reading);
@@ -68,6 +72,7 @@
   font-size: 0.86em;
   letter-spacing: 0.045em;
   vertical-align: 0.04em;
+  white-space: nowrap;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition:
