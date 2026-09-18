@@ -756,7 +756,7 @@ pre code {
 
 [data-variant="essay"] .site-column {
   margin-inline: 0 auto 0 0;
-  width: min(100%, 36rem);
+  width: min(100%, 38rem);
 }
 
 [data-variant="essay"] .site-shell {
@@ -846,10 +846,11 @@ pre code {
 }
 
 [data-variant="essay"] .site-footer {
-  margin-top: clamp(4rem, 14vh, 7rem);
-  padding-top: 1.25rem;
+  margin-top: clamp(3.5rem, 12vh, 6rem);
+  padding-top: 1.1rem;
   border-top: 1px solid var(--line);
   text-align: left;
+  opacity: 0.78;
 }
 
 [data-variant="essay"] .site-footer-links {

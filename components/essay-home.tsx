@@ -5,6 +5,7 @@ import {
   useEssayReveal,
   type EssayTopicId,
 } from "@/components/essay-reveal-context"
+import { originFromElement } from "@/components/essay-motion"
 import { EssayStageCard } from "@/components/essay-stage"
 import { site } from "@/content/site"
 import styles from "./essay-home.module.css"
@@ -20,6 +21,23 @@ const xHandle = xSocial
   ? xSocial.href.replace(/^https?:\/\/(www\.)?(twitter|x)\.com\//i, "")
   : ""
 
+function markState({
+  id,
+  active,
+  launching,
+  revealed,
+}: {
+  id: EssayTopicId
+  active: EssayTopicId | null
+  launching: EssayTopicId | null
+  revealed: Set<EssayTopicId>
+}) {
+  if (launching === id) return "launching"
+  if (active === id) return "active"
+  if (revealed.has(id)) return "open"
+  return "closed"
+}
+
 function Mark({
   id,
   label,
@@ -29,24 +47,29 @@ function Mark({
   label: string
   children: ReactNode
 }) {
-  const { active, revealed, select } = useEssayReveal()
-  const isActive = active === id
-  const isRevealed = revealed.has(id)
-  const state = isActive ? "active" : isRevealed ? "open" : "closed"
+  const { active, launching, revealed, select } = useEssayReveal()
+  const triggerState = markState({ id, active, launching, revealed })
+  const asideOpen = revealed.has(id)
 
   return (
-    <span data-state={state}>
+    <span>
       <button
         type="button"
         className={styles.trigger}
-        aria-expanded={isRevealed}
+        aria-expanded={asideOpen}
         aria-controls={`essay-${id}`}
-        data-state={state}
-        onClick={() => select(id)}
+        data-state={triggerState}
+        onClick={(event) => {
+          select(id, originFromElement(event.currentTarget))
+        }}
       >
         {label}
       </button>
-      <span id={`essay-${id}`} className={styles.aside} data-state={state}>
+      <span
+        id={`essay-${id}`}
+        className={styles.aside}
+        data-state={asideOpen ? (active === id ? "active" : "open") : "closed"}
+      >
         {children}
       </span>
     </span>
@@ -54,18 +77,27 @@ function Mark({
 }
 
 export function EssayHome() {
-  const { revealed } = useEssayReveal()
+  const { revealed, phase, active } = useEssayReveal()
+  const hasOpened = revealed.size > 0
 
   return (
-    <article className={`content-frame ${styles.essayHome}`}>
+    <article
+      className={`content-frame ${styles.essayHome}`}
+      data-phase={phase}
+      data-has-open={hasOpened ? "true" : "false"}
+    >
       <p className={styles.srIntro}>
-        {site.name} is a full-stack developer and AI engineer from {site.location}.
+        {site.name} is a full-stack developer and AI engineer from {site.location}.{" "}
         {school.program} at {school.school}. Recent work at {job.org}. Presented{" "}
         {pub.title}.
       </p>
 
-      <p className={styles.counter} aria-live="polite">
-        {revealed.size}/6
+      <p className={styles.kicker}>
+        {hasOpened
+          ? active
+            ? "Open on the right — tap again to close."
+            : "The essay holds. Tap another word."
+          : "A short essay. Tap a word to open it."}
       </p>
 
       <div className={styles.body}>

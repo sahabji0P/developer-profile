@@ -44,6 +44,9 @@ const STAGE: Record<EssayTopicId, StageCopy> = {
     title: school.school,
     body: school.program,
     meta: `${school.start}–${school.end}`,
+    bullets: site.education.slice(1).map(
+      (item) => `${item.school} · ${item.program} · ${item.start}–${item.end}`,
+    ),
   },
   work: {
     kicker: "Recent work",
@@ -69,16 +72,19 @@ const STAGE: Record<EssayTopicId, StageCopy> = {
 }
 
 export function EssayStageCard({ variant }: { variant: "desktop" | "mobile" }) {
-  const { active } = useEssayReveal()
+  const { active, phase, select } = useEssayReveal()
   const pathname = usePathname() ?? "/"
-  const copy = active ? STAGE[active] : null
+  const staged = phase === "staged" || phase === "settled"
+  const copy = staged && active ? STAGE[active] : null
   const showHint = !copy && pathname === "/" && variant === "desktop"
 
   return (
     <div
       className={`${styles.frame} ${variant === "mobile" ? styles.mobile : styles.desktop}`}
       data-active={copy ? "true" : "false"}
+      data-phase={phase}
     >
+      <div className={styles.veil} />
       {copy ? (
         <article className={styles.card} key={active} aria-live="polite">
           <p className={styles.kicker}>{copy.kicker}</p>
@@ -104,9 +110,18 @@ export function EssayStageCard({ variant }: { variant: "desktop" | "mobile" }) {
               ))}
             </p>
           ) : null}
+          {active ? (
+            <button
+              type="button"
+              className={styles.dismiss}
+              onClick={() => select(active)}
+            >
+              Close
+            </button>
+          ) : null}
         </article>
       ) : showHint ? (
-        <p className={styles.hint}>Tap a word in the essay.</p>
+        <p className={styles.hint}>Tap a word. It opens here.</p>
       ) : null}
     </div>
   )

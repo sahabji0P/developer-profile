@@ -77,6 +77,9 @@
 .scenes {
   position: absolute;
   inset: 0;
+  transition:
+    opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .scene {
@@ -129,6 +132,20 @@
 
 .diagramEnergy {
   animation: rpEnergyDrift 22s ease-in-out infinite alternate;
+}
+
+.root:has([data-active="true"]) .atmosphere {
+  opacity: 0.72;
+}
+
+.root:has([data-active="true"]) .scenes {
+  opacity: 0.55;
+  filter: blur(1.5px);
+}
+
+.root:has([data-active="true"]) .volumePrimary,
+.root:has([data-active="true"]) .volumeSecondary {
+  opacity: 0.28;
 }
 
 .grain {
@@ -302,5 +319,10 @@
   .scene1,
   .scene2 {
     opacity: 0;
+  }
+
+  .root:has([data-active="true"]) .scenes {
+    filter: none;
+    opacity: 1;
   }
 }

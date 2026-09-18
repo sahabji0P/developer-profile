@@ -1,6 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
+import { EssayFly } from "@/components/essay-fly";
 import { EssayRevealProvider } from "@/components/essay-reveal-context";
 import { EssayStageCard } from "@/components/essay-stage";
 import { Footer } from "@/components/footer";
@@ -26,6 +27,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
         ) : (
           <RightPanel />
         )}
+        {variant === "essay" ? <EssayFly /> : null}
       </div>
     </EssayRevealProvider>
   );
