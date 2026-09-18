@@ -2,9 +2,10 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
-  useEffect,
-  useState,
+  useMemo,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -17,7 +18,39 @@ function isValidVariant(value: string | null): value is DesignVariant {
 }
 
 function applyVariantToDocument(variant: DesignVariant) {
+  if (typeof document === "undefined") return;
   document.documentElement.dataset.variant = variant;
+}
+
+function readStoredVariant(): DesignVariant {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return isValidVariant(stored) ? stored : "studio";
+  } catch {
+    return "studio";
+  }
+}
+
+function subscribe(onStoreChange: () => void) {
+  const handler = (event: StorageEvent) => {
+    if (event.key === STORAGE_KEY || event.key === null) onStoreChange();
+  };
+  window.addEventListener("storage", handler);
+  window.addEventListener("design-variant-change", onStoreChange);
+  return () => {
+    window.removeEventListener("storage", handler);
+    window.removeEventListener("design-variant-change", onStoreChange);
+  };
+}
+
+function getSnapshot(): DesignVariant {
+  const variant = readStoredVariant();
+  applyVariantToDocument(variant);
+  return variant;
+}
+
+function getServerSnapshot(): DesignVariant {
+  return "studio";
 }
 
 type DesignVariantContextValue = {
@@ -30,25 +63,34 @@ const DesignVariantContext =
   createContext<DesignVariantContextValue | null>(null);
 
 export function DesignVariantProvider({ children }: { children: ReactNode }) {
-  const [variant, setVariantState] = useState<DesignVariant>("studio");
-  const [ready, setReady] = useState(false);
+  const variant = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot,
+  );
 
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    const initial = isValidVariant(stored) ? stored : "studio";
-    setVariantState(initial);
-    applyVariantToDocument(initial);
-    setReady(true);
+  const setVariant = useCallback((next: DesignVariant) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, next);
+    } catch {
+      /* ignore quota / private mode */
+    }
+    applyVariantToDocument(next);
+    window.dispatchEvent(new Event("design-variant-change"));
   }, []);
 
-  const setVariant = (next: DesignVariant) => {
-    setVariantState(next);
-    localStorage.setItem(STORAGE_KEY, next);
-    applyVariantToDocument(next);
-  };
+  const value = useMemo(
+    () => ({
+      variant,
+      setVariant,
+      // Client snapshot is always available after hydration via useSyncExternalStore.
+      ready: true,
+    }),
+    [variant, setVariant],
+  );
 
   return (
-    <DesignVariantContext.Provider value={{ variant, setVariant, ready }}>
+    <DesignVariantContext.Provider value={value}>
       {children}
     </DesignVariantContext.Provider>
   );

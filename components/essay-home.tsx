@@ -56,8 +56,9 @@ export function EssayHome() {
     <article className={`content-frame ${styles.essayHome}`}>
       <section className={styles.reveal} aria-label="Introduction">
         <p className={styles.srIntro}>
-          {site.name} is a full-stack developer and AI engineer, currently at{" "}
-          {job.org}, studying at {school.school} in {site.location}.
+          {site.name} is a full-stack developer and AI engineer. Recent work as{" "}
+          {job.role} at {job.org}. Studying {school.program} at {school.school}{" "}
+          in {site.location}.
           {xSocial ? ` Find them on X at ${xSocial.href}.` : null}
         </p>
 
@@ -72,7 +73,7 @@ export function EssayHome() {
             I&apos;m <Pill>{firstName}</Pill>.
           </p>
           <p className={styles.line}>
-            Full-stack developer and AI engineer at{" "}
+            Full-stack developer and AI engineer — recently at{" "}
             <Pill href="/work">{job.org}</Pill>.
           </p>
           <p className={styles.line}>
