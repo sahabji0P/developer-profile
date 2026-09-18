@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { DesignVariantToggle } from "@/components/design-variant-toggle";
 
 /**
  * Deviation from live leerob.com (measured 2026-09-12): that site has no
@@ -58,6 +59,7 @@ export function Nav() {
           </Link>
         );
       })}
+      <DesignVariantToggle />
     </nav>
   );
 }
