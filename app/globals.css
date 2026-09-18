@@ -730,7 +730,7 @@ pre code {
   --accent-soft: color-mix(in oklab, #fafafa 10%, transparent);
   --line: color-mix(in oklab, #fafafa 10%, transparent);
   --line-strong: color-mix(in oklab, #fafafa 16%, transparent);
-  --measure: 46rem;
+  --measure: 36rem;
   --font-reading: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
     serif;
   --text-body: clamp(1.4rem, 2.4vw, 2rem);
@@ -755,16 +755,26 @@ pre code {
 }
 
 [data-variant="essay"] .site-column {
-  margin-inline: auto;
-  width: min(100%, 46rem);
+  margin-inline: 0 auto 0 0;
+  width: min(100%, 36rem);
 }
 
 [data-variant="essay"] .site-shell {
   padding-top: clamp(2.5rem, 6vh, 4rem);
 }
 
-[data-variant="essay"] .right-panel {
-  display: none !important;
+@media (min-width: 1100px) {
+  [data-variant="essay"] .right-panel {
+    display: block;
+    pointer-events: none;
+    --accent: #2dd4bf;
+    --accent-dim: #14b8a6;
+  }
+
+  [data-variant="essay"] .right-panel a,
+  [data-variant="essay"] .right-panel button {
+    pointer-events: auto;
+  }
 }
 
 [data-variant="essay"] .site-nav {
@@ -836,10 +846,10 @@ pre code {
 }
 
 [data-variant="essay"] .site-footer {
-  margin-top: clamp(3rem, 10vh, 5rem);
+  margin-top: clamp(4rem, 14vh, 7rem);
   padding-top: 1.25rem;
   border-top: 1px solid var(--line);
-  text-align: center;
+  text-align: left;
 }
 
 [data-variant="essay"] .site-footer-links {

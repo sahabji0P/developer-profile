@@ -283,9 +283,9 @@ function SceneWireCube() {
   )
 }
 
-export function RightPanel() {
+export function RightPanel({ children }: { children?: ReactNode }) {
   return (
-    <aside className="right-panel" aria-hidden="true">
+    <aside className="right-panel" aria-hidden={children ? undefined : true}>
       <div className={styles.root}>
         <div className={styles.atmosphere} />
         <div className={styles.volumePrimary} />
@@ -303,6 +303,7 @@ export function RightPanel() {
         </div>
         <div className={styles.vignette} />
         <div className={styles.grain} />
+        {children}
       </div>
     </aside>
   )

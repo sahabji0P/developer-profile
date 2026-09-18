@@ -1,8 +1,7 @@
 .essayHome {
-  --content-width: min(100%, 46rem);
-  width: var(--content-width);
-  margin-inline: auto;
-  padding-block: clamp(4vh, 10vh, 7rem) 2rem;
+  width: min(100%, 36rem);
+  margin-inline: 0;
+  padding-block: 0.25rem 2rem;
   position: relative;
 }
 
@@ -19,33 +18,28 @@
 }
 
 .counter {
-  position: fixed;
-  top: var(--page-pad);
-  right: var(--page-pad);
-  z-index: 20;
-  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
-  font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  margin: 0 0 1.75rem;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--text-muted);
-  pointer-events: none;
 }
 
 .body {
-  text-align: center;
+  text-align: left;
 }
 
-.block {
-  --delay: 0;
-  margin: 0 0 1.15em;
+.essay {
+  margin: 0;
   font-family: var(--font-reading);
-  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
-  font-weight: 450;
-  line-height: 1.55;
-  letter-spacing: -0.018em;
+  font-size: clamp(1.35rem, 2.3vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.62;
+  letter-spacing: -0.02em;
   color: var(--text-heading);
-  animation: essay-show 0.6s ease both;
-  animation-delay: calc(0.16s * var(--delay));
+  animation: essay-enter 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .trigger {
@@ -57,30 +51,39 @@
   font-weight: 500;
   display: inline-block;
   position: relative;
-  border: 1px solid color-mix(in oklab, #fafafa 78%, transparent);
+  border: 1px solid color-mix(in oklab, #fafafa 72%, transparent);
   border-radius: 9999px;
-  padding: 0.05em 0.42em 0.12em;
-  line-height: 1.15;
+  padding: 0.02em 0.42em 0.1em;
+  line-height: 1.2;
   text-transform: uppercase;
-  font-size: 0.72em;
+  font-size: 0.68em;
   letter-spacing: 0.12em;
-  vertical-align: 0.06em;
+  vertical-align: 0.08em;
   cursor: help;
   -webkit-tap-highlight-color: transparent;
-  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
 }
 
 .trigger:hover,
 .trigger:focus-visible {
-  background: var(--text-heading);
-  color: #0a0a0a;
+  background: color-mix(in oklab, #fafafa 12%, transparent);
   border-color: var(--text-heading);
 }
 
-.trigger[data-state="open"] {
+.trigger[data-state="active"] {
   background: var(--text-heading);
   color: #0a0a0a;
   border-color: var(--text-heading);
+  box-shadow: 0 0 0 4px color-mix(in oklab, #fafafa 10%, transparent);
+  cursor: pointer;
+}
+
+.trigger[data-state="open"] {
+  border-color: color-mix(in oklab, #fafafa 42%, transparent);
   cursor: pointer;
 }
 
@@ -88,49 +91,37 @@
   box-shadow: 0 0 0 1px #000, 0 0 0 3px var(--text-heading);
 }
 
-.content {
+.aside {
   display: inline;
 }
 
-.content[data-state="closed"] {
-  filter: blur(6px);
-  opacity: 0.8;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
+.aside[data-state="closed"] {
+  display: none;
 }
 
-.content[data-state="open"] {
-  animation: essay-reveal 0.6s ease both;
+.aside[data-state="open"],
+.aside[data-state="active"] {
+  display: inline;
+  max-width: none;
+  overflow: visible;
+  white-space: normal;
+  animation: essay-unblur 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.link {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  text-decoration-color: color-mix(in oklab, #fafafa 45%, transparent);
-}
-
-.link:hover {
-  color: var(--text-heading);
-  text-decoration-color: var(--text-heading);
-}
-
-@keyframes essay-show {
+@keyframes essay-enter {
   from {
     opacity: 0;
-    filter: blur(4px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
+    transform: none;
   }
 }
 
-@keyframes essay-reveal {
+@keyframes essay-unblur {
   from {
-    opacity: 0.55;
+    opacity: 0.65;
     filter: blur(6px);
   }
   to {
@@ -140,25 +131,20 @@
 }
 
 @media (max-width: 639px) {
-  .counter {
-    top: 1.15rem;
-    right: 1.15rem;
-  }
-
-  .block {
-    font-size: clamp(1.2rem, 5.4vw, 1.55rem);
-    line-height: 1.6;
+  .essay {
+    font-size: clamp(1.2rem, 5.2vw, 1.5rem);
+    line-height: 1.65;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .block,
-  .content[data-state="open"] {
+  .essay,
+  .aside[data-state="open"],
+  .aside[data-state="active"] {
     animation: none !important;
   }
 
-  .content[data-state="closed"] {
-    filter: none;
-    opacity: 0.35;
+  .aside[data-state="closed"] {
+    display: none;
   }
 }
