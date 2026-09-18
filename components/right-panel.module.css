@@ -1,0 +1,306 @@
+.root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: -16%;
+  background:
+    radial-gradient(
+      ellipse 58% 50% at 62% 22%,
+      color-mix(in oklab, var(--accent) 28%, transparent),
+      transparent 72%
+    ),
+    radial-gradient(
+      ellipse 42% 38% at 86% 68%,
+      color-mix(in oklab, #67e8f9 18%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 34% 28% at 38% 82%,
+      color-mix(in oklab, var(--accent-dim) 14%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(
+      168deg,
+      color-mix(in oklab, var(--bg-elevated) 42%, transparent) 0%,
+      transparent 58%
+    );
+  animation: rpAtmosphere 30s var(--ease-soft, ease) infinite alternate;
+}
+
+.volumePrimary,
+.volumeSecondary {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(64px);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.volumePrimary {
+  width: min(52vw, 520px);
+  height: min(52vw, 520px);
+  top: 8%;
+  right: -6%;
+  background: radial-gradient(
+    circle at 42% 40%,
+    color-mix(in oklab, var(--accent) 52%, transparent),
+    color-mix(in oklab, var(--accent) 10%, transparent) 62%,
+    transparent 100%
+  );
+  opacity: 0.55;
+  animation:
+    rpDriftPrimary 20s var(--ease-soft, ease) infinite alternate,
+    rpOrbPulse 16s ease-in-out infinite alternate;
+}
+
+.volumeSecondary {
+  width: min(34vw, 340px);
+  height: min(34vw, 340px);
+  bottom: 10%;
+  right: 22%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in oklab, #67e8f9 38%, transparent),
+    color-mix(in oklab, #67e8f9 6%, transparent) 70%,
+    transparent 100%
+  );
+  opacity: 0.42;
+  animation:
+    rpDriftSecondary 24s var(--ease-soft, ease) infinite alternate,
+    rpOrbPulse 19s ease-in-out infinite alternate-reverse;
+}
+
+.scenes {
+  position: absolute;
+  inset: 0;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  animation-duration: 36s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.scene0 {
+  animation-name: rpScene0;
+}
+
+.scene1 {
+  animation-name: rpScene1;
+}
+
+.scene2 {
+  animation-name: rpScene2;
+}
+
+.svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+}
+
+.stippleOrb {
+  animation: rpStippleDrift 26s ease-in-out infinite alternate;
+  transform-origin: 50% 50%;
+}
+
+.stippleOrbSmall {
+  animation: rpStippleDriftSmall 18s ease-in-out infinite alternate-reverse;
+  transform-origin: 50% 50%;
+}
+
+.constellation {
+  animation: rpConstellationPulse 14s ease-in-out infinite alternate;
+}
+
+.wireCube {
+  animation: rpCubeRotate 32s linear infinite;
+  transform-origin: 520px 620px;
+}
+
+.diagramEnergy {
+  animation: rpEnergyDrift 22s ease-in-out infinite alternate;
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+  pointer-events: none;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 70% at 72% 50%,
+    transparent 30%,
+    color-mix(in oklab, var(--bg) 35%, transparent) 100%
+  );
+  pointer-events: none;
+}
+
+@keyframes rpAtmosphere {
+  0% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.05) translate3d(-1.5%, 1%, 0);
+    opacity: 0.9;
+  }
+}
+
+@keyframes rpDriftPrimary {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(-5%, 6%, 0) scale(1.06);
+  }
+}
+
+@keyframes rpDriftSecondary {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(7%, -4%, 0) scale(0.96);
+  }
+}
+
+@keyframes rpOrbPulse {
+  0% {
+    opacity: 0.38;
+  }
+  100% {
+    opacity: 0.62;
+  }
+}
+
+@keyframes rpScene0 {
+  0%,
+  28% {
+    opacity: 1;
+  }
+  33%,
+  94% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes rpScene1 {
+  0%,
+  28% {
+    opacity: 0;
+  }
+  33%,
+  61% {
+    opacity: 1;
+  }
+  66%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rpScene2 {
+  0%,
+  61% {
+    opacity: 0;
+  }
+  66%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes rpStippleDrift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-1.2%, 1.4%, 0) rotate(2.5deg);
+  }
+}
+
+@keyframes rpStippleDriftSmall {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(2%, -1%, 0) rotate(-3deg);
+  }
+}
+
+@keyframes rpConstellationPulse {
+  0% {
+    opacity: 0.45;
+  }
+  100% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes rpCubeRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rpEnergyDrift {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-1%, 1.2%, 0);
+    opacity: 0.78;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere,
+  .volumePrimary,
+  .volumeSecondary,
+  .scene,
+  .stippleOrb,
+  .stippleOrbSmall,
+  .constellation,
+  .wireCube,
+  .diagramEnergy {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1;
+  }
+
+  .scene0 {
+    opacity: 1;
+  }
+
+  .scene1,
+  .scene2 {
+    opacity: 0;
+  }
+}
