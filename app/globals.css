@@ -566,244 +566,6 @@ pre code {
     );
   }
 
-  .right-panel-atmosphere {
-    position: absolute;
-    inset: -14%;
-    background:
-      radial-gradient(
-        ellipse 62% 52% at 58% 24%,
-        color-mix(in oklab, var(--accent) 30%, transparent),
-        transparent 70%
-      ),
-      radial-gradient(
-        ellipse 44% 40% at 88% 72%,
-        color-mix(in oklab, #67e8f9 20%, transparent),
-        transparent 68%
-      ),
-      radial-gradient(
-        ellipse 36% 30% at 40% 78%,
-        color-mix(in oklab, var(--accent-dim) 16%, transparent),
-        transparent 70%
-      ),
-      linear-gradient(
-        165deg,
-        color-mix(in oklab, var(--bg-elevated) 48%, transparent) 0%,
-        transparent 55%
-      );
-    animation: rp-atmosphere 28s var(--ease-soft) infinite alternate;
-  }
-
-  .right-panel-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(56px);
-    will-change: transform, opacity;
-  }
-
-  .right-panel-orb-a {
-    width: min(56vw, 560px);
-    height: min(56vw, 560px);
-    top: -2%;
-    right: -4%;
-    background: radial-gradient(
-      circle at 38% 38%,
-      color-mix(in oklab, var(--accent) 68%, transparent),
-      color-mix(in oklab, var(--accent) 12%, transparent) 58%,
-      transparent 100%
-    );
-    opacity: 0.72;
-    animation: rp-drift-a 18s var(--ease-soft) infinite alternate,
-      rp-orb-pulse 14s ease-in-out infinite alternate;
-  }
-
-  .right-panel-orb-b {
-    width: min(46vw, 460px);
-    height: min(46vw, 460px);
-    bottom: 4%;
-    right: 14%;
-    background: radial-gradient(
-      circle at 50% 50%,
-      color-mix(in oklab, #67e8f9 46%, transparent),
-      color-mix(in oklab, #67e8f9 8%, transparent) 68%,
-      transparent 100%
-    );
-    opacity: 0.58;
-    animation: rp-drift-b 22s var(--ease-soft) infinite alternate,
-      rp-orb-pulse 17s ease-in-out infinite alternate-reverse;
-  }
-
-  .right-panel-orb-c {
-    width: min(36vw, 360px);
-    height: min(36vw, 360px);
-    top: 36%;
-    right: 32%;
-    background: radial-gradient(
-      circle at 50% 50%,
-      color-mix(in oklab, var(--accent) 28%, transparent),
-      transparent 72%
-    );
-    opacity: 0.5;
-    animation: rp-drift-c 16s var(--ease-soft) infinite alternate,
-      rp-orb-pulse 20s ease-in-out infinite alternate;
-  }
-
-  .right-panel-beam {
-    position: absolute;
-    top: -20%;
-    right: 28%;
-    width: 2.5px;
-    height: 140%;
-    background: linear-gradient(
-      180deg,
-      transparent 0%,
-      color-mix(in oklab, var(--accent) 48%, transparent) 35%,
-      color-mix(in oklab, #67e8f9 38%, transparent) 55%,
-      transparent 100%
-    );
-    opacity: 0.5;
-    filter: blur(1.5px);
-    transform: rotate(18deg);
-    animation: rp-beam 12s ease-in-out infinite alternate;
-  }
-
-  .right-panel-mesh {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.72;
-  }
-
-  .right-panel-lines {
-    animation: rp-mesh-drift 42s linear infinite;
-    transform-origin: 50% 50%;
-  }
-
-  .right-panel-nodes {
-    animation: rp-nodes-pulse 11s ease-in-out infinite alternate;
-  }
-
-  .right-panel-ring {
-    position: absolute;
-    top: 18%;
-    right: 12%;
-    width: min(38vw, 380px);
-    height: min(38vw, 380px);
-    border-radius: 50%;
-    border: 1px solid color-mix(in oklab, var(--accent) 34%, transparent);
-    opacity: 0.62;
-    animation: rp-ring 24s linear infinite;
-  }
-
-  .right-panel-ring::after {
-    content: "";
-    position: absolute;
-    inset: 12%;
-    border-radius: 50%;
-    border: 1px solid color-mix(in oklab, var(--accent) 12%, transparent);
-  }
-
-  .right-panel-grain {
-    position: absolute;
-    inset: 0;
-    opacity: 0.04;
-    mix-blend-mode: soft-light;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
-    background-size: 160px 160px;
-  }
-
-  @keyframes rp-atmosphere {
-    0% {
-      transform: scale(1) translate3d(0, 0, 0);
-      opacity: 1;
-    }
-    100% {
-      transform: scale(1.06) translate3d(-2%, 1.5%, 0);
-      opacity: 0.92;
-    }
-  }
-
-  @keyframes rp-drift-a {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    100% {
-      transform: translate3d(-6%, 8%, 0) scale(1.08);
-    }
-  }
-
-  @keyframes rp-drift-b {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    100% {
-      transform: translate3d(8%, -5%, 0) scale(0.94);
-    }
-  }
-
-  @keyframes rp-drift-c {
-    0% {
-      transform: translate3d(0, 0, 0) scale(1);
-    }
-    100% {
-      transform: translate3d(-9%, -6%, 0) scale(1.05);
-    }
-  }
-
-  @keyframes rp-orb-pulse {
-    0% {
-      opacity: 0.42;
-    }
-    100% {
-      opacity: 0.78;
-    }
-  }
-
-  @keyframes rp-beam {
-    0% {
-      opacity: 0.28;
-      transform: rotate(18deg) translateX(0);
-    }
-    100% {
-      opacity: 0.58;
-      transform: rotate(18deg) translateX(18px);
-    }
-  }
-
-  @keyframes rp-ring {
-    0% {
-      transform: rotate(0deg) scale(1);
-      opacity: 0.35;
-    }
-    50% {
-      opacity: 0.55;
-    }
-    100% {
-      transform: rotate(360deg) scale(1.04);
-      opacity: 0.35;
-    }
-  }
-
-  @keyframes rp-mesh-drift {
-    0% {
-      transform: translate3d(0, 0, 0);
-    }
-    50% {
-      transform: translate3d(-1.4%, 1%, 0);
-    }
-    100% {
-      transform: translate3d(0, 0, 0);
-    }
-  }
-
-  @keyframes rp-nodes-pulse {
-    0% {
-      opacity: 0.35;
-    }
-    100% {
-      opacity: 0.95;
-    }
-  }
 }
 
 @media (max-width: 1099px) {
@@ -948,13 +710,258 @@ pre code {
     transform: none !important;
   }
 
-  .right-panel-orb,
-  .right-panel-lines,
-  .right-panel-nodes,
-  .right-panel-atmosphere,
-  .right-panel-beam,
-  .right-panel-ring {
+  .right-panel * {
     animation: none !important;
     transform: none !important;
+  }
+}
+
+/* ——— Essay design variant (ped.ro-inspired, text-forward) ——— */
+
+[data-variant="essay"] {
+  --bg: #000;
+  --bg-elevated: #0a0a0a;
+  --bg-soft: #111;
+  --text-heading: #f5f5f5;
+  --text-copy: #d4d4d8;
+  --text-muted: #a1a1aa;
+  --accent: #fafafa;
+  --accent-dim: #e4e4e7;
+  --accent-soft: color-mix(in oklab, #fafafa 10%, transparent);
+  --line: color-mix(in oklab, #fafafa 10%, transparent);
+  --line-strong: color-mix(in oklab, #fafafa 16%, transparent);
+  --measure: 42rem;
+  --font-reading: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
+    serif;
+  --text-body: clamp(1.4rem, 2.4vw, 2rem);
+  --section-gap: 4rem;
+}
+
+[data-variant="essay"] body,
+[data-variant="essay"] .site-shell {
+  background: #000;
+}
+
+[data-variant="essay"] body {
+  background: #000;
+  font-family: var(--font-reading);
+  font-size: var(--text-body);
+  line-height: 1.75;
+  letter-spacing: -0.018em;
+}
+
+[data-variant="essay"] body::after {
+  display: none;
+}
+
+[data-variant="essay"] .site-column {
+  margin-inline: auto;
+  width: min(100%, 42rem);
+}
+
+[data-variant="essay"] .site-shell {
+  padding-top: clamp(2.5rem, 6vh, 4rem);
+}
+
+[data-variant="essay"] .right-panel {
+  display: none !important;
+}
+
+[data-variant="essay"] .site-nav {
+  position: static;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 0.35rem 1.35rem;
+  margin: 0 0 2.5rem;
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+[data-variant="essay"] .site-nav a {
+  justify-content: flex-start;
+  min-height: auto;
+  padding: 0;
+  color: var(--text-muted);
+}
+
+[data-variant="essay"] .site-nav a::after {
+  left: 0;
+  right: auto;
+  width: 100%;
+  bottom: -0.15rem;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: var(--text-heading);
+}
+
+[data-variant="essay"] .site-nav a:hover {
+  color: var(--text-heading);
+}
+
+[data-variant="essay"] .site-nav a:hover::after,
+[data-variant="essay"] .site-nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+[data-variant="essay"] .site-nav a[aria-current="page"] {
+  color: var(--text-heading);
+}
+
+@media (min-width: 640px) {
+  [data-variant="essay"] .site-nav {
+    position: static;
+    top: auto;
+    right: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 1.35rem;
+    margin: 0 0 2.5rem;
+  }
+
+  [data-variant="essay"] .site-nav a::after {
+    left: 0;
+    right: auto;
+    width: 100%;
+    bottom: -0.15rem;
+  }
+}
+
+[data-variant="essay"] .site-footer {
+  margin-top: clamp(3rem, 10vh, 5rem);
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+[data-variant="essay"] .site-footer-links {
+  justify-content: center;
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+[data-variant="essay"] .site-footer-links a:hover {
+  color: var(--text-heading);
+}
+
+/* Variant toggle — subtle on both layouts */
+
+.variant-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-inline-start: 0.35rem;
+  padding: 0.12rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--bg-elevated) 72%, transparent);
+}
+
+.variant-toggle-option {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  font-family: inherit;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: transparent;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease-soft),
+    background var(--duration) var(--ease-soft);
+}
+
+.variant-toggle-option:hover:not(:disabled) {
+  color: var(--text-copy);
+}
+
+.variant-toggle-option[aria-pressed="true"] {
+  color: var(--text-heading);
+  background: color-mix(in oklab, var(--text-heading) 8%, transparent);
+}
+
+.variant-toggle-option:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+[data-variant="essay"] .variant-toggle {
+  margin-inline-start: 0;
+  border-color: color-mix(in oklab, #fafafa 14%, transparent);
+  background: transparent;
+}
+
+[data-variant="essay"] .variant-toggle-option {
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+[data-variant="essay"] .variant-toggle-option[aria-pressed="true"] {
+  background: color-mix(in oklab, #fafafa 10%, transparent);
+}
+
+[data-variant="studio"] .site-nav .variant-toggle {
+  margin-top: 0.35rem;
+}
+
+@media (min-width: 640px) {
+  [data-variant="studio"] .site-nav .variant-toggle {
+    margin-top: 0.65rem;
+    margin-inline-start: 0;
+  }
+}
+
+/* Essay reveal pills */
+
+.essay-pill {
+  display: inline-block;
+  margin-inline: 0.08em;
+  padding: 0.12em 0.62em 0.18em;
+  border: 1px solid color-mix(in oklab, #fafafa 72%, transparent);
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-size: 0.58em;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-heading);
+  vertical-align: baseline;
+  white-space: nowrap;
+  transition: border-color var(--duration) var(--ease-soft),
+    background var(--duration) var(--ease-soft),
+    color var(--duration) var(--ease-soft);
+}
+
+a.essay-pill:hover {
+  border-color: var(--text-heading);
+  background: color-mix(in oklab, #fafafa 6%, transparent);
+  color: var(--text-heading);
+  text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-variant="essay"] .essay-reveal-underlayer,
+  [data-variant="essay"] [class*="underlayer"] {
+    filter: none;
+    opacity: 0.25;
   }
 }
