@@ -730,7 +730,7 @@ pre code {
   --accent-soft: color-mix(in oklab, #fafafa 10%, transparent);
   --line: color-mix(in oklab, #fafafa 10%, transparent);
   --line-strong: color-mix(in oklab, #fafafa 16%, transparent);
-  --measure: 42rem;
+  --measure: 46rem;
   --font-reading: var(--font-newsreader), ui-serif, Georgia, "Times New Roman",
     serif;
   --text-body: clamp(1.4rem, 2.4vw, 2rem);
@@ -756,7 +756,7 @@ pre code {
 
 [data-variant="essay"] .site-column {
   margin-inline: auto;
-  width: min(100%, 42rem);
+  width: min(100%, 46rem);
 }
 
 [data-variant="essay"] .site-shell {

@@ -1,13 +1,9 @@
 .essayHome {
-  --content-width: min(100%, 42rem);
+  --content-width: min(100%, 46rem);
   width: var(--content-width);
   margin-inline: auto;
-  padding-block: clamp(2.5rem, 8vh, 5rem);
-}
-
-.reveal {
+  padding-block: clamp(4vh, 10vh, 7rem) 2rem;
   position: relative;
-  text-align: center;
 }
 
 .srIntro {
@@ -22,43 +18,147 @@
   border: 0;
 }
 
-.underlayer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  padding-inline: 0.5rem;
-  font-family: var(--font-reading);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
+.counter {
+  position: fixed;
+  top: var(--page-pad);
+  right: var(--page-pad);
+  z-index: 20;
+  font-family: var(--font-newsreader), ui-serif, Georgia, serif;
+  font-size: 0.875rem;
   font-weight: 400;
-  line-height: 1.75;
-  letter-spacing: -0.018em;
-  color: color-mix(in oklab, var(--text-copy) 55%, transparent);
-  filter: blur(6px);
-  opacity: 0.55;
-  user-select: none;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
   pointer-events: none;
 }
 
-.underlayer p {
-  margin: 0 0 1.25rem;
+.body {
+  text-align: center;
 }
 
-.lines {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.85rem, 2.5vh, 1.35rem);
-  margin: 0;
-  padding: clamp(1rem, 3vh, 2rem) 0;
-}
-
-.line {
-  margin: 0;
+.block {
+  --delay: 0;
+  margin: 0 0 1.15em;
   font-family: var(--font-reading);
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  font-weight: 400;
-  line-height: 1.75;
+  font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+  font-weight: 450;
+  line-height: 1.55;
   letter-spacing: -0.018em;
   color: var(--text-heading);
+  animation: essay-show 0.6s ease both;
+  animation-delay: calc(0.16s * var(--delay));
+}
+
+.trigger {
+  appearance: none;
+  background: none;
+  color: inherit;
+  outline: none;
+  font-family: var(--font-ui);
+  font-weight: 500;
+  display: inline-block;
+  position: relative;
+  border: 1px solid color-mix(in oklab, #fafafa 78%, transparent);
+  border-radius: 9999px;
+  padding: 0.05em 0.42em 0.12em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  font-size: 0.72em;
+  letter-spacing: 0.12em;
+  vertical-align: 0.06em;
+  cursor: help;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
+.trigger:hover,
+.trigger:focus-visible {
+  background: var(--text-heading);
+  color: #0a0a0a;
+  border-color: var(--text-heading);
+}
+
+.trigger[data-state="open"] {
+  background: var(--text-heading);
+  color: #0a0a0a;
+  border-color: var(--text-heading);
+  cursor: pointer;
+}
+
+.trigger:focus-visible {
+  box-shadow: 0 0 0 1px #000, 0 0 0 3px var(--text-heading);
+}
+
+.content {
+  display: inline;
+}
+
+.content[data-state="closed"] {
+  filter: blur(6px);
+  opacity: 0.8;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+
+.content[data-state="open"] {
+  animation: essay-reveal 0.6s ease both;
+}
+
+.link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  text-decoration-color: color-mix(in oklab, #fafafa 45%, transparent);
+}
+
+.link:hover {
+  color: var(--text-heading);
+  text-decoration-color: var(--text-heading);
+}
+
+@keyframes essay-show {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes essay-reveal {
+  from {
+    opacity: 0.55;
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 639px) {
+  .counter {
+    top: 1.15rem;
+    right: 1.15rem;
+  }
+
+  .block {
+    font-size: clamp(1.2rem, 5.4vw, 1.55rem);
+    line-height: 1.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .block,
+  .content[data-state="open"] {
+    animation: none !important;
+  }
+
+  .content[data-state="closed"] {
+    filter: none;
+    opacity: 0.35;
+  }
 }
