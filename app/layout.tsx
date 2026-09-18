@@ -41,6 +41,7 @@ export default function RootLayout({
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} ${newsreader.variable}`}
       style={{ colorScheme: "dark" }}
+      suppressHydrationWarning
     >
       <head>
         <Script
