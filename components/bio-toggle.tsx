@@ -44,7 +44,7 @@ export function BioToggle() {
         </div>
       </div>
 
-      <div id="bio-content">
+      <div id="bio-content" className={styles.content} key={mode}>
         {mode === "detailed" ? (
           detailedParagraphs.map((paragraph) => (
             <p className="content-paragraph" key={paragraph}>

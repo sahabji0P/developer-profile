@@ -1,29 +1,31 @@
 .identity :global(h1.site-title) {
-  margin-bottom: 0.25em;
+  margin-bottom: 0.22em;
 }
 
 .role {
   margin: 0;
+  max-width: 32em;
   font-family: var(--font-ui);
   font-size: var(--text-ui);
-  font-weight: 450;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: -0.012em;
   color: var(--text-muted);
 }
 
 .moreRow {
-  margin: 0.85rem 0 0;
+  margin: 1rem 0 0;
   font-family: var(--font-ui);
-  font-size: var(--text-ui);
-  font-weight: 450;
+  font-size: var(--text-meta);
+  font-weight: 500;
   line-height: 1.4;
+  letter-spacing: 0.01em;
 }
 
 .moreRow a {
   color: var(--text-muted);
   text-decoration: none;
-  transition: color 200ms ease;
+  transition: color var(--duration) var(--ease-soft);
 }
 
 .moreRow a:hover {

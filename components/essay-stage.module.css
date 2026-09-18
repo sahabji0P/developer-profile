@@ -1,0 +1,241 @@
+.frame {
+  pointer-events: none;
+}
+
+.frame[hidden] {
+  display: none !important;
+}
+
+.desktop {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(2rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+  z-index: 3;
+}
+
+.mobile {
+  display: block;
+  margin-top: 2.4rem;
+  min-height: 0;
+}
+
+.veil {
+  position: absolute;
+  inset: 8% 6%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse 55% 48% at 50% 46%,
+    color-mix(in oklab, #000 78%, transparent) 0%,
+    color-mix(in oklab, #000 28%, transparent) 55%,
+    transparent 78%
+  );
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desktop .veil {
+  display: block;
+}
+
+.mobile .veil {
+  display: none;
+}
+
+.frame[data-active="true"] .veil {
+  opacity: 1;
+}
+
+.card {
+  position: relative;
+  pointer-events: auto;
+  width: min(100%, 28rem);
+  padding: 1.7rem 1.8rem 1.55rem;
+  border: 1px solid color-mix(in oklab, #fafafa 12%, transparent);
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, #141416 82%, transparent),
+      color-mix(in oklab, #08080a 90%, transparent)
+    );
+  box-shadow:
+    0 28px 90px color-mix(in oklab, #000 58%, transparent),
+    inset 0 1px 0 color-mix(in oklab, #fafafa 10%, transparent);
+  backdrop-filter: blur(22px);
+  overflow: hidden;
+  animation: stage-land 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 36%,
+    color-mix(in oklab, #fafafa 14%, transparent) 50%,
+    transparent 64%
+  );
+  transform: translateX(-40%);
+  animation: stage-sheen 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.kicker {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-reading);
+  font-size: clamp(1.4rem, 2.1vw, 1.95rem);
+  font-weight: 500;
+  letter-spacing: -0.032em;
+  line-height: 1.18;
+  color: var(--text-heading);
+}
+
+.meta {
+  margin: 0.45rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  letter-spacing: 0.01em;
+  color: var(--text-muted);
+}
+
+.body {
+  margin: 0.9rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  line-height: 1.62;
+  letter-spacing: -0.011em;
+  color: var(--text-copy);
+}
+
+.list {
+  margin: 0.95rem 0 0;
+  padding: 0 0 0 1.1rem;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-copy);
+}
+
+.list li + li {
+  margin-top: 0.38rem;
+}
+
+.links {
+  margin: 1.05rem 0 0;
+  font-family: var(--font-ui);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+.links a {
+  color: var(--text-heading);
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+  text-decoration-color: color-mix(in oklab, #fafafa 35%, transparent);
+}
+
+.dismiss {
+  appearance: none;
+  margin: 1.15rem 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.dismiss:hover,
+.dismiss:focus-visible {
+  color: var(--text-heading);
+}
+
+.hint {
+  display: block;
+  pointer-events: none;
+  margin: 0;
+  font-family: var(--font-reading);
+  font-style: italic;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
+  color: color-mix(in oklab, var(--text-muted) 78%, transparent);
+  animation: hint-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 1100px) {
+  .desktop {
+    display: flex;
+  }
+
+  .mobile {
+    display: none;
+  }
+}
+
+@keyframes stage-land {
+  from {
+    opacity: 0;
+    transform: translate3d(-8%, 14px, 0) scale(0.96);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes stage-sheen {
+  from {
+    transform: translateX(-55%);
+    opacity: 0.7;
+  }
+  to {
+    transform: translateX(55%);
+    opacity: 0;
+  }
+}
+
+@keyframes hint-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .card::after,
+  .hint,
+  .veil {
+    animation: none;
+    transition: none;
+    filter: none;
+    transform: none;
+  }
+
+  .frame[data-active="true"] .veil {
+    opacity: 1;
+  }
+}

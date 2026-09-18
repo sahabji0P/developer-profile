@@ -1,5 +1,5 @@
 .wrap {
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
 }
 
 .grid {
@@ -13,14 +13,14 @@
 .item {
   display: flex;
   align-items: baseline;
-  gap: 0.45rem;
-  margin: 0 0 0.4rem;
+  gap: 0.5rem;
+  margin: 0 0 0.55rem;
   break-inside: avoid;
   font-family: var(--font-ui);
   font-size: var(--text-body);
   font-weight: 400;
-  line-height: 1.55;
-  letter-spacing: -0.01em;
+  line-height: 1.5;
+  letter-spacing: -0.012em;
 }
 
 .icon {
@@ -28,21 +28,24 @@
   width: 14px;
   height: 14px;
   color: var(--text-muted);
-  opacity: 0.85;
-  transform: translateY(0.15em);
-  transition: color 200ms ease, opacity 200ms ease;
+  opacity: 0.75;
+  transform: translateY(0.18em);
+  transition: color var(--duration) var(--ease-soft),
+    opacity var(--duration) var(--ease-soft),
+    transform var(--duration) var(--ease-out);
 }
 
 .item:hover .icon {
   color: var(--accent);
   opacity: 1;
+  transform: translateY(0.18em) scale(1.08);
 }
 
 .link {
   color: var(--text-copy);
   text-decoration: none;
   min-width: 0;
-  transition: color 200ms ease;
+  transition: color var(--duration) var(--ease-soft);
 }
 
 .link:hover {
@@ -54,6 +57,8 @@
   flex-shrink: 0;
   font-family: var(--font-ui);
   font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
   font-variant-numeric: lining-nums tabular-nums;
 }
@@ -63,22 +68,23 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.85rem 1.25rem;
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }
 
 .moreBtn,
 .journalLink {
   font-family: var(--font-ui);
-  font-size: var(--text-ui);
-  font-weight: 450;
+  font-size: var(--text-meta);
+  font-weight: 500;
   line-height: 1.4;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  transition: color 200ms ease;
+  transition: color var(--duration) var(--ease-soft);
 }
 
 .moreBtn:hover,
@@ -93,5 +99,11 @@
 
   .date {
     display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item:hover .icon {
+    transform: translateY(0.18em);
   }
 }
