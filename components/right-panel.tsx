@@ -38,10 +38,13 @@ function generateStipple(
     if (rand() > density * 0.9 + 0.1) continue
 
     dots.push({
-      x,
-      y,
-      r: 0.3 + rand() * 0.85 * (1 - norm * 0.45),
-      opacity: Math.min(0.12 + (1 - norm) * 0.58 + rand() * 0.22, 0.82),
+      x: Math.round(x * 1000) / 1000,
+      y: Math.round(y * 1000) / 1000,
+      r: Math.round((0.3 + rand() * 0.85 * (1 - norm * 0.45)) * 1000) / 1000,
+      opacity:
+        Math.round(
+          Math.min(0.12 + (1 - norm) * 0.58 + rand() * 0.22, 0.82) * 1000,
+        ) / 1000,
     })
   }
 
