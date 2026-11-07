@@ -2,13 +2,13 @@ export const educationData = [
   {
     institution: "Bennett University",
     logo: "/educations/BU.png",
-    degree: "B.Tech in Computer Science",
+    degree: "B.Tech in Computer Science & Engineering (AI)",
     period: "2022-2026",
     isPresent: true,
-    description: "9.2 CGPA | Dean’s List award for 9.8 SGPA in Semester 5",
+    description: "8.97 CGPA | Dean’s List award for 9.8 SGPA in Semester 5",
     achievements: [
       "Consistently maintained a strong academic record",
-      "Submitted a research paper to a Journal (In-Review)",
+      "Published research at the 16th IEEE ICCCNT, IIT Indore (2025)",
       "Active participant in university hackathons and research initiatives",
     ],
   },
