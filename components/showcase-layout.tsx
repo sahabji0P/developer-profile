@@ -170,12 +170,19 @@ export function ShowcaseLayout() {
 
                         {/* Action Buttons - Stack on mobile */}
                         <div className="flex flex-col gap-3">
-                          <Button className="flex gap-2 w-full justify-center" asChild>
-                            <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                          {project.sourceLink && project.sourceLink !== "#" ? (
+                            <Button className="flex gap-2 w-full justify-center" asChild>
+                              <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                                <Github className="h-4 w-4" />
+                                View Source
+                              </a>
+                            </Button>
+                          ) : (
+                            <Button className="flex gap-2 w-full justify-center" disabled>
                               <Github className="h-4 w-4" />
-                              View Source
-                            </a>
-                          </Button>
+                              Private Repo
+                            </Button>
+                          )}
                           {project.demoLink && project.demoLink !== "#" ? (
                             <Button variant="outline" className="flex gap-2 w-full justify-center" asChild>
                               <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
@@ -242,14 +249,21 @@ export function ShowcaseLayout() {
                             ))}
                           </div>
                           <div className="flex gap-4">
-                            <PreviewTooltip preview={project.sourceLink}>
-                              <Button className="flex gap-2" asChild>
-                                <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
-                                  <Github className="h-4 w-4" />
-                                  View Source
-                                </a>
+                            {project.sourceLink && project.sourceLink !== "#" ? (
+                              <PreviewTooltip preview={project.sourceLink}>
+                                <Button className="flex gap-2" asChild>
+                                  <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                                    <Github className="h-4 w-4" />
+                                    View Source
+                                  </a>
+                                </Button>
+                              </PreviewTooltip>
+                            ) : (
+                              <Button className="flex gap-2" disabled>
+                                <Github className="h-4 w-4" />
+                                Private Repo
                               </Button>
-                            </PreviewTooltip>
+                            )}
                             <PreviewTooltip preview={project.demoLink || project.logo || "/SJ8.jpg"}>
                               {project.demoLink && project.demoLink !== "#" ? (
                                 <Button variant="outline" className="flex gap-2" asChild>
