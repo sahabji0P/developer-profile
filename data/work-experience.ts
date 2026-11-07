@@ -1,7 +1,7 @@
 export const workExperienceData = [
   {
     company: "AiRA AI (VRVV Ventures Pvt Ltd)",
-    logo: "/aira.svg",
+    logo: "/aira.png",
     role: "AI Engineer",
     period: "Nov 2025 - Present",
     isPresent: true,
