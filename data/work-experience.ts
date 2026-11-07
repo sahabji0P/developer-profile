@@ -1,9 +1,25 @@
 export const workExperienceData = [
   {
+    company: "AiRA AI (VRVV Ventures Pvt Ltd)",
+    logo: "/aira.svg",
+    role: "AI Engineer",
+    period: "Nov 2025 - Present",
+    isPresent: true,
+    description: "Bangalore, India. Own AiRA's AI infrastructure end to end: agent harness, real-time voice, memory, and evals.",
+    achievements: [
+      "Replaced Pydantic AI with a custom agent harness on raw SDKs across 7 model providers, controlling per-provider cache breakpoints, context loading and tool permission gates",
+      "Shipped the real-time voice runtime: cascaded (STT → LLM → TTS) and speech-to-speech pipelines with ~900 ms p50 time-to-first-audio and barge-in; ~5x smaller audio via 16-bit binary PCM over base64 floats",
+      "Designed a 4-tier memory system (scratchpad, short-, mid-, long-term) on Qdrant, Redis and MongoDB; a nightly pipeline detects open loops and drives follow-ups via push and iOS Live Activities",
+      "Structured prompts around a ~30k-token cross-user shared prefix with explicit cache breakpoints, sustaining a 98–99% cache-hit rate and cutting input-token cost ~90% and TTFT ~80%",
+      "Moved internal routing from generative LLM calls to a typed decision model (TypeSafe AI Jev), cutting per-decision latency from 600+ ms to under 150 ms with zero output-token cost",
+      "Set up prompt regression evals on passing and previously failing scenarios, shipping only when LLM-as-judge and human review agree; tracing via Langfuse and an in-house system",
+    ],
+  },
+  {
     company: "Web Landers",
     logo: "/WL.jpeg",
     role: "Full Stack Developer (Freelance Collaboration)",
-    period: "May 2024 - Dec 2024",
+    period: "May 2024 - Oct 2025",
     isPresent: false,
     description: "",
     achievements: [
