@@ -47,7 +47,7 @@ export function WorkExperienceSection() {
             {expandedIndex === index && (
               <motion.div
                 initial={{ maxHeight: 0, opacity: 0 }}
-                animate={{ maxHeight: 500, opacity: 1 }}
+                animate={{ maxHeight: 1200, opacity: 1 }}
                 exit={{ maxHeight: 0, opacity: 0 }}
                 transition={{ duration: 0.25, ease: "easeInOut" }}
                 className="overflow-hidden"
