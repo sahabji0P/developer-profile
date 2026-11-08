@@ -1,0 +1,14 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="vetaalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4c1d95;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="url(#vetaalGradient)" />
+  <rect x="27" y="34" width="66" height="48" rx="6" fill="none" stroke="#ffffff" stroke-width="4" />
+  <line x1="27" y1="46" x2="93" y2="46" stroke="#ffffff" stroke-width="4" />
+  <circle cx="35" cy="40" r="2" fill="#ffffff" />
+  <circle cx="42" cy="40" r="2" fill="#ffffff" />
+  <path d="M60 54 L60 80 L66 74 L71 85 L76 83 L71 72 L79 72 Z" fill="#ffffff" stroke="#4c1d95" stroke-width="2" stroke-linejoin="round" />
+</svg>
