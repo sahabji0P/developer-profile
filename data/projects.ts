@@ -2,6 +2,7 @@ export const projectsData = [
 
   {
     title: "Vetaal",
+    status: "In Progress",
     shortDescription: "Personal Browser Agent",
     description: "From-scratch agent harness that operates an isolated cloud browser through tool calling, with human approval before risky actions.",
     longDescription:
@@ -24,6 +25,7 @@ export const projectsData = [
   },
   {
     title: "Gullak",
+    status: "In Progress",
     shortDescription: "AI Finance Assistant & MCP Server",
     description: "Receipt-based bill splitting with Gemini vision, plus an MCP server that lets external agents manage a user's finances.",
     longDescription:
