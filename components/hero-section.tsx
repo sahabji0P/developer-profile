@@ -47,13 +47,14 @@ export function HeroSection() {
           <h2 className="text-2xl font-bold text-white">About</h2>
           <div className="text-muted-foreground leading-relaxed max-w-2xl space-y-4">
             <p className="text-md">
-              I am {heroData.name}, currently a final year Engineering student from India, with majors in Computer Science. Professionally I am a {" "}
-              <span className="font-semibold text-primary">Full-Stack Developer and AI Engineer </span>
-              specializing in delivering scalable and robust systems.{" "} Additionally I had{" "}
+              I am {heroData.name}, an{" "}
+              <span className="font-semibold text-primary">AI Engineer at AiRA AI</span>{" "}
+              in Bangalore, where I own the AI infrastructure end to end: agent harness, real-time voice, memory, and evals.
+              I studied Computer Science &amp; Engineering (AI) at Bennett University, and{" "}
 
               <Link href="/research/brain-tumor-classification-deit" className="text-primary hover:underline hover:underline-offset-8">
-                <span className="font-semibold">Presented a Research Paper on Vision Transformer based system at IEEE Conference (IIT Indore)</span>
-              </Link>
+                <span className="font-semibold">presented a research paper on a Vision Transformer based system at an IEEE conference (IIT Indore)</span>
+              </Link>.
 
 
             </p>

@@ -1,7 +1,7 @@
 export const heroData = {
   name: "Shashwat Jain",
   tagline: "Engineer | Developer | Entrepreneur | Contributor",
-  location: "Khekra, Uttar Pradesh, India",
+  location: "Bangalore / Delhi NCR, India",
   image:
     "/sj.jpeg"
 }
