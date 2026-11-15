@@ -83,7 +83,15 @@ export function ShowcaseLayout() {
                 />
               </div>
               <div className="flex-grow min-w-0">
-                <h3 className="text-lg sm:text-xl font-bold truncate">{project.title}</h3>
+                <div className="flex items-center gap-2 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold truncate">{project.title}</h3>
+                  {project.status && (
+                    <span className="flex-shrink-0 inline-flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] sm:text-xs font-medium text-amber-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
+                      {project.status}
+                    </span>
+                  )}
+                </div>
                 <p className="text-xs sm:text-sm text-muted-foreground line-clamp-2">
                   {project.shortDescription}
                 </p>
@@ -170,12 +178,19 @@ export function ShowcaseLayout() {
 
                         {/* Action Buttons - Stack on mobile */}
                         <div className="flex flex-col gap-3">
-                          <Button className="flex gap-2 w-full justify-center" asChild>
-                            <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                          {project.sourceLink && project.sourceLink !== "#" ? (
+                            <Button className="flex gap-2 w-full justify-center" asChild>
+                              <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                                <Github className="h-4 w-4" />
+                                View Source
+                              </a>
+                            </Button>
+                          ) : (
+                            <Button className="flex gap-2 w-full justify-center" disabled>
                               <Github className="h-4 w-4" />
-                              View Source
-                            </a>
-                          </Button>
+                              Private Repo
+                            </Button>
+                          )}
                           {project.demoLink && project.demoLink !== "#" ? (
                             <Button variant="outline" className="flex gap-2 w-full justify-center" asChild>
                               <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
@@ -242,14 +257,21 @@ export function ShowcaseLayout() {
                             ))}
                           </div>
                           <div className="flex gap-4">
-                            <PreviewTooltip preview={project.sourceLink}>
-                              <Button className="flex gap-2" asChild>
-                                <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
-                                  <Github className="h-4 w-4" />
-                                  View Source
-                                </a>
+                            {project.sourceLink && project.sourceLink !== "#" ? (
+                              <PreviewTooltip preview={project.sourceLink}>
+                                <Button className="flex gap-2" asChild>
+                                  <a href={project.sourceLink} target="_blank" rel="noopener noreferrer">
+                                    <Github className="h-4 w-4" />
+                                    View Source
+                                  </a>
+                                </Button>
+                              </PreviewTooltip>
+                            ) : (
+                              <Button className="flex gap-2" disabled>
+                                <Github className="h-4 w-4" />
+                                Private Repo
                               </Button>
-                            </PreviewTooltip>
+                            )}
                             <PreviewTooltip preview={project.demoLink || project.logo || "/SJ8.jpg"}>
                               {project.demoLink && project.demoLink !== "#" ? (
                                 <Button variant="outline" className="flex gap-2" asChild>

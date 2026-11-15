@@ -1,26 +1,50 @@
 export const projectsData = [
 
   {
-    title: "Money Mate",
-    shortDescription: "AI-Powered Bill Splitting App",
-    description: "Next.js PWA using Gemini 2.5 Flash API to parse receipts and split expenses among participants.",
+    title: "Vetaal",
+    status: "In Progress",
+    shortDescription: "Personal Browser Agent",
+    description: "From-scratch agent harness that operates an isolated cloud browser through tool calling, with human approval before risky actions.",
     longDescription:
-      "Money Mate is a Progressive Web App built with Next.js and Tailwind CSS that automates bill splitting. It uses Gemini 2.5 Flash API to extract item names, prices, and taxes with 98% accuracy, provides editable item and participant modules, and generates shareable summaries in PNG or text. Designed for mobile responsiveness and offline support via IndexedDB.",
-    logo: "/projects/MoneyMate.svg",
-    image: "/projects/moneyMateImage.png",
+      "Vetaal is a personal browser agent built on a from-scratch harness over the OpenAI Responses API. It operates an isolated cloud browser (Browserbase, driven through Playwright and Stagehand) via tool calling, with permission gates and human approval before risky actions. Logins and payment details live in a credential vault: secrets are injected at the tool layer and never enter the model's context. Token usage and cost are tracked per run, and the harness is backed by 160+ offline tests.",
+    logo: "/projects/vetaal.svg",
+    image: "/projects/vetaalImage.svg",
     featured: true,
-    techStack: ["Next.js", "Tailwind CSS", "Gemini 2.b5 Flash API", "html2canvas", "PWA"],
-    demoLink: "https://matemoney.vercel.app/",
-    sourceLink: "https://github.com/sahabji0P/recycle-bin",
+    techStack: ["Python", "FastAPI", "OpenAI Responses API", "Playwright", "Stagehand", "Browserbase", "Next.js"],
+    demoLink: "#",
+    sourceLink: "#",
     features: [
-      "98% receipt parsing accuracy with Gemini Flash API",
-      "Editable items and participant modules with React Context",
-      "Flexible splitting algorithms (equal, percentage, custom)",
-      "Shareable PNG and text summaries via html2canvas",
-      "Responsive PWA design with offline support"
+      "From-scratch agent harness on the OpenAI Responses API",
+      "Isolated cloud browser (Browserbase) operated via Playwright and Stagehand",
+      "Permission gates with human approval before risky actions",
+      "Credential vault: secrets injected at the tool layer, never in model context",
+      "Token and cost tracking, backed by 160+ offline tests"
     ],
     challenges:
-      "Balancing real-time AI parsing performance with a seamless mobile UX and offline data persistence."
+      "Letting an agent act on real accounts without ever exposing credentials to the model, while keeping a human in the loop for irreversible actions."
+  },
+  {
+    title: "Gullak",
+    status: "In Progress",
+    shortDescription: "AI Finance Assistant & MCP Server",
+    description: "Receipt-based bill splitting with Gemini vision, plus an MCP server that lets external agents manage a user's finances.",
+    longDescription:
+      "Gullak is an AI finance assistant. Gemini 3.5 Flash vision turns bill photos into itemised expenses and splits them between participants, cutting entry time from 5 minutes to 30 seconds. An MCP server exposes accounts, budgets and settlements as a narrow, validated tool set, so external agents can manage a user's finances.",
+    logo: "/projects/MoneyMate.svg",
+    image: "/projects/gullakImage.svg",
+    featured: true,
+    techStack: ["Python", "MCP", "Gemini 3.5 Flash (Vision)", "Next.js", "SQLite"],
+    demoLink: "https://matemoney.vercel.app",
+    sourceLink: "https://github.com/sahabji0P/money-mate",
+    features: [
+      "Gemini 3.5 Flash vision parses bill photos into itemised expenses",
+      "Entry time cut from 5 minutes to 30 seconds",
+      "Flexible splitting between participants (equal, percentage, custom)",
+      "MCP server exposing accounts, budgets and settlements as validated tools",
+      "Lets external agents manage a user's finances safely"
+    ],
+    challenges:
+      "Designing an MCP tool surface narrow enough to be safe for external agents while still covering real finance workflows."
   },
   {
     title: "NeuroVision",

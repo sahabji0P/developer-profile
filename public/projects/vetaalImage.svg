@@ -1,0 +1,10 @@
+<svg width="1302" height="364" viewBox="0 0 1302 364" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1302" height="364" fill="#111111" />
+  <g transform="translate(118 96) scale(1.43)">
+    <rect x="0" y="0" width="120" height="120" rx="24" fill="#7c3aed" />
+    <rect x="22" y="30" width="76" height="56" rx="6" fill="none" stroke="#ffffff" stroke-width="5" />
+    <line x1="22" y1="44" x2="98" y2="44" stroke="#ffffff" stroke-width="5" />
+    <path d="M58 54 L58 82 L64 76 L69 87 L74 85 L69 74 L77 74 Z" fill="#ffffff" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" />
+  </g>
+  <text x="330" y="222" font-family="'Courier New', Courier, monospace" font-size="120" font-weight="700" fill="#8b5cf6">Vetaal</text>
+</svg>
