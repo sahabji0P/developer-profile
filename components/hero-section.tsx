@@ -49,7 +49,8 @@ export function HeroSection() {
             <p className="text-md">
               I am {heroData.name}, an{" "}
               <span className="font-semibold text-primary">AI Engineer at AiRA AI</span>{" "}
-              in Bangalore, where I own the AI infrastructure end to end: agent harness, real-time voice, memory, and evals.
+              in Bangalore (open to remote), building a personal AI agent now in private beta. As the sole AI engineer,
+              I own the AI infrastructure: agent harness, real-time voice, memory, and evals.
               I studied Computer Science &amp; Engineering (AI) at Bennett University, and{" "}
 
               <Link href="/research/brain-tumor-classification-deit" className="text-primary hover:underline hover:underline-offset-8">
