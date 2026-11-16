@@ -29,7 +29,7 @@ export const projectsData = [
     shortDescription: "AI Finance Assistant & MCP Server",
     description: "Receipt-based bill splitting with Gemini vision, plus an MCP server that lets external agents manage a user's finances.",
     longDescription:
-      "Gullak is an AI finance assistant. Gemini 3.5 Flash vision turns bill photos into itemised expenses and splits them between participants, cutting entry time from 5 minutes to 30 seconds. An MCP server exposes accounts, budgets and settlements as a narrow, validated tool set, so external agents can manage a user's finances.",
+      "Gullak is an AI finance assistant. Gemini 3.5 Flash vision turns bill photos into itemised expenses and splits them between participants, cutting entry time from 5 minutes to 30 seconds. An MCP server exposes accounts, budgets and settlements as a narrow, validated tool set, so external agents can manage a user's finances. The MCP server is being developed in a private repository.",
     logo: "/projects/MoneyMate.svg",
     image: "/projects/gullakImage.svg",
     featured: true,
@@ -40,7 +40,7 @@ export const projectsData = [
       "Gemini 3.5 Flash vision parses bill photos into itemised expenses",
       "Entry time cut from 5 minutes to 30 seconds",
       "Flexible splitting between participants (equal, percentage, custom)",
-      "MCP server exposing accounts, budgets and settlements as validated tools",
+      "MCP server exposing accounts, budgets and settlements as validated tools (in development, private repo)",
       "Lets external agents manage a user's finances safely"
     ],
     challenges:
