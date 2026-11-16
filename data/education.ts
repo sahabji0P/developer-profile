@@ -4,7 +4,7 @@ export const educationData = [
     logo: "/educations/BU.png",
     degree: "B.Tech in Computer Science & Engineering (AI)",
     period: "2022-2026",
-    isPresent: true,
+    isPresent: false,
     description: "8.97 CGPA | Dean’s List award for 9.8 SGPA in Semester 5",
     achievements: [
       "Consistently maintained a strong academic record",
